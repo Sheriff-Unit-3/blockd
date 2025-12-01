@@ -869,7 +869,18 @@ core.register_node("blk_base:torch", {
 core.register_alias("torch", "blk_base:torch")
 
 
-
+-- haybale
+core.register_node("blk_base:haybale", {
+    description = "Haybale",
+    tiles = {
+        "blk_haybale_end.png",
+        "blk_haybale_end.png",
+        "blk_haybale_side.png"
+    },
+    stack_max = 256,
+    groups = {hay = 1, bale = 1, hand = 1}
+})
+core.register_alias("haybale", "blk_base:haybale")
 
 
 

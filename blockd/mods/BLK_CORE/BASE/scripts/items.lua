@@ -173,13 +173,3 @@ core.register_craftitem("blk_base:string", {
 })
 core.register_alias("string", "blk_base:string")
 core.register_alias("farming:string", "blk_base:string")
-
-
--- cotton
-core.register_craftitem("blk_base:cotton", {
-    description = "Cotton",
-    stack_max = 256,
-    inventory_image = "blk_cotton.png",
-    groups = {cotton = 1, hand = 1}
-})
-core.register_alias("cotton", "blk_base:cotton")
