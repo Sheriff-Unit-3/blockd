@@ -1,0 +1,80 @@
+-- spikes
+-- wood
+core.register_node("blk_base:wood_spikes", {
+    dsecription = "Wood Spikes",
+    drawtype = "mesh",
+    tiles = {"blk_base_wood_spikes.png"},
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 10,
+    mesh = "blk_base_wood_spikes.glb",
+    groups = {spikes = 1, axe = 1}
+})
+core.register_alias("wood_spikes", "blk_base:wood_spikes")
+-- stone
+core.register_node("blk_base:stone_spikes", {
+    description = "Stone Spikes",
+    drawtype = "mesh",
+    tiles = {"blk_base_wood_spikes.png"},
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 20,
+    mesh = "blk_base_stone_spikes.glb",
+    groups = {spikes = 1, pickaxe = 1}
+})
+core.register_alias("stone_spikes", "blk_base:stone_spikes")
+-- iron
+core.register_node("blk_base:iron_spikes", {
+    description = "Iron Spikes",
+    drawtype = "mesh",
+    tiles = {"blk_base_iron_spikes"},
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 30,
+    mesh = "blk_base_iron_spikes.glb",
+    groups = {spikes = 1, pickaxe = 1}
+})
+core.register_alias("iron_spikes", "blk_base:iron_spikes")
+-- gold
+core.register_node("blk_base:gold_spikes", {
+    description = "Gold Spikes",
+    drawtype = "mesh",
+    tiles = {"blk_base_gold_spikes.png"},
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 40,
+    mesh = "blk_base_gold_spikes.glb",
+    groups = {spikes = 1, pickaxe = 1}
+})
+core.register_alias("gold_spikes", "blk_base:gold_spikes")
+-- diamond
+core.register_node("blk_base:diamond_spikes", {
+    description = "Diamond Spikes",
+    drawtype = "mesh",
+    tiles = {"Diamond Spikes"},
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 50,
+    mesh = "blk_diamond_spikes.glb",
+    groups = {spikes = 1, pickaxe = 1}
+})
+core.register_alias("diamond_spikes", "blk_base:diamond_spikes")
+-- kill
+core.register_node("blk_base:kill_spikes", {
+    description = "Kill Spikes",
+    drawtype = "mesh",
+    tiles = "blk_kill_spikes.png",
+    is_ground_content = false,
+    walkable = false,
+    sunlight_propagates = true,
+    damage_per_second = 999999,
+    pointable = "blocking",
+    mesh = "blk_kill_spikes.glb",
+    groups = {spikes = 1}
+})
+core.register_alias("kill_spikes", "blk_base:kill_spikes")
