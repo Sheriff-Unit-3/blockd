@@ -117,7 +117,7 @@ Change the following default settings by going to Main Menu>>Settings(Tab)>>All 
 **when fire protection is enabled allows you to disable fire damage from torches**
 **defaults to true if using ethereal mod**
 
-    armor_fire_protect_torch = false
+    armor_fire_protect_torch = true
 
 ### Enable punch damage effects
 
