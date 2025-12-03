@@ -31,7 +31,11 @@ core.register_node("blk_base:cotton", {
     stack_max = 256,
     walkable = false,
     buildable_to = true,
-    groups = {cotton = 1, hoe = 1}
+    groups = {cotton = 1, hoe = 1},
+    drop = {
+        max_items = 1,
+        
+    }
 })
 core.register_alias("cotton", "blk_base:cotton")
 core.register_craftitem("blk_base:cotton_seeds", {
