@@ -209,6 +209,7 @@ core.register_craftitem("blk_base:coal", {
     inventory_image = "blk_coal.png"
 })
 core.register_alias("coal", "blk_base:coal")
+core.register_alias("default:coal_lump", "blk_base:coal")
 -- iron
 core.register_craftitem("blk_base:raw_iron", {
     description = "Raw Iron",
@@ -222,6 +223,7 @@ core.register_craftitem("blk_base:iron_bar", {
     inventory_image = "blk_iron_bar.png"
 })
 core.register_alias("iron_bar", "blk_base:iron_bar")
+core.register_alias("default:steel_ingot", "blk_base:iron_bar")
 -- gold
 core.register_craftitem("blk_base:raw_gold", {
     description = "Raw Gold",
@@ -235,6 +237,7 @@ core.register_craftitem("blk_base:gold_bar", {
     inventory_image = "blk_gold_bar.png"
 })
 core.register_alias("gold_bar", "blk_base:gold_bar")
+core.register_alias("default:gold_ingot", "blk_base:gold_bar")
 -- diamond
 core.register_craftitem("blk_base:diamond", {
     description = "Diamond",
@@ -242,6 +245,7 @@ core.register_craftitem("blk_base:diamond", {
     inventory_image = "blk_diamond.png"
 })
 core.register_alias("diamond", "blk_base:diamond")
+core.register_alias("default:diamond", "blk_base:diamond")
 -- sulfur
 core.register_craftitem("blk_base:sulfur", {
     description = "Sulfur",

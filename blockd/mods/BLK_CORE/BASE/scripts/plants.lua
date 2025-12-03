@@ -10,47 +10,8 @@ core.register_node("blk_base:grass", {
     buildable_to = true
 })
 core.register_alias("grass", "blk_base:grass")
--- wheat
-core.register_node("blk_base:wheat", {
-    description = "Wheat",
-    drawtype = "plantlike",
-    tiles = {"blk_wheat.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true
-})
-core.register_alias("wheat", "blk_base:wheat")
--- cotton
-core.register_node("blk_base:cotton", {
-    description = "Cotton",
-    drawtype = "plantlike",
-    tiles = {"blk_cotton.png"},
-    inventory_image = "blk_cotton.png",
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true,
-    groups = {cotton = 1, hoe = 1},
-    drop = {
-        max_items = 1,
-        
-    }
-})
-core.register_alias("cotton", "blk_base:cotton")
-core.register_craftitem("blk_base:cotton_seeds", {
-    description = "Cotton Seeds",
-    drawtype = "nodebox",
-    inventory_image = "blk_cotton_seeds.png",
-    stack_max = 256,
-    groups = {seeds = 1, cotton = 1, hand = 1},
-    on_rightclick = function(pos, node)
-        if node.name == "tilled_soil" then
-            local pos = pos.y+1
-            core.place_node(pos, "cotton_1")
-        end
-    end
-})
+
+
 
 -- flowers
 -- rose
