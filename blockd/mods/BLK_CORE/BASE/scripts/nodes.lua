@@ -722,9 +722,6 @@ core.register_node("blk_base:apple_log", {
     tiles = {
         "blk_apple_log_end.png",
         "blk_apple_log_end.png",
-        "blk_apple_log.png",
-        "blk_apple_log.png",
-        "blk_apple_log.png",
         "blk_apple_log.png"
     },
     sunlight_propagates = false,
@@ -748,9 +745,6 @@ core.register_node("blk_base:maple_log", {
         "blk_maple_log_end.png",
         "blk_maple_log_end.png",
         "blk_maple_log.png",
-        "blk_maple_log.png",
-        "blk_maple_log.png",
-        "blk_maple_log.png"
     },
     sunlight_propagates = false,
     stack_max = 256,
@@ -771,6 +765,90 @@ core.register_node("blk_base:maple_planks",{
 })
 core.register_alias("maple_planks", "blk_base:maple_planks")
 core.register_alias("wood_planks", "blk_base:maple_planks")
+-- birch
+core.register_node("blk_base:birch_log", {
+    description = "Birch Log",
+    tiles = {
+        "blk_birch_log_end.png",
+        "blk_birch_log_end.png",
+        "blk_birch_log.png"
+    },
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, log = 1, choppy = 1}
+})
+core.register_alias("birch_log", "blk_base:birch_log")
+core.register_node("blk_base:birch_planks",{
+    description = "Birch Wood Planks",
+    tiles = {"blk_birch_planks.png"},
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, wood_planks = 1, choppy = 1}
+})
+core.register_alias("birch_planks", "blk_base:birch_planks")
+-- jungle
+core.register_node("blk_base:jungle_log", {
+    description = "Jungle Log",
+    tiles = {
+        "blk_jungle_log_end.png",
+        "blk_jungle_log_end.png",
+        "blk_jungle_log.png"
+    },
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, log = 1, choppy = 1}
+})
+core.register_alias("jungle_log", "blk_base:jungle_log")
+core.register_node("blk_base:jungle_planks",{
+    description = "Jungle Wood Planks",
+    tiles = {"blk_jungle_planks.png"},
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, wood_planks = 1, choppy = 1}
+})
+core.register_alias("jungle_planks", "blk_base:jungle_planks")
+-- spruce
+core.register_node("blk_base:spruce_log", {
+    description = "Spruce Log",
+    tiles = {
+        "blk_spruce_log_end.png",
+        "blk_spruce_log_end.png",
+        "blk_spruce_log.png"
+    },
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, log = 1, choppy = 1}
+})
+core.register_alias("spruce_log", "blk_base:spruce_log")
+core.register_node("blk_base:spruce_planks",{
+    description = "Spruce Wood Planks",
+    tiles = {"blk_spruce_planks.png"},
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, wood_planks = 1, choppy = 1}
+})
+core.register_alias("spruce_planks", "blk_base:spruce_planks")
+-- acacia
+core.register_node("blk_base:acacia_log", {
+    description = "Acacia Log",
+    tiles = {
+        "blk_acacia_log_end.png",
+        "blk_acacia_log_end.png",
+        "blk_acacia_log.png"
+    },
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, log = 1, choppy = 1}
+})
+core.register_alias("acacia_log", "blk_base:acacia_log")
+core.register_node("blk_base:acacia_planks",{
+    description = "Acacia Wood Planks",
+    tiles = {"blk_acacia_planks.png"},
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, wood_planks = 1, choppy = 1}
+})
+core.register_alias("acacia_planks", "blk_base:acacia_planks")
 
 
 
@@ -813,6 +891,74 @@ core.register_node("blk_base:maple_leaves", {
     groups = {snappy = 1, leaves = 1}
 })
 core.register_alias("maple_leaves", "blk_base:maple_leaves")
+-- birch
+core.register_node("blk_base:birch_leaves", {
+    description = "Birch Leaves",
+    tiles = {"blk_birch_leaves.png"},
+    sunlight_propagates = true,
+    walkable = true,
+    stack_max = 256,
+    drop = {
+        max_items = 2,
+        items = {
+            {rarity = 3, items = {"stick"}},
+            {rarity = 1, items = {"blk_base:birch_leaves"}}
+        }
+    },
+    groups = {snappy = 1, leaves = 1}
+})
+core.register_alias("birch_leaves", "blk_base:birch_leaves")
+-- jungle
+core.register_node("blk_base:jungle_leaves", {
+    description = "Jungle Leaves",
+    tiles = {"blk_jungle_leaves.png"},
+    sunlight_propagates = true,
+    walkable = true,
+    stack_max = 256,
+    drop = {
+        max_items = 2,
+        items = {
+            {rarity = 3, items = {"stick"}},
+            {rarity = 1, items = {"blk_base:jungle_leaves"}}
+        }
+    },
+    groups = {snappy = 1, leaves = 1}
+})
+core.register_alias("jungle_leaves", "blk_base:jungle_leaves")
+-- spruce
+core.register_node("blk_base:spruce_leaves", {
+    description = "Spruce Leaves",
+    tiles = {"blk_spruce_leaves.png"},
+    sunlight_propagates = true,
+    walkable = true,
+    stack_max = 256,
+    drop = {
+        max_items = 2,
+        items = {
+            {rarity = 3, items = {"stick"}},
+            {rarity = 1, items = {"blk_base:spruce_leaves"}}
+        }
+    },
+    groups = {snappy = 1, leaves = 1}
+})
+core.register_alias("spruce_leaves", "blk_base:spruce_leaves")
+-- acacia
+core.register_node("blk_base:acacia_leaves", {
+    description = "Acacia Leaves",
+    tiles = {"blk_acacia_leaves.png"},
+    sunlight_propagates = true,
+    walkable = true,
+    stack_max = 256,
+    drop = {
+        max_items = 2,
+        items = {
+            {rarity = 3, items = {"stick"}},
+            {rarity = 1, items = {"blk_base:acacia_leaves"}}
+        }
+    },
+    groups = {snappy = 1, leaves = 1}
+})
+core.register_alias("acacia_leaves", "blk_base:acacia_leaves")
 
 
 -- glass
