@@ -855,6 +855,7 @@ core.register_alias("acacia_planks", "blk_base:acacia_planks")
 -- leaves
 -- apple
 core.register_node("blk_base:apple_leaves", {
+    drawtype = "allfaces_optional",
     description = "Apple Leaves",
     tiles = {"blk_apple_leaves.png"},
     sunlight_propagates = true,
@@ -876,6 +877,7 @@ core.register_alias("mapgen_leaves", "blk_base:apple_leaves")
 core.register_alias("mapgen_apple", "blk_base:apple_leaves")
 -- maple
 core.register_node("blk_base:maple_leaves", {
+    drawtype = "allfaces_optional",
     description = "Maple Leaves",
     tiles = {"blk_maple_leaves.png"},
     sunlight_propagates = true,
@@ -893,6 +895,7 @@ core.register_node("blk_base:maple_leaves", {
 core.register_alias("maple_leaves", "blk_base:maple_leaves")
 -- birch
 core.register_node("blk_base:birch_leaves", {
+    drawtype = "allfaces_optional",
     description = "Birch Leaves",
     tiles = {"blk_birch_leaves.png"},
     sunlight_propagates = true,
@@ -910,6 +913,7 @@ core.register_node("blk_base:birch_leaves", {
 core.register_alias("birch_leaves", "blk_base:birch_leaves")
 -- jungle
 core.register_node("blk_base:jungle_leaves", {
+    drawtype = "allfaces_optional",
     description = "Jungle Leaves",
     tiles = {"blk_jungle_leaves.png"},
     sunlight_propagates = true,
@@ -927,6 +931,7 @@ core.register_node("blk_base:jungle_leaves", {
 core.register_alias("jungle_leaves", "blk_base:jungle_leaves")
 -- spruce
 core.register_node("blk_base:spruce_leaves", {
+    drawtype = "allfaces_optional",
     description = "Spruce Leaves",
     tiles = {"blk_spruce_leaves.png"},
     sunlight_propagates = true,
@@ -944,6 +949,7 @@ core.register_node("blk_base:spruce_leaves", {
 core.register_alias("spruce_leaves", "blk_base:spruce_leaves")
 -- acacia
 core.register_node("blk_base:acacia_leaves", {
+    drawtype = "allfaces_optional",
     description = "Acacia Leaves",
     tiles = {"blk_acacia_leaves.png"},
     sunlight_propagates = true,
@@ -972,6 +978,83 @@ core.register_node("blk_base:glass", {
     groups = {choppy = 1, glass = 1}
 })
 core.register_alias("glass", "blk_base:glass")
+-- teal
+core.register_node("blk_base:teal_glass", {
+    drawtype = "glasslike",
+    description = "Teal Glass",
+    tiles = {"blk_teal_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, teal = 1}
+})
+core.register_alias("teal_glass", "blk_base:teal_glass")
+-- blue
+core.register_node("blk_base:blue_glass", {
+    drawtype = "glasslike",
+    description = "Blue Glass",
+    tiles = {"blk_blue_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, blue = 1}
+})
+core.register_alias("blue_glass", "blk_base:blue_glass")
+-- red
+core.register_node("blk_base:red_glass", {
+    drawtype = "glasslike",
+    description = "Red Glass",
+    tiles = {"blk_red_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, red = 1}
+})
+core.register_alias("red_glass", "blk_base:red_glass")
+-- green
+core.register_node("blk_base:green_glass", {
+    drawtype = "glasslike",
+    description = "Green Glass",
+    tiles = {"blk_green_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, green = 1}
+})
+core.register_alias("green_glass", "blk_base:green_glass")
+-- lime
+core.register_node("blk_base:lime_glass", {
+    drawtype = "glasslike",
+    description = "Lime Glass",
+    tiles = {"blk_lime_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, lime = 1}
+})
+core.register_alias("lime_glass", "blk_base:lime_glass")
+-- purple
+core.register_node("blk_base:purple_glass", {
+    drawtype = "glasslike",
+    description = "Purple Glass",
+    tiles = {"blk_purple_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, purple = 1}
+})
+core.register_alias("purple_glass", "blk_base:purple_glass")
+-- pink
+core.register_node("blk_base:pink_glass", {
+    drawtype = "glasslike",
+    description = "Pink Glass",
+    tiles = {"blk_pink_glass.png"},
+    sunlight_propagates = true,
+    stack_max = 256,
+    walkable = true,
+    groups = {choppy = 1, glass = 1, pink = 1}
+})
+core.register_alias("pink_glass", "blk_base:pink_glass")
 
 
 

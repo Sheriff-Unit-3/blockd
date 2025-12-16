@@ -7,9 +7,25 @@ core.register_node("blk_base:grass", {
     stack_max = 256,
     sunlight_propagates = true,
     walkable = false,
-    buildable_to = true
+    buildable_to = true,
+    groups = {hand = 1, grass = 1}
 })
 core.register_alias("grass", "blk_base:grass")
+
+
+
+-- saplings
+-- apple
+core.register_node("blk_base:apple_sapling", {
+    description = "Apple Tree Sapling",
+    drawtype = "plantlike",
+    stack_max = 256,
+    sunlight_propagates = true,
+    walkable = false,
+    buildable_to = true,
+    groups = {hand = 1, sapling = 1}
+})
+core.register_alias("apple_sapling", "blk_base:apple_sapling")
 
 
 

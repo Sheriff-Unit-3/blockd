@@ -74,6 +74,13 @@ core.register_craftitem("blk_base:cyan_dye", {
     groups = {dye = 1, cyan = 1, color = 1}
 })
 core.register_alias("cyan_dye", "blk_base:cyan_dye")
+-- green
+core.register_craftitem("blk_base:green_dye", {
+    description = "Green Dye",
+    stack_max = 256,
+    inventory_image = "blk_green_dye.png",
+    groups = {dye = 1, green = 1, color = 1}
+})
 -- dark green
 core.register_craftitem("blk_base:dark_green_dye", {
     description = "Dark Green Dye",
