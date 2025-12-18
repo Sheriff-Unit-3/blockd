@@ -1,5 +1,5 @@
 -- cotton
-core.register_node("blk_base:cotton_1", {
+core.register_node("blk_farming:cotton_1", {
     description = "Cotton",
     drawtype = "plantlike",
     tiles = {"blk_cotton_1.png"},
@@ -10,7 +10,7 @@ core.register_node("blk_base:cotton_1", {
     groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
     drop = ""
 })
-core.register_node("blk_base:cotton_2", {
+core.register_node("blk_farming:cotton_2", {
     description = "Cotton",
     drawtype = "plantlike",
     tiles = {"blk_cotton_2.png"},
@@ -21,7 +21,7 @@ core.register_node("blk_base:cotton_2", {
     groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
     drop = ""
 })
-core.register_node("blk_base:cotton_3", {
+core.register_node("blk_farming:cotton_3", {
     description = "Cotton",
     drawtype = "plantlike",
     tiles = {"blk_cotton_3.png"},
@@ -32,7 +32,7 @@ core.register_node("blk_base:cotton_3", {
     groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
     drop = ""
 })
-core.register_node("blk_base:cotton_4", {
+core.register_node("blk_farming:cotton_4", {
     description = "Cotton",
     drawtype = "plantlike",
     tiles = {"blk_cotton_4.png"},
@@ -62,7 +62,7 @@ core.register_node("blk_base:cotton_4", {
         }
     }
 })
-core.register_craftitem("blk_base:cotton_seeds", {
+core.register_craftitem("blk_farming:cotton_seeds", {
     description = "Cotton Seeds",
     drawtype = "raillike",
     tiles = {"blk_cotton_seeds.png"},
@@ -77,7 +77,7 @@ core.register_craftitem("blk_base:cotton_seeds", {
 })
 core.register_abm({
     label = "cotton_growing",
-    nodename = {"blk_base:cotton_1", "blk_base:cotton_2", "blk_base:cotton_3"},
+    nodename = {"blk_farming:cotton_1", "blk_farming:cotton_2", "blk_farming:cotton_3"},
     neighbors = {"tilled_soil"},
     interval = 15,
     chance = 25,
@@ -85,21 +85,21 @@ core.register_abm({
     max_y = 300,
     catch_up = true,
     action = function(pos, node)
-        if node.name == "blk_base:cotton_1" then
-            core.swap_node(pos, {name = "blk_base:cotton_2"})
+        if node.name == "blk_farming:cotton_1" then
+            core.swap_node(pos, {name = "blk_farming:cotton_2"})
         end
-        if node.name == "blk_base:cotton_2" then
-            core.swap_node(pos, {name = "blk_base:cotton_3"})
+        if node.name == "blk_farming:cotton_2" then
+            core.swap_node(pos, {name = "blk_farming:cotton_3"})
         end
-        if node.name == "blk_base:cotton_3" then
-            core.swap_node(pos, {name = "blk_base:cotton_4"})
+        if node.name == "blk_farming:cotton_3" then
+            core.swap_node(pos, {name = "blk_farming:cotton_4"})
         end
     end
 })
 
 
 -- wheat
-core.register_node("blk_base:wheat", {
+core.register_node("blk_farming:wheat", {
     description = "Wheat",
     drawtype = "plantlike",
     tiles = {"blk_wheat.png"},
@@ -108,4 +108,4 @@ core.register_node("blk_base:wheat", {
     walkable = false,
     buildable_to = true
 })
-core.register_alias("wheat", "blk_base:wheat")
+core.register_alias("wheat", "blk_farming:wheat")

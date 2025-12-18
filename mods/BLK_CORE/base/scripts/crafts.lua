@@ -68,11 +68,6 @@ core.register_craft({
 })
 core.register_craft({
     type = "fuel",
-    recipe = "coal",
-    burntime = 20
-})
-core.register_craft({
-    type = "fuel",
     recipe = "group:wood_planks",
     burntime = 10
 })
@@ -187,30 +182,5 @@ core.register_craft({
     recipe = {
         {"flour", "sugar"},
         {"milk", "coal"}
-    }
-})
-
-
-
--- wool
-core.register_craft({
-    output = "wool",
-    recipe = {
-        {"cotton", "cotton", "cotton"},
-        {"cotton", "cotton", "cotton"},
-        {"cotton", "cotton", "cotton"}
-    }
-})
--- string
-core.register_craft({
-    output = "string 12",
-    recipe = {
-        {"wool", "wool", "wool"}
-    }
-})
-core.register_craft({
-    output = "string 1",
-    recipe = {
-        {"cotton", "cotton", "cotton"}
     }
 })

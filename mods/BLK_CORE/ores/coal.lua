@@ -35,3 +35,10 @@ core.register_node("blk_ores:coal_block", {
     }
 })
 core.register_alias("coal_block", "blk_ores:coal_block")
+
+-- fuel
+core.register_craft({
+    type = "fuel",
+    recipe = "coal",
+    burntime = 20
+})

@@ -35,6 +35,3 @@ core.register_craft({
         {"group:wood_planks", "group:wood_planks", "group:wood_planks"}
     }
 })
-
--- drawer
-

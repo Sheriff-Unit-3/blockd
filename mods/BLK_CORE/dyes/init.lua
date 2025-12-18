@@ -1,2 +1,3 @@
 local modpath = core.get_modpath(core.get_current_modname())
-dofile(modpath.."/storage.lua")
+dofile(modpath.."/dyes.lua")
+dofile(modpath.."/crafts.lua")
