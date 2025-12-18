@@ -1,0 +1,6 @@
+local modpath = core.get_modpath(core.get_current_modname())
+dofile(modpath.."coal.lua")
+dofile(modpath.."iron.lua")
+dofile(modpath.."gold.lua")
+dofile(modpath.."diamond.lua")
+dofile(modpath.."ores.lua")
