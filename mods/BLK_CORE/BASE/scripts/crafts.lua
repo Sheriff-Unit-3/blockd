@@ -191,17 +191,6 @@ core.register_craft({
 })
 
 
--- storage
--- chest
-core.register_craft({
-    output = "chest",
-    recipe = {
-        {"group:wood_planks", "group:wood_planks", "group:wood_planks"},
-        {"group:wood_planks", "", "group:wood_planks"},
-        {"group:wood_planks", "group:wood_planks", "group:wood_planks"}
-    }
-})
-
 
 -- wool
 core.register_craft({
