@@ -20,7 +20,7 @@ core.register_node("blk_base:chest", {
             "list[current_player;main;0.3,6.5;9,4;0]"..
             "list[context;main;0.3,0.9;9,4;0]"..
             "label[5.3,0.6;Chest]"..
-            "label[5.05,6.1;Inventory]"
+            "label[4.9,6.1;Inventory]"
         )
     end
 })
