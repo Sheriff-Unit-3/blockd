@@ -15,10 +15,12 @@ core.register_node("blk_base:chest", {
         local inv = meta:get_inventory()
         inv:set_size("main", 36)
         meta:set_string("formspec",
-            "size[9,9]"..
-            "list[context;main;0,0;9,4;]"..
-            "list[current_player;main;0,5;9,4;]"..
-            "formspec_version[8]"
+            "formspec_version[6]"..
+            "size[11.5,11.5]"..
+            "list[current_player;main;0.3,6.5;9,4;0]"..
+            "list[context;main;0.3,0.9;9,4;0]"..
+            "label[5.3,0.6;Chest]"..
+            "label[5.05,6.1;Inventory]"
         )
     end
 })
