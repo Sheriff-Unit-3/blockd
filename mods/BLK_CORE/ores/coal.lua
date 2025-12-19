@@ -15,10 +15,7 @@ core.register_node("blk_ores:coal_ore", {
     stack_max = 256,
     groups = {pickaxe = 1, ore = 1, cracky = 1},
     drop = "blk_ores:coal",
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("coal_ore", "blk_ores:coal_ore")
 
@@ -29,10 +26,7 @@ core.register_node("blk_ores:coal_block", {
     sunlight_propagates = true,
     stack_max = 256,
     groups = {pickaxe = 1, ore = 1, cracky = 1},
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("coal_block", "blk_ores:coal_block")
 

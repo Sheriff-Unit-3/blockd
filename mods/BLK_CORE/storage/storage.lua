@@ -11,6 +11,7 @@ core.register_node("blk_storage:chest", {
     },
     stack_max = 256,
     groups = {storage = 1, chest = 1, choppy = 1},
+    sounds = blk.wood_sounds,
     on_construct = function(pos)
         local meta = core.get_meta(pos)
         local inv = meta:get_inventory()

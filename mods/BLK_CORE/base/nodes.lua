@@ -51,9 +51,7 @@ core.register_node("blk_base:snow", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {snow = 1, crumbly = 1},
-    sounds = {
-        footstep = "blk_snowwalk"
-    }
+    sounds = blk.snow_sounds
 })
 core.register_alias("snow", "blk_base:snow")
 core.register_alias("mapgen_dirt_with_snow", "blk_base:snow")
@@ -65,7 +63,8 @@ core.register_node("blk_base:packed_snow", {
     is_ground_content = true,
     sunlight_propagates = false,
     stack_max = 256,
-    groups = {snow = 1, crumbly = 1}
+    groups = {snow = 1, crumbly = 1},
+    sounds = blk.snow_sounds
 })
 core.register_alias("packed_snow", "blk_base:packed_snow")
 
@@ -78,10 +77,7 @@ core.register_node("blk_base:cobble", {
     sunlight_propagates = false,
     groups = {stone = 1, cracky = 1},
     stack_max = 256,
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("cobble", "blk_base:cobble")
 core.register_alias("mapgen_cobble", "blk_base:cobble")
@@ -94,10 +90,7 @@ core.register_node("blk_base:stone", {
     stack_max = 256,
     drop = "blk_base:cobble",
     groups = {stone = 1, cracky = 1},
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("stone", "blk_base:stone")
 core.register_alias("mapgen_stone", "blk_base:stone")
@@ -109,10 +102,7 @@ core.register_node("blk_base:compressed_cobble", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {stone = 2, cracky = 2},
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias(
     "compressed_cobble", 
@@ -126,10 +116,7 @@ core.register_node("blk_base:mossy_cobble", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {stone = 1, cracky = 1},
-    sounds = {
-        footstep = "blk_stonewalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("mossy_cobble", "blk_base:mossy_cobble")
 core.register_alias("mapgen_mossy_cobble", "blk_base:mossy_cobble")
@@ -141,10 +128,7 @@ core.register_node("blk_base:snowy_cobble", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {stone = 1, snow = 1, cracky = 1},
-    sounds = {
-        footstep = "blk_snowwalk",
-        dig = "blk_stonedig"
-    }
+    sounds = blk.stone_sounds("stone")
 })
 core.register_alias("snowy_cobble", "blk_base:snowy_cobble")
 -- gravel
@@ -155,9 +139,7 @@ core.register_node("blk_base:gravel", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {crumbly = 1},
-    sounds = {
-        footstep = "blk_gravelwalk"
-    }
+    sounds = blk.stone_sounds("gravel")
 })
 core.register_alias("gravel", "blk_base:gravel")
 core.register_alias("mapgen_gravel", "blk_base:gravel")
@@ -410,11 +392,12 @@ core.register_node("blk_base:maple_ladder", {
     description = "Maple Ladder",
     drawtype = "signlike",
     tiles = {"blk_maple_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("maple_ladder", "blk_base:maple_ladder")
 -- pine
@@ -422,11 +405,12 @@ core.register_node("blk_base:pine_ladder", {
     description = "Pine Ladder",
     drawtype = "signlike",
     tiles = {"blk_pine_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("pine_ladder", "blk_base:pine_ladder")
 -- cedar
@@ -434,47 +418,25 @@ core.register_node("blk_base:cedar_ladder", {
     description = "Cedar Ladder",
     drawtype = "signlike",
     tiles = {"blk_cedar_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("cedar_ladder", "blk_base:cedar_ladder")
--- pear
-core.register_node("blk_base:pear_ladder", {
-    description = "Pear Ladder",
-    drawtype = "signlike",
-    tiles = {"blk_pear_ladder.png"},
-    paramtype = "wallmounted",
-    climbable = true,
-    stack_max = 256,
-    sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
-})
-core.register_alias("pear_ladder", "blk_base:pear_ladder")
--- plum
-core.register_node("blk_base:plum_ladder", {
-    description = "Plum Ladder",
-    drawtype = "signlike",
-    tiles = {"blk_plum_ladder.png"},
-    paramtype = "wallmounted",
-    climbable = true,
-    stack_max = 256,
-    sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
-})
-core.register_alias("plum_ladder", "blk_base:plum_ladder")
 -- aspen
 core.register_node("blk_base:aspen_ladder", {
     description = "Aspen Ladder",
     drawtype = "signlike",
     tiles = {"blk_aspen_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("aspen_ladder", "blk_base:plum_ladder")
 -- elm
@@ -482,11 +444,12 @@ core.register_node("blk_base:elm_ladder", {
     description = "Elm Ladder",
     drawtype = "signlike",
     tiles = {"blk_elm_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("elm_ladder", "blk_base:elm_ladder")
 -- palm
@@ -494,37 +457,14 @@ core.register_node("blk_base:palm_ladder", {
     description = "Palm Ladder",
     drawtype = "signlike",
     tiles = {"blk_palm_ladder.png"},
+    sounds = blk.wood_sounds,
     paramtype = "wallmounted",
     climbable = true,
     sunlight_propagates = false,
     stack_max = 256,
-    groups = {wood = 1, ladder = 1, choppy = 1}
+    groups = {ladder = 1, choppy = 1}
 })
 core.register_alias("palm_ladder", "blk_base:palm_ladder")
--- cherry
-core.register_node("blk_base:cherry_ladder", {
-    description = "Cherry Ladder",
-    drawtype = "signlike",
-    tiles = {"blk_cherry_ladder.png"},
-    paramtype = "wallmounted",
-    climbable = true,
-    stack_max = 256,
-    sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
-})
-core.register_alias("cherry_ladder", "blk_base:cherry_ladder")
--- mango
-core.register_node("blk_base:mango_ladder", {
-    description = "Mango Ladder",
-    drawtype = "signlike",
-    tiles = {"blk_mango_ladder.png"},
-    paramtype = "wallmounted",
-    climbable = true,
-    stack_max = 256,
-    sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, choppy = 1}
-})
-core.register_alias("mango_ladder", "blk_base:mango_ladder")
 -- iron
 core.register_node("blk_base:iron_ladder", {
     description = "Iron Ladder",
@@ -534,7 +474,7 @@ core.register_node("blk_base:iron_ladder", {
     climbable = true,
     stack_max = 256,
     sunlight_propagates = false,
-    groups = {wood = 1, ladder = 1, cracky = 1}
+    groups = {iron_ladder = 1, ladder = 1, cracky = 1}
 })
 core.register_alias("iron_ladder", "blk_base:iron_ladder")
 
@@ -585,6 +525,7 @@ core.register_node("blk_base:apple_log", {
         "blk_apple_log_end.png",
         "blk_apple_log.png"
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -594,6 +535,7 @@ core.register_alias("mapgen_tree", "blk_base:apple_log")
 core.register_node("blk_base:apple_planks",{
     description = "Apple Wood Planks",
     tiles = {"blk_apple_planks.png"},
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -607,6 +549,7 @@ core.register_node("blk_base:maple_log", {
         "blk_maple_log_end.png",
         "blk_maple_log.png",
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -617,11 +560,7 @@ core.register_node("blk_base:maple_planks",{
     tiles = {"blk_maple_planks.png"},
     sunlight_propagates = false,
     stack_max = 256,
-    sounds = {
-        footstep = "blk_woodwalk",
-        dig = "blk_wooddig",
-        place = "blk_wooddig"
-    },
+    sounds = blk.wood_sounds,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
 })
 core.register_alias("maple_planks", "blk_base:maple_planks")
@@ -634,6 +573,7 @@ core.register_node("blk_base:birch_log", {
         "blk_birch_log_end.png",
         "blk_birch_log.png"
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -642,6 +582,7 @@ core.register_alias("birch_log", "blk_base:birch_log")
 core.register_node("blk_base:birch_planks",{
     description = "Birch Wood Planks",
     tiles = {"blk_birch_planks.png"},
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -655,6 +596,7 @@ core.register_node("blk_base:jungle_log", {
         "blk_jungle_log_end.png",
         "blk_jungle_log.png"
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -663,6 +605,7 @@ core.register_alias("jungle_log", "blk_base:jungle_log")
 core.register_node("blk_base:jungle_planks",{
     description = "Jungle Wood Planks",
     tiles = {"blk_jungle_planks.png"},
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -676,6 +619,7 @@ core.register_node("blk_base:spruce_log", {
         "blk_spruce_log_end.png",
         "blk_spruce_log.png"
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -684,6 +628,7 @@ core.register_alias("spruce_log", "blk_base:spruce_log")
 core.register_node("blk_base:spruce_planks",{
     description = "Spruce Wood Planks",
     tiles = {"blk_spruce_planks.png"},
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -697,6 +642,7 @@ core.register_node("blk_base:acacia_log", {
         "blk_acacia_log_end.png",
         "blk_acacia_log.png"
     },
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -705,6 +651,7 @@ core.register_alias("acacia_log", "blk_base:acacia_log")
 core.register_node("blk_base:acacia_planks",{
     description = "Acacia Wood Planks",
     tiles = {"blk_acacia_planks.png"},
+    sounds = blk.wood_sounds,
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
