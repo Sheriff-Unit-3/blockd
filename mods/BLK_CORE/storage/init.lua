@@ -1,2 +1,1 @@
-local modpath = core.get_modpath(core.get_current_modname())
-dofile(modpath.."/storage.lua")
+dofile(blk.modpath().."/storage.lua")

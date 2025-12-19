@@ -1,6 +1,15 @@
 # API Documentation
 This is the api that Blockd uses, all api functions are defined in this mod. Hence this is the main and only api docs for Blockd.
 
+## General Functions
+
+### Modpath
+```lua
+-- This function returns the mod path of any mod that calls it
+-- Used in init.lua to load files
+blk.modpath()
+```
+
 ## Sound API Functions
 
 ### Node Sounds
@@ -9,7 +18,7 @@ This is the api that Blockd uses, all api functions are defined in this mod. Hen
 ```lua
 -- This function returns a table of sounds for wood node definitions
 -- There are no parameters
-blk.wood_sounds
+blk.wood_sounds()
 ```
 
 #### Stone
@@ -24,26 +33,26 @@ blk.stone_sounds(type)
 ```lua
 -- This function returns a table of sounds for metal node definitions
 -- There is no parameters
-blk.metal_sounds
+blk.metal_sounds()
 ```
 
 #### Snow
 ```lua
 -- This function returns a table of sounds for snow node definitions
 -- There is no parameters
-blk.snow_sounds
+blk.snow_sounds()
 ```
 
 #### Glass
 ```lua
 -- This function returns a table of sounds for glass node definitions
 -- There is no parameters
-blk.glass_sounds
+blk.glass_sounds()
 ```
 
 #### Leaves
 ```lua
 -- This function returns a table of sounds for leaves node definitions
 -- There is no parameters
-blk.leaves_sounds
+blk.leaves_sounds()
 ```

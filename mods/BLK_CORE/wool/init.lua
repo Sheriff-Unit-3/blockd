@@ -1,3 +1,2 @@
-local modpath = core.get_modpath(core.get_current_modname())
-dofile(modpath.."/wool.lua")
-dofile(modpath.."/crafts.lua")
+dofile(blk.modpath().."/wool.lua")
+dofile(blk.modpath().."/crafts.lua")

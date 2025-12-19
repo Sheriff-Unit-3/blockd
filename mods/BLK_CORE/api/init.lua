@@ -9,5 +9,7 @@ function blk.info()
     }
 end
 
-local modpath = core.get_modpath(core.get_current_modname())
-dofile(modpath.."/api.lua")
+function blk.modpath()
+    return core.get_modpath(core.get_current_modname())
+end
+dofile(blk.modpath().."/api.lua")
