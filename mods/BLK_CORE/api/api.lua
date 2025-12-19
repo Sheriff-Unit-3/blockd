@@ -49,3 +49,9 @@ blk.glass_sounds = function()
         dug = {name = "blk_glassdug"}
     }
 end
+
+blk.leaves_sounds = function()
+    return {
+        footstep = {name = "blk_leaveswalk"}
+    }
+end

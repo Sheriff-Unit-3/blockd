@@ -40,3 +40,10 @@ blk.snow_sounds
 -- There is no parameters
 blk.glass_sounds
 ```
+
+#### Leaves
+```lua
+-- This function returns a table of sounds for leaves node definitions
+-- There is no parameters
+blk.leaves_sounds
+```
