@@ -51,7 +51,7 @@ core.register_node("blk_base:snow", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {snow = 1, crumbly = 1},
-    sounds = blk.snow_sounds
+    sounds = blk.snow_sounds()
 })
 core.register_alias("snow", "blk_base:snow")
 core.register_alias("mapgen_dirt_with_snow", "blk_base:snow")
@@ -64,7 +64,7 @@ core.register_node("blk_base:packed_snow", {
     sunlight_propagates = false,
     stack_max = 256,
     groups = {snow = 1, crumbly = 1},
-    sounds = blk.snow_sounds
+    sounds = blk.snow_sounds()
 })
 core.register_alias("packed_snow", "blk_base:packed_snow")
 
@@ -392,7 +392,7 @@ core.register_node("blk_base:maple_ladder", {
     description = "Maple Ladder",
     drawtype = "signlike",
     tiles = {"blk_maple_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -405,7 +405,7 @@ core.register_node("blk_base:pine_ladder", {
     description = "Pine Ladder",
     drawtype = "signlike",
     tiles = {"blk_pine_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -418,7 +418,7 @@ core.register_node("blk_base:cedar_ladder", {
     description = "Cedar Ladder",
     drawtype = "signlike",
     tiles = {"blk_cedar_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -431,7 +431,7 @@ core.register_node("blk_base:aspen_ladder", {
     description = "Aspen Ladder",
     drawtype = "signlike",
     tiles = {"blk_aspen_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -444,7 +444,7 @@ core.register_node("blk_base:elm_ladder", {
     description = "Elm Ladder",
     drawtype = "signlike",
     tiles = {"blk_elm_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -457,7 +457,7 @@ core.register_node("blk_base:palm_ladder", {
     description = "Palm Ladder",
     drawtype = "signlike",
     tiles = {"blk_palm_ladder.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     sunlight_propagates = false,
@@ -470,7 +470,7 @@ core.register_node("blk_base:iron_ladder", {
     description = "Iron Ladder",
     drawtype = "signlike",
     tiles = {"blk_iron_ladder.png"},
-    sounds = blk.metal_sounds,
+    sounds = blk.metal_sounds(),
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,
@@ -526,7 +526,7 @@ core.register_node("blk_base:apple_log", {
         "blk_apple_log_end.png",
         "blk_apple_log.png"
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -536,7 +536,7 @@ core.register_alias("mapgen_tree", "blk_base:apple_log")
 core.register_node("blk_base:apple_planks",{
     description = "Apple Wood Planks",
     tiles = {"blk_apple_planks.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -550,7 +550,7 @@ core.register_node("blk_base:maple_log", {
         "blk_maple_log_end.png",
         "blk_maple_log.png",
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -561,7 +561,7 @@ core.register_node("blk_base:maple_planks",{
     tiles = {"blk_maple_planks.png"},
     sunlight_propagates = false,
     stack_max = 256,
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     groups = {wood = 1, wood_planks = 1, choppy = 1}
 })
 core.register_alias("maple_planks", "blk_base:maple_planks")
@@ -574,7 +574,7 @@ core.register_node("blk_base:birch_log", {
         "blk_birch_log_end.png",
         "blk_birch_log.png"
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -583,7 +583,7 @@ core.register_alias("birch_log", "blk_base:birch_log")
 core.register_node("blk_base:birch_planks",{
     description = "Birch Wood Planks",
     tiles = {"blk_birch_planks.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -597,7 +597,7 @@ core.register_node("blk_base:jungle_log", {
         "blk_jungle_log_end.png",
         "blk_jungle_log.png"
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -606,7 +606,7 @@ core.register_alias("jungle_log", "blk_base:jungle_log")
 core.register_node("blk_base:jungle_planks",{
     description = "Jungle Wood Planks",
     tiles = {"blk_jungle_planks.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -620,7 +620,7 @@ core.register_node("blk_base:spruce_log", {
         "blk_spruce_log_end.png",
         "blk_spruce_log.png"
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -629,7 +629,7 @@ core.register_alias("spruce_log", "blk_base:spruce_log")
 core.register_node("blk_base:spruce_planks",{
     description = "Spruce Wood Planks",
     tiles = {"blk_spruce_planks.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -643,7 +643,7 @@ core.register_node("blk_base:acacia_log", {
         "blk_acacia_log_end.png",
         "blk_acacia_log.png"
     },
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -652,7 +652,7 @@ core.register_alias("acacia_log", "blk_base:acacia_log")
 core.register_node("blk_base:acacia_planks",{
     description = "Acacia Wood Planks",
     tiles = {"blk_acacia_planks.png"},
-    sounds = blk.wood_sounds,
+    sounds = blk.wood_sounds(),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -667,7 +667,7 @@ core.register_node("blk_base:apple_leaves", {
     drawtype = "allfaces_optional",
     description = "Apple Leaves",
     tiles = {"blk_apple_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -690,7 +690,7 @@ core.register_node("blk_base:maple_leaves", {
     drawtype = "allfaces_optional",
     description = "Maple Leaves",
     tiles = {"blk_maple_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -709,7 +709,7 @@ core.register_node("blk_base:birch_leaves", {
     drawtype = "allfaces_optional",
     description = "Birch Leaves",
     tiles = {"blk_birch_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -728,7 +728,7 @@ core.register_node("blk_base:jungle_leaves", {
     drawtype = "allfaces_optional",
     description = "Jungle Leaves",
     tiles = {"blk_jungle_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -747,7 +747,7 @@ core.register_node("blk_base:spruce_leaves", {
     drawtype = "allfaces_optional",
     description = "Spruce Leaves",
     tiles = {"blk_spruce_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -766,7 +766,7 @@ core.register_node("blk_base:acacia_leaves", {
     drawtype = "allfaces_optional",
     description = "Acacia Leaves",
     tiles = {"blk_acacia_leaves.png"},
-    sounds = blk.leaves_sounds,
+    sounds = blk.leaves_sounds(),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -787,7 +787,7 @@ core.register_node("blk_base:glass", {
     drawtype = "glasslike",
     description = "Glass",
     tiles = {"blk_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -799,7 +799,7 @@ core.register_node("blk_base:teal_glass", {
     drawtype = "glasslike",
     description = "Teal Glass",
     tiles = {"blk_teal_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -811,7 +811,7 @@ core.register_node("blk_base:blue_glass", {
     drawtype = "glasslike",
     description = "Blue Glass",
     tiles = {"blk_blue_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -823,7 +823,7 @@ core.register_node("blk_base:red_glass", {
     drawtype = "glasslike",
     description = "Red Glass",
     tiles = {"blk_red_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -835,7 +835,7 @@ core.register_node("blk_base:green_glass", {
     drawtype = "glasslike",
     description = "Green Glass",
     tiles = {"blk_green_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -847,7 +847,7 @@ core.register_node("blk_base:lime_glass", {
     drawtype = "glasslike",
     description = "Lime Glass",
     tiles = {"blk_lime_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -859,7 +859,7 @@ core.register_node("blk_base:purple_glass", {
     drawtype = "glasslike",
     description = "Purple Glass",
     tiles = {"blk_purple_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
@@ -871,7 +871,7 @@ core.register_node("blk_base:pink_glass", {
     drawtype = "glasslike",
     description = "Pink Glass",
     tiles = {"blk_pink_glass.png"},
-    sounds = blk.glass_sounds,
+    sounds = blk.glass_sounds(),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,
