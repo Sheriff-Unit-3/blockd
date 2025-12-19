@@ -470,6 +470,7 @@ core.register_node("blk_base:iron_ladder", {
     description = "Iron Ladder",
     drawtype = "signlike",
     tiles = {"blk_iron_ladder.png"},
+    sounds = blk.metal_sounds,
     paramtype = "wallmounted",
     climbable = true,
     stack_max = 256,

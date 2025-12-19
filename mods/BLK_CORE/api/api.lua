@@ -15,24 +15,37 @@ blk.stone_sounds = function(type)
         return {
             footstep = {name = "blk_gravelwalk"}
         }
-    elseif type == "iron" then
+    elseif type == "metal" then
         return {
-            footstep = {name = "blk_stonewalk"}
+            footstep = {name = "blk_stonewalk"},
+            dig = {name = "blk_metaldig"},
+            dug = {name = "blk_metaldug"}
         }
-    elseif type == "gold" then
-        return {
-            footstep = {name = "blk_stonewalk"}
-        }
-    elseif type == "diamond" then
+    elseif type == "gem" then
         return {
             footstep = {name = "blk_stonewalk"}
         }
     end
 end
 
+blk.metal_sounds = function()
+    return {
+        footstep = {name = "blk_metalwalk"},
+        dig = {name = "blk_metaldig"},
+        dug = {name = "blk_metaldug"}
+    }
+end
+
 
 blk.snow_sounds = function()
     return {
         footstep = {name = "blk_snowwalk"}
+    }
+end
+
+blk.glass_sounds = function()
+    return {
+        dig = {name = "blk_glasshit"},
+        dug = {name = "blk_glassdug"}
     }
 end

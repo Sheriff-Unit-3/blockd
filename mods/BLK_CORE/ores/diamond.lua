@@ -15,7 +15,7 @@ core.register_node("blk_ores:diamond_ore", {
     stack_max = 256,
     groups = {pickaxe = 3, ore = 1, cracky = 3},
     drop = "blk_ores:diamond",
-    sounds = blk.stone_sounds("diamond")
+    sounds = blk.stone_sounds("gem")
 })
 core.register_alias("diamond_ore", "blk_ores:diamond_ore")
 
@@ -26,6 +26,6 @@ core.register_node("blk_ores:diamond_block", {
     sunlight_propagates = true,
     stack_max = 256,
     groups = {pickaxe = 1, ore = 1, cracky = 1},
-    sounds = blk.stone_sounds("diamond")
+    sounds = blk.stone_sounds("gem")
 })
 core.register_alias("diamond_block", "blk_ores:diamond_block")

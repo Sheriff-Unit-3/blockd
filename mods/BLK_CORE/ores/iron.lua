@@ -23,7 +23,7 @@ core.register_node("blk_ores:iron_ore", {
     stack_max = 256,
     groups = {pickaxe = 2, ore = 1, cracky = 2},
     drop = "blk_ores:raw_iron",
-    sounds = blk.stone_sounds("iron")
+    sounds = blk.stone_sounds("metal")
 })
 core.register_alias("iron_ore", "blk_ores:iron_ore")
 
@@ -34,6 +34,6 @@ core.register_node("blk_ores:iron_block", {
     sunlight_propagates = true,
     stack_max = 256,
     groups = {pickaxe = 1, ore = 1, cracky = 1},
-    sounds = blk.stone_sounds("iron")
+    sounds = blk.stone_sounds("metal")
 })
 core.register_alias("iron_block", "blk_ores:iron_block")

@@ -23,7 +23,7 @@ core.register_node("blk_ores:gold_ore", {
     stack_max = 256,
     groups = {pickaxe = 3, ore = 1, cracky = 3},
     drop = "blk_ores:raw_gold",
-    sounds = blk.stone_sounds("gold")
+    sounds = blk.stone_sounds("metal")
 })
 core.register_alias("gold_ore", "blk_ores:gold_ore")
 
@@ -34,6 +34,6 @@ core.register_node("blk_ores:gold_block", {
     sunlight_propagates = true,
     stack_max = 256,
     groups = {pickaxe = 1, ore = 1, cracky = 1},
-    sounds = blk.stone_sounds("gold")
+    sounds = blk.stone_sounds("metal")
 })
 core.register_alias("gold_block", "blk_ores:gold_block")
