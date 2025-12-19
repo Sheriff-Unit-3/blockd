@@ -52,6 +52,8 @@ end
 
 blk.leaves_sounds = function()
     return {
-        footstep = {name = "blk_leaveswalk"}
+        footstep = {name = "blk_leaveswalk"},
+        dig = {name = "blk_leavesdig"},
+        dug = {name = "blk_leavesdug"}
     }
 end
