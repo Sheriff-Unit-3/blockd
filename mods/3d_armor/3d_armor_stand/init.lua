@@ -1,13 +1,9 @@
 -- support for i18n
-local S = core.get_translator(core.get_current_modname())
+local S = minetest.get_translator(minetest.get_current_modname())
 
 local armor_stand_formspec = "size[8,7]" ..
-	"" ..
-	"" ..
-	"" ..
-	"" ..
-	"list[current_name;main;3,0.5;2,1;]" ..
-	"list[current_name;main;3,1.5;2,1;2]" ..
+	armor.add_formspec_list("current_name", "main", 3, 0.5, 2, 1) ..
+	armor.add_formspec_list("current_name", "main", 3, 1.5, 2, 1, 2) ..
 	"image[3,0.5;1,1;3d_armor_stand_head.png]" ..
 	"image[4,0.5;1,1;3d_armor_stand_torso.png]" ..
 	"image[3,1.5;1,1;3d_armor_stand_legs.png]" ..
@@ -20,7 +16,7 @@ local armor_stand_formspec = "size[8,7]" ..
 local elements = {"head", "torso", "legs", "feet"}
 
 local function drop_armor(pos)
-	local meta = core.get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 	for i = 1, 4 do
 		local stack = inv:get_stack("main", i)
@@ -33,7 +29,7 @@ end
 
 local function get_stand_object(pos)
 	local object = nil
-	local objects = core.get_objects_inside_radius(pos, 0.5) or {}
+	local objects = minetest.get_objects_inside_radius(pos, 0.5) or {}
 	for _, obj in pairs(objects) do
 		local ent = obj:get_luaentity()
 		if ent then
@@ -51,7 +47,7 @@ local function get_stand_object(pos)
 end
 
 local function update_entity(pos)
-	local node = core.get_node(pos)
+	local node = minetest.get_node(pos)
 	local object = get_stand_object(pos)
 	if object then
 		if not string.find(node.name, "3d_armor_stand:") then
@@ -59,12 +55,12 @@ local function update_entity(pos)
 			return
 		end
 	else
-		object = core.add_entity(pos, "3d_armor_stand:armor_entity")
+		object = minetest.add_entity(pos, "3d_armor_stand:armor_entity")
 	end
 	if object then
 		local texture = "blank.png"
 		local textures = {}
-		local meta = core.get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		local yaw = 0
 		if inv then
@@ -105,7 +101,7 @@ end
 local function has_locked_armor_stand_privilege(meta, player)
 	local name = ""
 	if player then
-		if core.check_player_privs(player, "protection_bypass") then
+		if minetest.check_player_privs(player, "protection_bypass") then
 			return true
 		end
 		name = player:get_player_name()
@@ -119,21 +115,21 @@ end
 local function add_hidden_node(pos, player)
 	local p = {x=pos.x, y=pos.y + 1, z=pos.z}
 	local name = player:get_player_name()
-	local node = core.get_node(p)
-	if node.name == "air" and not core.is_protected(pos, name) then
-		core.set_node(p, {name="3d_armor_stand:top"})
+	local node = minetest.get_node(p)
+	if node.name == "air" and not minetest.is_protected(pos, name) then
+		minetest.set_node(p, {name="3d_armor_stand:top"})
 	end
 end
 
 local function remove_hidden_node(pos)
 	local p = {x=pos.x, y=pos.y + 1, z=pos.z}
-	local node = core.get_node(p)
+	local node = minetest.get_node(p)
 	if node.name == "3d_armor_stand:top" then
-		core.remove_node(p)
+		minetest.remove_node(p)
 	end
 end
 
-core.register_node("3d_armor_stand:top", {
+minetest.register_node("3d_armor_stand:top", {
 	description = S("Armor Stand Top"),
 	paramtype = "light",
 	drawtype = "plantlike",
@@ -154,14 +150,14 @@ local function register_armor_stand(def)
 		if def.name == "locked_armor_stand" and not has_locked_armor_stand_privilege(meta, player) then
 			return false
 		end
-		local has_access = core.is_player(player) and not core.is_protected(pos, player:get_player_name())
+		local has_access = minetest.is_player(player) and not minetest.is_protected(pos, player:get_player_name())
 		if def.name == "shared_armor_stand" and not has_access then
 			return false
 		end
 		return true
 	end
 
-	core.register_node("3d_armor_stand:" .. def.name, {
+	minetest.register_node("3d_armor_stand:" .. def.name, {
 		description = def.description,
 		drawtype = "mesh",
 		mesh = "3d_armor_stand.obj",
@@ -179,8 +175,9 @@ local function register_armor_stand(def)
 		},
 		groups = {choppy=2, oddly_breakable_by_hand=2},
 		is_ground_content = false,
+		sounds = armor.sounds.wood,
 		on_construct = function(pos)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			meta:set_string("formspec", armor_stand_formspec)
 			meta:set_string("infotext", def.description)
 			if def.name == "locked_armor_stand" then
@@ -190,7 +187,7 @@ local function register_armor_stand(def)
 			inv:set_size("main", 4)
 		end,
 		can_dig = function(pos, player)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			local inv = meta:get_inventory()
 			if not inv:is_empty("main") then
 				return false
@@ -198,8 +195,8 @@ local function register_armor_stand(def)
 			return true
 		end,
 		after_place_node = function(pos, placer)
-			local meta = core.get_meta(pos)
-			core.add_entity(pos, "3d_armor_stand:armor_entity")
+			local meta = minetest.get_meta(pos)
+			minetest.add_entity(pos, "3d_armor_stand:armor_entity")
 			if def.name == "locked_armor_stand" then
 				meta:set_string("owner", placer:get_player_name() or "")
 				meta:set_string("infotext", S("Armor Stand (owned by @1)", meta:get_string("owner")))
@@ -209,7 +206,7 @@ local function register_armor_stand(def)
 			add_hidden_node(pos, placer)
 		end,
 		allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			if not owns_armor_stand(pos, meta, player) then
 				return 0
 			end
@@ -224,7 +221,7 @@ local function register_armor_stand(def)
 			return 0
 		end,
 		allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			if not owns_armor_stand(pos, meta, player) then
 				return 0
 			end
@@ -234,7 +231,7 @@ local function register_armor_stand(def)
 			return 0
 		end,
 		on_metadata_inventory_put = function(pos, listname, index, stack)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			local inv = meta:get_inventory()
 			local stack_def = stack:get_definition() or {}
 			local groups = stack_def.groups or {}
@@ -267,7 +264,7 @@ register_armor_stand({
 	on_blast = function(pos)
 		drop_armor(pos)
 		armor.drop_armor(pos, "3d_armor_stand:armor_stand")
-		core.remove_node(pos)
+		minetest.remove_node(pos)
 	end
 })
 
@@ -283,7 +280,7 @@ register_armor_stand({
 	texture = "3d_armor_stand_shared.png"
 })
 
-core.register_entity("3d_armor_stand:armor_entity", {
+minetest.register_entity("3d_armor_stand:armor_entity", {
 	initial_properties = {
 		physical = true,
 		visual = "mesh",
@@ -302,7 +299,7 @@ core.register_entity("3d_armor_stand:armor_entity", {
 	end,
 	on_blast = function(self, damage)
 		local drops = {}
-		local node = core.get_node(self._pos)
+		local node = minetest.get_node(self._pos)
 		if node.name == "3d_armor_stand:armor_stand" then
 			drop_armor(self._pos)
 			self.object:remove()
@@ -311,25 +308,25 @@ core.register_entity("3d_armor_stand:armor_entity", {
 	end,
 })
 
-core.register_abm({
+minetest.register_abm({
 	nodenames = {"3d_armor_stand:locked_armor_stand", "3d_armor_stand:shared_armor_stand", "3d_armor_stand:armor_stand"},
 	interval = 15,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		local num
-		num = #core.get_objects_inside_radius(pos, 0.5)
+		num = #minetest.get_objects_inside_radius(pos, 0.5)
 		if num > 0 then return end
 		update_entity(pos)
 	end
 })
 
-core.register_lbm({
+minetest.register_lbm({
 	label = "Update armor stand inventories",
 	name = "3d_armor_stand:update_inventories",
 	nodenames = {"3d_armor_stand:locked_armor_stand", "3d_armor_stand:shared_armor_stand", "3d_armor_stand:armor_stand"},
 	run_at_every_load = false,
 	action = function(pos, node)
-		local meta = core.get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		local lists = inv:get_lists()
 		for _, element in pairs(elements) do
@@ -349,25 +346,25 @@ core.register_lbm({
 	end
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "3d_armor_stand:armor_stand",
 	recipe = {
 		{"", "group:fence", ""},
 		{"", "group:fence", ""},
-		{"blk_base:iron_bar", "blk_base:iron_bar", "blk_base:iron_bar"},
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "3d_armor_stand:locked_armor_stand",
 	recipe = {
-		{"3d_armor_stand:armor_stand", "blk_base:iron_bar"},
+		{"3d_armor_stand:armor_stand", "default:steel_ingot"},
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "3d_armor_stand:shared_armor_stand",
 	recipe = {
-		{"3d_armor_stand:armor_stand", "blk_base:iron_bar", "blk_base:iron_bar"},
+		{"3d_armor_stand:armor_stand", "default:copper_ingot"},
 	}
 })

@@ -5,7 +5,7 @@
 
 
 -- support for i18n
-local S = core.get_translator(core.get_current_modname())
+local S = minetest.get_translator(minetest.get_current_modname())
 
 --- Diamond
 --
@@ -132,7 +132,7 @@ if armor.materials.diamond then
 
 	local s = "diamond"
 	local m = armor.materials.diamond
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:helmet_"..s,
 		recipe = {
 			{m, m, m},
@@ -140,7 +140,7 @@ if armor.materials.diamond then
 			{"", "", ""},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:chestplate_"..s,
 		recipe = {
 			{m, "", m},
@@ -148,7 +148,7 @@ if armor.materials.diamond then
 			{m, m, m},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:leggings_"..s,
 		recipe = {
 			{m, m, m},
@@ -156,7 +156,7 @@ if armor.materials.diamond then
 			{m, "", m},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:boots_"..s,
 		recipe = {
 			{m, "", m},

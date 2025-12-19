@@ -4,7 +4,7 @@
 --  @topic api
 
 
-local transparent_armor = core.settings:get_bool("armor_transparent", false)
+local transparent_armor = minetest.settings:get_bool("armor_transparent", false)
 
 
 --- Tables
@@ -78,12 +78,12 @@ local transparent_armor = core.settings:get_bool("armor_transparent", false)
 
 
 -- support for i18n
-local S = core.get_translator(core.get_current_modname())
+local S = minetest.get_translator(minetest.get_current_modname())
 
 local skin_previews = {}
-local use_player_monoids = core.global_exists("player_monoids")
-local use_armor_monoid = core.global_exists("armor_monoid")
-local use_pova_mod = core.get_modpath("pova")
+local use_player_monoids = minetest.global_exists("player_monoids")
+local use_armor_monoid = minetest.global_exists("armor_monoid")
+local use_pova_mod = minetest.get_modpath("pova")
 local armor_def = setmetatable({}, {
 	__index = function()
 		return setmetatable({
@@ -108,29 +108,42 @@ local armor_textures = setmetatable({}, {
 	end
 })
 
-armor = {
+local armor_fields = {
 	timer = 0,
 	elements = {"head", "torso", "legs", "feet"},
 	physics = {"jump", "speed", "gravity"},
 	attributes = {"heal", "fire", "water", "feather"},
-	formspec = "image[2.5,0;2,4;armor_preview]"..
-		""..
-		""..
-		""..
-		""..
-		"list[current_player;main;0,4.7;8,1;]"..
-		"list[current_player;main;0,5.85;8,3;8]",
+	formspec = (
+		"image[2.5,0;2,4;armor_preview]" ..
+		armor.add_formspec_list("current_player", "main", 0, 4.7, 8, 1) ..
+		armor.add_formspec_list("current_player", "main", 0, 5.85, 8, 3, 8)
+	),
 	def = armor_def,
 	textures = armor_textures,
 	default_skin = "character",
 	materials = {
-		wood = "group:wood_planks",
-		steel = "blk_base:iron_bar",
-		diamond = "blk_base:diamond",
-		gold = "blk_base:gold_bar",
+		wood = "group:wood",
+		cactus = "default:cactus",
+		steel = "default:steel_ingot",
+		bronze = "default:bronze_ingot",
+		diamond = "default:diamond",
+		gold = "default:gold_ingot",
+		mithril = "moreores:mithril_ingot",
+		crystal = "ethereal:crystal_ingot",
+		nether = "nether:nether_ingot",
 	},
 	fire_nodes = {
-		{"blk_base:torch",1, 1},
+		{"nether:lava_source",      5, 8},
+		{"default:lava_source",     5, 8},
+		{"default:lava_flowing",    5, 8},
+		{"fire:basic_flame",        3, 4},
+		{"fire:permanent_flame",    3, 4},
+		{"ethereal:crystal_spike",  2, 1},
+		{"ethereal:fire_flower",    2, 1},
+		{"nether:lava_crust",       2, 1},
+		{"default:torch",           1, 1},
+		{"default:torch_ceiling",   1, 1},
+		{"default:torch_wall",      1, 1},
 	},
 	registered_groups = {["fleshy"]=100},
 	registered_callbacks = {
@@ -141,27 +154,35 @@ armor = {
 		on_destroy = {},
 	},
 	migrate_old_inventory = true,
-  version = "0.4.13",
   get_translator = S
 }
+
+for k, v in pairs(armor_fields) do
+	armor[k] = v
+end
 
 armor.config = {
 	init_delay = 2,
 	bones_delay = 1,
 	update_time = 1,
-	drop = core.get_modpath("bones") ~= nil,
+	drop = minetest.get_modpath("bones") ~= nil,
 	destroy = false,
 	level_multiplier = 1,
 	heal_multiplier = 1,
 	material_wood = true,
+	material_cactus = true,
 	material_steel = true,
+	material_bronze = true,
 	material_diamond = true,
 	material_gold = true,
+	material_mithril = true,
+	material_crystal = true,
+	material_nether = true,
 	set_elements = "head torso legs feet shield",
 	set_multiplier = 1.1,
 	water_protect = true,
-	fire_protect = core.get_modpath("ethereal") ~= nil,
-	fire_protect_torch = core.get_modpath("ethereal") ~= nil,
+	fire_protect = minetest.get_modpath("ethereal") ~= nil,
+	fire_protect_torch = minetest.get_modpath("ethereal") ~= nil,
 	feather_fall = true,
 	punch_damage = true,
 }
@@ -189,8 +210,8 @@ armor.register_armor = function(self, name, def)
 	end
 	def.on_place = function(itemstack, player, pointed_thing)
 		if pointed_thing.type == "node" and player and not player:get_player_control().sneak then
-			local node = core.get_node(pointed_thing.under)
-			local ndef = core.registered_nodes[node.name]
+			local node = minetest.get_node(pointed_thing.under)
+			local ndef = minetest.registered_nodes[node.name]
 			if ndef and ndef.on_rightclick then
 				return ndef.on_rightclick(pointed_thing.under, node, player, itemstack, pointed_thing)
 			end
@@ -202,10 +223,10 @@ armor.register_armor = function(self, name, def)
 	-- at the end of the item name and logging an error to debug if not.
 	local check_mat_exists = string.match(name, "%:.+_(.+)$")
 	if check_mat_exists == nil then
-		core.log("warning:[3d_armor] Registered armor "..name..
+		minetest.log("warning:[3d_armor] Registered armor "..name..
 		" does not have \"_material\" specified at the end of the item registration name")
 	end
-	core.register_tool(name, def)
+	minetest.register_tool(name, def)
 end
 
 --- Registers a new armor group.
@@ -530,7 +551,7 @@ armor.punch = function(self, player, hitter, time_from_last_punch, tool_capabili
 	for i, stack in pairs(list) do
 		if stack:get_count() == 1 then
 			local itemname = stack:get_name()
-			local use = core.get_item_group(itemname, "armor_use") or 0
+			local use = minetest.get_item_group(itemname, "armor_use") or 0
 			local damage = use > 0
 			local def = stack:get_definition() or {}
 			if type(def.on_punched) == "function" then
@@ -581,7 +602,7 @@ armor.punch = function(self, player, hitter, time_from_last_punch, tool_capabili
 				end
 			end
 			if damage == true and hitter == "fire" then
-				damage = core.get_item_group(itemname, "flammable") > 0
+				damage = minetest.get_item_group(itemname, "flammable") > 0
 			end
 			if damage == true then
 				self:damage(player, i, stack, use)
@@ -663,7 +684,7 @@ armor.equip = function(self, player, itemstack)
 		for i, stack in ipairs(armor_inv:get_list("armor")) do
 			if self:get_element(stack:get_name()) == armor_element then
 				-- prevents equiping an armor that would unequip a cursed armor.
-				if core.get_item_group(stack:get_name(), "cursed") ~= 0 then
+				if minetest.get_item_group(stack:get_name(), "cursed") ~= 0 then
 					return itemstack
 				end
 				index = i
@@ -703,14 +724,14 @@ armor.unequip = function(self, player, armor_element)
 		local stack = armor_inv:get_stack("armor", i)
 		if self:get_element(stack:get_name()) == armor_element then
 			armor_inv:set_stack("armor", i, "")
-			core.after(0, function()
-				local pplayer = core.get_player_by_name(name)
+			minetest.after(0, function()
+				local pplayer = minetest.get_player_by_name(name)
 				if pplayer then -- player is still online
 					local inv = pplayer:get_inventory()
 					if inv:room_for_item("main", stack) then
 						inv:add_item("main", stack)
 					else
-						core.add_item(pplayer:get_pos(), stack)
+						minetest.add_item(pplayer:get_pos(), stack)
 					end
 				end
 			end)
@@ -759,8 +780,8 @@ end
 --  @function armor:update_skin
 --  @tparam string name Player name.
 armor.update_skin = function(self, name)
-	core.after(0, function()
-		local pplayer = core.get_player_by_name(name)
+	minetest.after(0, function()
+		local pplayer = minetest.get_player_by_name(name)
 		if pplayer then
 			self.textures[name].skin = self:get_player_skin(name)
 			self:set_player_armor(pplayer)
@@ -821,7 +842,7 @@ end
 --  @return Armor element.
 armor.get_element = function(self, item_name)
 	for _, element in pairs(armor.elements) do
-		if core.get_item_group(item_name, "armor_"..element) > 0 then
+		if minetest.get_item_group(item_name, "armor_"..element) > 0 then
 			return element
 		end
 	end
@@ -837,7 +858,7 @@ armor.serialize_inventory_list = function(self, list)
 	for _, stack in ipairs(list) do
 		table.insert(list_table, stack:to_string())
 	end
-	return core.serialize(list_table)
+	return minetest.serialize(list_table)
 end
 
 --- Deserializes armor inventory.
@@ -846,7 +867,7 @@ end
 --  @tparam string list_string Serialized inventory contents.
 --  @treturn table
 armor.deserialize_inventory_list = function(self, list_string)
-	local list_table = core.deserialize(list_string)
+	local list_table = minetest.deserialize(list_string)
 	local list = {}
 	for _, stack in ipairs(list_table or {}) do
 		table.insert(list, ItemStack(stack))
@@ -921,7 +942,7 @@ end
 armor.get_valid_player = function(self, player, msg)
 	msg = msg or ""
 	if not player then
-		core.log("warning", ("3d_armor%s: Player reference is nil"):format(msg))
+		minetest.log("warning", ("3d_armor%s: Player reference is nil"):format(msg))
 		return
 	end
 	if type(player) ~= "userdata" then
@@ -930,14 +951,14 @@ armor.get_valid_player = function(self, player, msg)
 	end
 	local name = player:get_player_name()
 	if not name then
-		core.log("warning", ("3d_armor%s: Player name is nil"):format(msg))
+		minetest.log("warning", ("3d_armor%s: Player name is nil"):format(msg))
 		return
 	end
-	local inv = core.get_inventory({type="detached", name=name.."_armor"})
+	local inv = minetest.get_inventory({type="detached", name=name.."_armor"})
 	if not inv then
 		-- This check may fail when called inside `on_joinplayer`
 		-- in that case, the armor will be initialized/updated later on
-		core.log("warning", ("3d_armor%s: Detached armor inventory is nil"):format(msg))
+		minetest.log("warning", ("3d_armor%s: Detached armor inventory is nil"):format(msg))
 		return
 	end
 	return name, inv
@@ -948,9 +969,9 @@ end
 --  @tparam vector pos
 --  @tparam ItemStack stack Armor item to be dropped.
 armor.drop_armor = function(pos, stack)
-	local node = core.get_node_or_nil(pos)
+	local node = minetest.get_node_or_nil(pos)
 	if node then
-		local obj = core.add_item(pos, stack)
+		local obj = minetest.add_item(pos, stack)
 		if obj then
 			obj:set_velocity({x=math.random(-1, 1), y=5, z=math.random(-1, 1)})
 		end

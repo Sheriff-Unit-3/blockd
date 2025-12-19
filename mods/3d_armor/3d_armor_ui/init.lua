@@ -1,10 +1,10 @@
 -- support for i18n
-local S = core.get_translator(core.get_current_modname())
-local F = core.formspec_escape
-local has_technic = core.get_modpath("technic") ~= nil
+local S = minetest.get_translator(minetest.get_current_modname())
+local F = minetest.formspec_escape
+local has_technic = minetest.get_modpath("technic") ~= nil
 
-if not core.global_exists("unified_inventory") then
-	core.log("warning", "3d_armor_ui: Mod loaded but unused.")
+if not minetest.global_exists("unified_inventory") then
+	minetest.log("warning", "3d_armor_ui: Mod loaded but unused.")
 	return
 end
 

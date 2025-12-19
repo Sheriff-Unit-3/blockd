@@ -5,7 +5,7 @@
 
 
 -- support for i18n
-local S = core.get_translator(core.get_current_modname())
+local S = minetest.get_translator(minetest.get_current_modname())
 
 
 --- Gold
@@ -149,7 +149,7 @@ if armor.materials.gold then
 
 	local s = "gold"
 	local m = armor.materials.gold
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:helmet_"..s,
 		recipe = {
 			{m, m, m},
@@ -157,7 +157,7 @@ if armor.materials.gold then
 			{"", "", ""},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:chestplate_"..s,
 		recipe = {
 			{m, "", m},
@@ -165,7 +165,7 @@ if armor.materials.gold then
 			{m, m, m},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:leggings_"..s,
 		recipe = {
 			{m, m, m},
@@ -173,7 +173,7 @@ if armor.materials.gold then
 			{m, "", m},
 		},
 	})
-	core.register_craft({
+	minetest.register_craft({
 		output = "3d_armor:boots_"..s,
 		recipe = {
 			{m, "", m},

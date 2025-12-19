@@ -1,17 +1,26 @@
-local modname = core.get_current_modname()
-local modpath = core.get_modpath(modname)
-local worldpath = core.get_worldpath()
+if not core.features.use_texture_alpha_string_modes then
+	error("3d_armor requires Luanti/Minetest 5.4.0 or newer. Please update.")
+end
+
+local modname = minetest.get_current_modname()
+local modpath = minetest.get_modpath(modname)
+local worldpath = minetest.get_worldpath()
 local last_punch_time = {}
 local timer = 0
 
+armor = {
+	version = "0.4.13"
+}
+
+dofile(modpath.."/gamecompat.lua")
 dofile(modpath.."/api.lua")
 
 -- local functions
-local F = core.formspec_escape
+local F = minetest.formspec_escape
 local S = armor.get_translator
 
 -- integration test
-if core.settings:get_bool("enable_3d_armor_integration_test") then
+if minetest.settings:get_bool("enable_3d_armor_integration_test") then
 	dofile(modpath.."/integration_test.lua")
 end
 
@@ -30,27 +39,27 @@ if input then
 end
 for name, _ in pairs(armor.config) do
 	local global = "ARMOR_"..name:upper()
-	if core.global_exists(global) then
+	if minetest.global_exists(global) then
 		armor.config[name] = _G[global]
 	end
 end
-if core.global_exists("ARMOR_MATERIALS") then
+if minetest.global_exists("ARMOR_MATERIALS") then
 	armor.materials = table.copy(ARMOR_MATERIALS)
 end
-if core.global_exists("ARMOR_FIRE_NODES") then
+if minetest.global_exists("ARMOR_FIRE_NODES") then
 	armor.fire_nodes = table.copy(ARMOR_FIRE_NODES)
 end
 
 -- Load Configuration
 
 for name, config in pairs(armor.config) do
-	local setting = core.settings:get("armor_"..name)
+	local setting = minetest.settings:get("armor_"..name)
 	if type(config) == "number" then
 		setting = tonumber(setting)
 	elseif type(config) == "string" then
 		setting = tostring(setting)
 	elseif type(config) == "boolean" then
-		setting = core.settings:get_bool("armor_"..name)
+		setting = minetest.settings:get_bool("armor_"..name)
 	end
 	if setting ~= nil then
 		armor.config[name] = setting
@@ -80,16 +89,16 @@ end
 
 -- Mod Compatibility
 
-if core.get_modpath("technic") then
+if minetest.get_modpath("technic") then
 	armor.formspec = armor.formspec..
 		"label[5,2.5;"..F(S("Radiation"))..": armor_group_radiation]"
 	armor:register_armor_group("radiation")
 end
 local skin_mods = {"skins", "u_skins", "simple_skins", "wardrobe"}
 for _, mod in pairs(skin_mods) do
-	local path = core.get_modpath(mod)
+	local path = minetest.get_modpath(mod)
 	if path then
-		local dir_list = core.get_dir_list(path.."/textures")
+		local dir_list = minetest.get_dir_list(path.."/textures")
 		for _, fn in pairs(dir_list) do
 			if fn:find("_preview.png$") then
 				armor:add_preview(fn)
@@ -112,16 +121,16 @@ armor:register_on_damage(function(player, index, stack)
 	local name = player:get_player_name()
 	local def = stack:get_definition()
 	if name and def and def.description and stack:get_wear() > 60100 then
-		core.chat_send_player(name, S("Your @1 is almost broken!", def.description))
-		core.sound_play("default_tool_breaks", {to_player = name, gain = 2.0})
+		minetest.chat_send_player(name, S("Your @1 is almost broken!", def.description))
+		minetest.sound_play("default_tool_breaks", {to_player = name, gain = 2.0})
 	end
 end)
 armor:register_on_destroy(function(player, index, stack)
 	local name = player:get_player_name()
 	local def = stack:get_definition()
 	if name and def and def.description then
-		core.chat_send_player(name, S("Your @1 got destroyed!", def.description))
-		core.sound_play("default_tool_breaks", {to_player = name, gain = 2.0})
+		minetest.chat_send_player(name, S("Your @1 got destroyed!", def.description))
+		minetest.sound_play("default_tool_breaks", {to_player = name, gain = 2.0})
 	end
 end)
 
@@ -160,12 +169,12 @@ local function validate_armor_inventory(player)
 				elements[element] = true;
 			else
 				inv:remove_item("armor", stack)
-				core.item_drop(stack, player, pos)
+				minetest.item_drop(stack, player, pos)
 				-- The following code returns invalid items to the player's main
 				-- inventory but could open up the possibity for a hacked client
 				-- to receive items back they never really had. I am not certain
 				-- so remove the is_singleplayer check at your own risk :]
-				if core.is_singleplayer() and player_inv and
+				if minetest.is_singleplayer() and player_inv and
 						player_inv:room_for_item("main", stack) then
 					player_inv:add_item("main", stack)
 				end
@@ -181,7 +190,7 @@ end
 
 local function init_player_armor(initplayer)
 	local name = assert(initplayer:get_player_name())
-	local armor_inv = core.create_detached_inventory(name.."_armor", {
+	local armor_inv = minetest.create_detached_inventory(name.."_armor", {
 		on_put = function(inv, listname, index, stack, player)
 			validate_armor_inventory(player)
 			armor:save_armor_inventory(player)
@@ -220,8 +229,8 @@ local function init_player_armor(initplayer)
 				return 0
 			end
 			--cursed items cannot be unequiped by the player
-			local is_cursed = core.get_item_group(stack:get_name(), "cursed") ~= 0
-			if not core.is_creative_enabled(player) and is_cursed then
+			local is_cursed = minetest.get_item_group(stack:get_name(), "cursed") ~= 0
+			if not minetest.is_creative_enabled(player) and is_cursed then
 				return 0
 			end
 			return stack:get_count()
@@ -272,9 +281,9 @@ local function init_player_armor(initplayer)
 		wielditem = "blank.png",
 		preview = armor.default_skin.."_preview.png",
 	}
-	local texture_path = core.get_modpath("player_textures")
+	local texture_path = minetest.get_modpath("player_textures")
 	if texture_path then
-		local dir_list = core.get_dir_list(texture_path.."/textures")
+		local dir_list = minetest.get_dir_list(texture_path.."/textures")
 		for _, fn in pairs(dir_list) do
 			if fn == "player_"..name..".png" then
 				armor.textures[name].skin = fn
@@ -313,7 +322,7 @@ player_api.register_model("3d_armor_character.b3d", {
 	eye_height = 1.47,
 })
 
-core.register_on_player_receive_fields(function(player, formname, fields)
+minetest.register_on_player_receive_fields(function(player, formname, fields)
 	local name = armor:get_valid_player(player, "[on_player_receive_fields]")
 	if not name then
 		return
@@ -326,12 +335,12 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 	end
 end)
 
-core.register_on_joinplayer(function(player)
+minetest.register_on_joinplayer(function(player)
 	player_api.set_model(player, "3d_armor_character.b3d")
 	init_player_armor(player)
 end)
 
-core.register_on_leaveplayer(function(player)
+minetest.register_on_leaveplayer(function(player)
 	local name = player:get_player_name()
 	if name then
 		armor.def[name] = nil
@@ -340,7 +349,7 @@ core.register_on_leaveplayer(function(player)
 end)
 
 if armor.config.drop == true or armor.config.destroy == true then
-	core.register_on_dieplayer(function(player)
+	minetest.register_on_dieplayer(function(player)
 		local name, armor_inv = armor:get_valid_player(player, "[on_dieplayer]")
 		if not name then
 			return
@@ -350,7 +359,7 @@ if armor.config.drop == true or armor.config.destroy == true then
 			local stack = armor_inv:get_stack("armor", i)
 			if stack:get_count() > 0 then
 				--soulbound armors remain equipped after death
-				if core.get_item_group(stack:get_name(), "soulbound") == 0 then
+				if minetest.get_item_group(stack:get_name(), "soulbound") == 0 then
 					table.insert(drop, stack)
 					armor:run_callbacks("on_unequip", player, i, stack)
 					armor_inv:set_stack("armor", i, nil)
@@ -361,13 +370,13 @@ if armor.config.drop == true or armor.config.destroy == true then
 		armor:set_player_armor(player)
 		local pos = player:get_pos()
 		if pos and armor.config.destroy == false then
-			core.after(armor.config.bones_delay, function()
+			minetest.after(armor.config.bones_delay, function()
 				local meta = nil
 				local maxp = vector.add(pos, 16)
 				local minp = vector.subtract(pos, 16)
-				local bones = core.find_nodes_in_area(minp, maxp, {"bones:bones"})
+				local bones = minetest.find_nodes_in_area(minp, maxp, {"bones:bones"})
 				for _, p in pairs(bones) do
-					local m = core.get_meta(p)
+					local m = minetest.get_meta(p)
 					if m:get_string("owner") == name then
 						meta = m
 						break
@@ -390,32 +399,32 @@ if armor.config.drop == true or armor.config.destroy == true then
 			end)
 		end
 	end)
-	core.register_on_respawnplayer(function(player)
+	minetest.register_on_respawnplayer(function(player)
 		-- reset un-dropped armor and it's effects
 		armor:set_player_armor(player)
 	end)
 end
 
 if armor.config.punch_damage == true then
-	core.register_on_punchplayer(function(player, hitter,
+	minetest.register_on_punchplayer(function(player, hitter,
 			time_from_last_punch, tool_capabilities)
 		local name = player:get_player_name()
 		if hitter then
 			local hit_ip = hitter:is_player()
-			if name and hit_ip and core.is_protected(player:get_pos(), "") then
+			if name and hit_ip and minetest.is_protected(player:get_pos(), "") then
 				return
 			end
 		end
 
 		if name then
 			armor:punch(player, hitter, time_from_last_punch, tool_capabilities)
-			last_punch_time[name] = core.get_gametime()
+			last_punch_time[name] = minetest.get_gametime()
 		end
 	end)
 end
 
-core.register_on_player_hpchange(function(player, hp_change, reason)
-	if not core.is_player(player) then
+minetest.register_on_player_hpchange(function(player, hp_change, reason)
+	if not minetest.is_player(player) then
 		return hp_change
 	end
 
@@ -433,7 +442,7 @@ core.register_on_player_hpchange(function(player, hp_change, reason)
 		end
 		-- check if armor damage was handled by fire or on_punchplayer
 		local time = last_punch_time[name] or 0
-		if time == 0 or time + 1 < core.get_gametime() then
+		if time == 0 or time + 1 < minetest.get_gametime() then
 			armor:punch(player)
 		end
 	end
@@ -441,11 +450,11 @@ core.register_on_player_hpchange(function(player, hp_change, reason)
 	return hp_change
 end, true)
 
-core.register_globalstep(function(dtime)
+minetest.register_globalstep(function(dtime)
 	timer = timer + dtime
 
 	if armor.config.feather_fall == true then
-		for _,player in pairs(core.get_connected_players()) do
+		for _,player in pairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
 			if armor.def[name].feather > 0 then
 				local vel_y = player:get_velocity().y
@@ -464,7 +473,7 @@ core.register_globalstep(function(dtime)
 
 	-- water breathing protection, added by TenPlus1
 	if armor.config.water_protect == true then
-		for _,player in pairs(core.get_connected_players()) do
+		for _,player in pairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
 			if armor.def[name].water > 0 and
 					player:get_breath() < 10 then
@@ -476,11 +485,15 @@ end)
 
 if armor.config.fire_protect == true then
 
-	-- make torches hurt
-	core.override_item("blk_base:torch", {damage_per_second = 1})
+	if core.get_modpath("default") then
+		-- make torches hurt
+		minetest.override_item("default:torch", {damage_per_second = 1})
+		minetest.override_item("default:torch_wall", {damage_per_second = 1})
+		minetest.override_item("default:torch_ceiling", {damage_per_second = 1})
+	end
 
 	-- check player damage for any hot nodes we may be protected against
-	core.register_on_player_hpchange(function(player, hp_change, reason)
+	minetest.register_on_player_hpchange(function(player, hp_change, reason)
 
 		if reason.type == "node_damage" and reason.node then
 			-- fire protection

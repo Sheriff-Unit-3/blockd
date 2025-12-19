@@ -46,14 +46,14 @@ Change the following default settings by going to Main Menu>>Settings(Tab)>>All 
  **set the below to false**
 
     armor_material_wood = true
-    armor_material_cactus = false
+    armor_material_cactus = true
     armor_material_steel = true
     armor_material_bronze = true
     armor_material_diamond = true
     armor_material_gold = true
-    armor_material_mithril = false
-    armor_material_crystal = false
-    armor_material_nether = false
+    armor_material_mithril = true
+    armor_material_crystal = true
+    armor_material_nether = true
 
 ### Initialization glitches when a player first joins
  **Increase to prevent glitches**
@@ -111,13 +111,13 @@ Change the following default settings by going to Main Menu>>Settings(Tab)>>All 
 ### Enable fire protection 
 **defaults to true if using ethereal mod**
 
-    armor_fire_protect = true
+    armor_fire_protect = false
 	
 ### Fire protection enabled, disable torch fire damage 
 **when fire protection is enabled allows you to disable fire damage from torches**
 **defaults to true if using ethereal mod**
 
-    armor_fire_protect_torch = true
+    armor_fire_protect_torch = false
 
 ### Enable punch damage effects
 
