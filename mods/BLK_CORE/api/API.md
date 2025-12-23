@@ -56,3 +56,20 @@ blk.glass_sounds()
 -- There is no parameters
 blk.leaves_sounds()
 ```
+
+
+### Item Sounds
+
+#### Drink
+```lua
+-- This function returns a table of sounds for drinks
+-- There are no parameters
+blk.drink_sounds()
+```
+
+#### Food
+```lua
+-- This function returns a table of sounds for food
+-- There are no parameters
+blk.food_sounds()
+```
