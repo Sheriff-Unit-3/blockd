@@ -1,17 +1,11 @@
 -- wool
-core.register_craft({
-    output = "wool",
-    recipe = {
-        {"cotton", "cotton", "cotton"},
-        {"cotton", "cotton", "cotton"},
-        {"cotton", "cotton", "cotton"}
-    }
+blk.craft("wool", {
+    {"cotton", "cotton", "cotton"},
+    {"cotton", "cotton", "cotton"},
+    {"cotton", "cotton", "cotton"}
 })
-core.register_craft({
-    output = "wool",
-    recipe = {
-        {"string", "string", "string"},
-        {"string", "string", "string"},
-        {"string", "string", "string"}
-    }
+blk.craft("wool", {
+    {"string", "string", "string"},
+    {"string", "string", "string"},
+    {"string", "string", "string"}
 })

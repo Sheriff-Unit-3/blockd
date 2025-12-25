@@ -10,6 +10,36 @@ This is the api that Blockd uses, all api functions are defined in this mod. Hen
 blk.modpath()
 ```
 
+## Craft API Functions
+
+### craft
+```lua
+-- Returns core.register_craft with data entered
+-- out is the the output item/node after the craft
+-- input is the crafting recipe, the syntax for core.register_craft({recipe = }) is used
+-- replace is not required, same syntax as core.register_craft({replacements = })
+blk.craft(out, input, replace)
+```
+
+### cook
+```lua
+-- Returns core.register_craft with data entered
+-- out is the output item/node after cooking
+-- input is the item/node to be used
+-- time is the amount of time it takes to cook
+blk.cook(out, input, time)
+```
+
+### fuel
+```lua
+-- Return core.register_craft with data entered
+-- fuel is the item/node to be burned
+-- time is the time that the fuel will burn for
+-- replace is not required, same syntax as core.register_craft({replacements = })
+blk.fuel(fuel, time, replace)
+```
+
+
 ## Sound API Functions
 
 ### Node Sounds

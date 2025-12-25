@@ -1,186 +1,88 @@
 -- apple block
-core.register_craft({
-    type = "shapeless",
-    output = "blk_base:apple_block",
-    recipe = {
-        "blk_base:apple", "blk_base:apple", "blk_base:apple",
-        "blk_base:apple", "blk_base:apple", "blk_base:apple",
-        "blk_base:apple", "blk_base:apple", "blk_base:apple"
-    }
+blk.craft("blk_base:apple_block", {
+    {"blk_base:apple", "blk_base:apple", "blk_base:apple"},
+    {"blk_base:apple", "blk_base:apple", "blk_base:apple"},
+    {"blk_base:apple", "blk_base:apple", "blk_base:apple"}
 })
-core.register_craft({
-    type = "shapeless",
-    output = "blk_base:apple 9",
-    recipe = {"blk_base:apple_block"}
-})
+blk.craft("blk_base:apple 9", {{"blk_base:apple_block"}})
 
 -- compressed messy stone
-core.register_craft({
-    type = "shapeless",
-    output = "blk_base:compressed_messy_stone",
-    recipe = {
-        "cobble", "cobble", "cobble",
-        "cobble", "cobble", "cobble",
-        "cobble", "cobble", "cobble"
-    }
+blk.craft("compressed_cobble", {
+    {"cobble", "cobble", "cobble"},
+    {"cobble", "cobble", "cobble"},
+    {"cobble", "cobble", "cobble"}
 })
+blk.craft("cobble 9", {{"compressed_cobble"}})
 
 
 -- snowballs
-core.register_craft({
-    type = "shapeless",
-    output = "snowball 8",
-    recipe = {"snow"},
-})
-
-
+blk.craft("snowball 9", {{"snow"}})
 
 
 -- planks
 -- apple
-core.register_craft({
-    type = "shapeless",
-    output = "apple_planks 4",
-    recipe = {"apple_log"}
-})
+blk.craft("apple_planks 4", {{"apple_log"}})
 -- maple
-core.register_craft({
-    type = "shapeless",
-    output = "maple_planks 4",
-    recipe = {"maple_log"}
-})
+blk.craft("maple_planks 4", {{"maple_log"}})
 
 
 -- charcoal
-core.register_craft({
-    type = "cooking",
-    output = "charcoal",
-    recipe = "group:wood_planks",
-    cooktime = 7.5
-})
+blk.cook("charcoal", "group:wood_planks", 7.5)
 
 
 -- fuel
-core.register_craft({
-    type = "fuel",
-    recipe = "charcoal",
-    burntime = 40
-})
-core.register_craft({
-    type = "fuel",
-    recipe = "group:wood_planks",
-    burntime = 10
-})
-core.register_craft({
-    type = "fuel",
-    recipe = "lava_bucket",
-    burntime = 60,
-    replacements = {{"lava_bucket", "bucket"}}
-})
-core.register_craft({
-    type = "fuel",
-    recipe = "group:oil",
-    burntime = 30,
-    replacements = {{"group:oil", "bottle"}}
-})
+blk.fuel("charcoal", 40)
+blk.fuel("group:wood_planks", 10)
+blk.fuel("lava_bucket", 60, {{"lava_bucket", "bucket"}})
+blk.fuel("group:oil", 30, {{"group:oil", "bottle"}})
 
 
 -- lights
 -- torch
-core.register_craft({
-    output = "torch = 16",
-    recipe = {
-        {"coal"},
-        {"group:wood_planks"}
-    }
-})
-core.register_craft({
-    output = "torch 4",
-    recipe = {
-        {"coal"},
-        {"stick"}
-    }
-})
+blk.craft("torch 16", {{"coal"}, {"group:wood_planks"}})
+blk.craft("torch 4", {{"coal"}, {"stick"}})
 -- lantern
-core.register_craft({
-    output = "lantern",
-    recipe = {
-        {"group:wood_planks", "glass", "group:wood_planks"},
-        {"glass", "torch", "glass"},
-        {"group:wood_planks", "glass", "group:wood_planks"},
-    }
+blk.craft("lantern", {
+    {"group:wood_planks", "glass", "group:wood_planks"},
+    {"glass", "torch", "glass"},
+    {"group:wood_planks", "glass", "group:wood_planks"},
 })
-
 
 
 -- glass
-core.register_craft({
-    type = "cooking",
-    output = "glass",
-    recipe = "sand 4",
-    cooktime = "2"
-})
+blk.cook("glass", "sand 4", "2")
 -- bottle
-core.register_craft({
-    output = "bottle 8",
-    recipe = {
-        {"stick"},
-        {"glass"}
-    }
-})
+blk.craft("bottle 8", {{"stick"}, {"glass"}})
 -- water
-core.register_craft({
-    output = "water_bottle 8",
-    recipe = {
-        {"bottle", "water_bucket", "bottle"},
-        {"bottle", "bottle", "bottle"},
-        {"bottle", "bottle", "bottle"}
-    },
-    replacements = {{"water_bucket", "bucket"}}
-})
+blk.craft("water_bottle 8",{
+    {"bottle", "water_bucket", "bottle"},
+    {"bottle", "bottle", "bottle"},
+    {"bottle", "bottle", "bottle"}},
+    {{"water_bucket", "bucket"}}
+)
 -- oil
-core.register_craft({
-    output = "oil_bottle",
-    recipe = {
-        {"group:leaves", "group:leaves", "group:leaves"},
-        {"group:leaves", "group:leaves", "group:leaves"},
-        {"group:leaves", "bottle", "group:leaves"}
-    }
+blk.craft("oil_bottle", {
+    {"group:leaves", "group:leaves", "group:leaves"},
+    {"group:leaves", "group:leaves", "group:leaves"},
+    {"group:leaves", "bottle", "group:leaves"}
 })
 -- milk
 -- water
-core.register_craft({
-    output = "milk_bottle 8",
-    recipe = {
-        {"bottle", "milk_bucket", "bottle"},
-        {"bottle", "bottle", "bottle"},
-        {"bottle", "bottle", "bottle"}
-    },
-    replacements = {{"milk_bucket", "bucket"}}
-})
-
+blk.craft("milk_bottle 8", {
+    {"bottle", "milk_bucket", "bottle"},
+    {"bottle", "bottle", "bottle"},
+    {"bottle", "bottle", "bottle"}},
+    {{"milk_bucket", "bucket"}}
+)
 
 
 -- food
 -- cake
-core.register_craft({
-    output = "cake",
-    recipe = {
-        {"sugar", "currents", "egg"},
-        {"flour", "oil", "flour"},
-        {"bowl", "coal", "milk"}
-    },
-    replacements = {
-        {"bowl", "bowl"},
-        {"oil", "bottle"},
-        {"milk", "bottle"}
-    }
-})
+blk.craft("cake", {
+    {"sugar", "currents", "egg"},
+    {"flour", "oil", "flour"},
+    {"bowl", "coal", "milk"}},
+    {{"bowl", "bowl"}, {"oil", "bottle"}, {"milk", "bottle"}}
+)
 -- cookie
-core.register_craft({
-    output = "cookie 8",
-    recipe = {
-        {"flour", "sugar"},
-        {"milk", "coal"}
-    }
-})
+blk.craft("cookie 8", {{"flour", "sugar"}, {"milk", "coal"}})

@@ -1,13 +1,3 @@
 -- string
-core.register_craft({
-    output = "string 12",
-    recipe = {
-        {"wool", "wool", "wool"}
-    }
-})
-core.register_craft({
-    output = "string 1",
-    recipe = {
-        {"cotton", "cotton", "cotton"}
-    }
-})
+blk.craft("string 12", {{"wool", "wool", "wool"}})
+blk.craft("string", {{"cotton", "cotton", "cotton"}})

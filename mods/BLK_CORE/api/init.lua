@@ -12,4 +12,7 @@ end
 function blk.modpath()
     return core.get_modpath(core.get_current_modname())
 end
-dofile(blk.modpath().."/api.lua")
+dofile(blk.modpath().."/sound_api.lua")
+-- dofile(blk.modpath().."/node_api.lua")
+-- dofile(blk.modpath().."/item_api.lua")
+dofile(blk.modpath().."/craft_api.lua")

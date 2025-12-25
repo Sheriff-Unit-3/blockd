@@ -27,15 +27,7 @@ core.register_node("blk_storage:chest", {
     end
 })
 core.register_alias("chest", "blk_storage:chest")
--- craft
-core.register_craft({
-    output = "chest",
-    recipe = {
-        {"group:wood_planks", "group:wood_planks", "group:wood_planks"},
-        {"group:wood_planks", "", "group:wood_planks"},
-        {"group:wood_planks", "group:wood_planks", "group:wood_planks"}
-    }
-})
+
 
 -- Night stand
 --[[
