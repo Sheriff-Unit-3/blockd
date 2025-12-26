@@ -19,7 +19,7 @@ blk.dirt_sounds = function()
 end
 
 blk.stone_sounds = function(type)
-    if type == "stone" then
+    if type == nil then
         return {
             footstep = {name = "blk_stonewalk"},
             dig = {name = "blk_stonedig"},

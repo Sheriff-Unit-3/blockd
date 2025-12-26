@@ -1,114 +1,18 @@
--- dirt blocks
--- dirt
-core.register_node("blk_base:dirt", {
-    description = "Dirt",
-    tiles = {"blk_dirt.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {dirt = 1, crumbly = 1}
-})
-core.register_alias("dirt", "blk_base:dirt")
+blk.node("dirt", true, {dirt = 1, crumbly = 1})
 core.register_alias("mapgen_dirt", "blk_base:dirt")
--- grass block
-core.register_node("blk_base:grass_block", {
-    description = "Grass Block",
-    tiles = {"blk_grass_block.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {grass = 1, crumbly = 1}
-})
-core.register_alias("grass_block", "blk_base:grass_block")
+blk.node("grass_block", true, {grass = 1, crumbly = 1})
 core.register_alias("mapgen_dirt_with_grass", "blk_base:grass_block")
--- tilled_soil
-core.register_node("blk_base:tilled_soil", {
-    description = "Tilled Soil",
-    tiles = {"blk_tilled_soil.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {dirt = 1, farming = 1, crumbly = 1}
-})
-core.register_alias("tilled_soil", "blk_base:tilled_soil")
--- clay
-core.register_node("blk_base:clay", {
-    description = "Clay",
-    tiles = {"blk_clay.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {clay = 1, crumbly = 1}
-})
-core.register_alias("clay", "blk_base:clay")
-
--- snow blocks
--- snow
-core.register_node("blk_base:snow", {
-    description = "Snow",
-    tiles = {"blk_snow.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {snow = 1, crumbly = 1},
-    sounds = blk.snow_sounds()
-})
-core.register_alias("snow", "blk_base:snow")
+blk.node("tilled_soil", true, {dirt = 1, farming = 1, crumbly = 1})
+blk.node("clay", true, {clay = 1, crumbly = 1})
+blk.node("snow", true, {snow = 1, crumbly = 1}, blk.snow_sounds())
 core.register_alias("mapgen_dirt_with_snow", "blk_base:snow")
-core.register_alias("mapgen_snowblock", "blk_base:snow")
--- packed_snow
-core.register_node("blk_base:packed_snow", {
-    description = "Packed Snow",
-    tiles = {"blk_packed_snow.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {snow = 1, crumbly = 1},
-    sounds = blk.snow_sounds()
-})
-core.register_alias("packed_snow", "blk_base:packed_snow")
-
--- stone_blocks
--- cobble
-core.register_node("blk_base:cobble", {
-    description = "Messy Stone",
-    tiles = {"blk_cobble.png"},
-    is_ground_content = false,
-    sunlight_propagates = false,
-    groups = {stone = 1, cracky = 1},
-    stack_max = 256,
-    sounds = blk.stone_sounds("stone")
-})
-core.register_alias("cobble", "blk_base:cobble")
+blk.node("packed_snow", true, {snow = 1, crumbly = 1}, blk.snow_sounds())
+core.register_alias("mapgen_snowblock", "blk_base:packed_snow")
+blk.node("cobble", false, {stone=1,cracky=1}, blk.stone_sounds())
 core.register_alias("mapgen_cobble", "blk_base:cobble")
--- stone
-core.register_node("blk_base:stone", {
-    description = "Stone",
-    tiles = {"blk_stone.png"},
-    is_ground_content = true,
-    sunlight_propagates = false,
-    stack_max = 256,
-    drop = "blk_base:cobble",
-    groups = {stone = 1, cracky = 1},
-    sounds = blk.stone_sounds("stone")
-})
-core.register_alias("stone", "blk_base:stone")
+blk.node("stone", true, {stone=1,cracky=1}, blk.stone_sounds(), "blk_base:cobble")
 core.register_alias("mapgen_stone", "blk_base:stone")
--- compressed messy stone
-core.register_node("blk_base:compressed_cobble", {
-    description = "Compressed Messy Stone",
-    tiles = {"blk_compressed_cobble.png"},
-    is_ground_content = false,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {stone = 2, cracky = 2},
-    sounds = blk.stone_sounds("stone")
-})
-core.register_alias(
-    "compressed_cobble", 
-    "blk_base:compressed_cobble"
-)
--- mossy_cobble
+blk.node("compressed_cobble",false,{stone=1,cracky=2},blk.stone_sounds())
 core.register_node("blk_base:mossy_cobble", {
     description = "Mossy Messy Stone",
     tiles = {"blk_mossy_cobble.png"},
@@ -118,9 +22,7 @@ core.register_node("blk_base:mossy_cobble", {
     groups = {stone = 1, cracky = 1},
     sounds = blk.stone_sounds("stone")
 })
-core.register_alias("mossy_cobble", "blk_base:mossy_cobble")
 core.register_alias("mapgen_mossy_cobble", "blk_base:mossy_cobble")
--- snowy_cobble
 core.register_node("blk_base:snowy_cobble", {
     description = "Snow Messy Stone",
     tiles = {"blk_snowy_cobble.png"},
@@ -130,8 +32,6 @@ core.register_node("blk_base:snowy_cobble", {
     groups = {stone = 1, snow = 1, cracky = 1},
     sounds = blk.stone_sounds("stone")
 })
-core.register_alias("snowy_cobble", "blk_base:snowy_cobble")
--- gravel
 core.register_node("blk_base:gravel", {
     description = "Gravel",
     tiles = {"blk_gravel.png"},
