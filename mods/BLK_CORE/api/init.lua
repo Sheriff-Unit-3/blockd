@@ -17,5 +17,5 @@ function blk.modpath()
 end
 dofile(blk.modpath().."/sound_api.lua")
 dofile(blk.modpath().."/node_api.lua")
--- dofile(blk.modpath().."/item_api.lua")
+dofile(blk.modpath().."/item_api.lua")
 dofile(blk.modpath().."/craft_api.lua")

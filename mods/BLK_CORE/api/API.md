@@ -10,7 +10,7 @@ This is the api that Blockd uses, all api functions are defined in this mod. Hen
 blk.modpath()
 ```
 
-## Registration API Functions
+## Node Registeration API Functions
 ### blk.node()
 ```lua
 --- Used to register simple nodes.
@@ -60,6 +60,23 @@ blk.leaves(name, drop)
 -- @param name string The name of the glass
 blk.glass(name)
 ```
+
+## Item Registeration API Functions
+### blk.item()
+```lua
+--- Used to register simple items
+-- @param name string The name of the item.
+-- @param group table The groups the item belongs to.
+blk.item(name, group)
+```
+
+### blk.drink
+```lua
+--- Used to register drinks
+-- @param name string The name of the drink.
+-- @param group table The groups the drink belongs to.
+-- @param hp number The hp the player gains or losses by drinking.
+blk.drink(name, group, hp)
 
 ## Craft API Functions
 
