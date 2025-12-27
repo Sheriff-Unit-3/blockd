@@ -10,32 +10,83 @@ This is the api that Blockd uses, all api functions are defined in this mod. Hen
 blk.modpath()
 ```
 
+## Registration API Functions
+### blk.node()
+```lua
+--- Used to register simple nodes.
+-- @param name string The name of the node to be registered.
+-- @param ground boolean Is ground content.
+-- @param light boolean Light passes through.
+-- @param group table The groups this node belongs to.
+-- @param sound string or table Same as sounds in core.register_node().
+-- @param drop string or table Same as drop in core.register_node(), not required.
+blk.node(name, ground, light, group, sound, drop)
+```
+
+### blk.ladder()
+```lua
+--- Used to register ladders
+-- @param name string The name of the ladder.
+-- @param group table The table of groups for this ladder.
+-- @param sound string or table Same as sounds in core.register_node()
+blk.ladder(name, group, sound)
+```
+
+### blk.log()
+```lua
+--- Used to register logs.
+-- @param name string The name of the log.
+blk.log(name)
+```
+
+### blk.plank()
+```lua
+--- Used to register planks.
+-- @param name string The name of the plank.
+blk.plank(name)
+```
+
+### blk.leaves()
+```lua
+--- Used to register leaves
+-- @param name string The name of the leaves.
+-- @param drop table Same as the drop table in core.register_node()
+blk.leaves(name, drop)
+```
+
+### blk.glass()
+```lua
+--- Used to register glass
+-- @param name string The name of the glass
+blk.glass(name)
+```
+
 ## Craft API Functions
 
 ### craft
 ```lua
--- Returns core.register_craft with data entered
--- out is the the output item/node after the craft
--- input is the crafting recipe, the syntax for core.register_craft({recipe = }) is used
--- replace is not required, same syntax as core.register_craft({replacements = })
+--- Returns core.register_craft with data entered.
+-- @param out string The output item/node after the craft.
+-- @param input table Crafting recipe, the syntax for core.register_craft({recipe = }) is used.
+-- @param replace table not required, same syntax as core.register_craft({replacements = }).
 blk.craft(out, input, replace)
 ```
 
 ### cook
 ```lua
--- Returns core.register_craft with data entered
--- out is the output item/node after cooking
--- input is the item/node to be used
--- time is the amount of time it takes to cook
+--- Returns core.register_craft with data entered.
+-- @param out string The output item/node after cooking.
+-- @param input string The item/node to be used.
+-- @param time number Amount of time it takes to cook.
 blk.cook(out, input, time)
 ```
 
 ### fuel
 ```lua
--- Return core.register_craft with data entered
--- fuel is the item/node to be burned
--- time is the time that the fuel will burn for
--- replace is not required, same syntax as core.register_craft({replacements = })
+--- Returns core.register_craft with data entered.
+-- @param fuel string The item/node to be burned.
+-- @param time number Time that the fuel will burn for.
+-- @param replace table not required, same syntax as core.register_craft({replacements = }).
 blk.fuel(fuel, time, replace)
 ```
 
@@ -46,44 +97,38 @@ blk.fuel(fuel, time, replace)
 
 #### Wood
 ```lua
--- This function returns a table of sounds for wood node definitions
--- There are no parameters
+--- This function returns a table of sounds for wood node definitions.
 blk.wood_sounds()
 ```
 
 #### Stone
 ```lua
--- This function returns a table of sounds for stone node definitions
--- There is one parameter
--- Type can be "stone", "gravel", "metal", or "gem"
+--- This function returns a table of sounds for stone node definitions.
+-- @param type string Can be "stone", "gravel", "metal", or "gem".
 blk.stone_sounds(type)
 ```
 
 #### Metal
 ```lua
--- This function returns a table of sounds for metal node definitions
--- There is no parameters
+--- This function returns a table of sounds for metal node definitions.
 blk.metal_sounds()
 ```
 
 #### Snow
 ```lua
--- This function returns a table of sounds for snow node definitions
--- There is no parameters
+--- This function returns a table of sounds for snow node definitions.
 blk.snow_sounds()
 ```
 
 #### Glass
 ```lua
--- This function returns a table of sounds for glass node definitions
--- There is no parameters
+--- This function returns a table of sounds for glass node definitions.
 blk.glass_sounds()
 ```
 
 #### Leaves
 ```lua
--- This function returns a table of sounds for leaves node definitions
--- There is no parameters
+--- This function returns a table of sounds for leaves node definitions.
 blk.leaves_sounds()
 ```
 
@@ -92,14 +137,12 @@ blk.leaves_sounds()
 
 #### Drink
 ```lua
--- This function returns a table of sounds for drinks
--- There are no parameters
+--- This function returns a table of sounds for drinks.
 blk.drink_sounds()
 ```
 
 #### Food
 ```lua
--- This function returns a table of sounds for food
--- There are no parameters
+--- This function returns a table of sounds for food.
 blk.food_sounds()
 ```

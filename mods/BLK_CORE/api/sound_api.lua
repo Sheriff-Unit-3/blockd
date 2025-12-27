@@ -17,6 +17,13 @@ blk.dirt_sounds = function()
         place_failed = {name = "blk_failed"}
     }
 end
+function blk.sand_sounds()
+    return {
+        footstep = {name = "blk_sandwalk"},
+        place_failed = {name = "blk_failed"}
+    }
+end
+
 
 blk.stone_sounds = function(type)
     if type == nil then
