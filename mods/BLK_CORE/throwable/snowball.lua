@@ -40,7 +40,7 @@ local _snowball = {
 	physical = false,
 	timer = 0,
 	visual = "cube",
-	visual_size = {x=0.5, y=0.0,},
+	visual_size = {x=0.0, y=0.5,},
 	textures = {texture,texture,texture,texture,texture,texture},
 	lastpos= {},
 	collisionbox = {0, 0, 0, 0, 0, 0},

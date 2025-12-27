@@ -12,8 +12,7 @@ function blk.node(name, ground, light, group, sound, drop)
             sounds = sound
         }), core.register_alias(name, blk.mod()..":"..name)
     else
-        return
-        core.register_node(blk.mod()..":"..name, {
+        return core.register_node(blk.mod()..":"..name, {
             description = desc,
             tiles = {"blk_"..name..".png"},
             is_ground_content = ground,
@@ -24,6 +23,19 @@ function blk.node(name, ground, light, group, sound, drop)
             drop = drop
         }), core.register_alias(name, blk.mod()..":"..name)
     end
+end
+
+function blk.simple_node(name, group, sound)
+    local desc = name:gsub("_", " ")
+    desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
+    return core.register_node(blk.mod()..":"..name, {
+        description = desc,
+        tiles = "blk_"..name..".png"},
+    sounds = sound,
+    sunlight_propagates = false,
+    stack_max = 256,
+    groups = {wood = 1, log = 1, choppy = 1}
+}), core.register_alias(name, blk.mod()..":"..name)
 end
 
 function blk.ladder(name, group, sound)
@@ -46,17 +58,17 @@ function blk.log(name)
     local desc = name:gsub("_", " ")
     desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
     return core.register_node(blk.mod()..":"..name, {
-    description = desc,
-    tiles = {
-        "blk_"..name.."_end.png",
-        "blk_"..name.."_end.png",
-        "blk_"..name..".png"
-    },
-    sounds = blk.wood_sounds(),
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {wood = 1, log = 1, choppy = 1}
-}), core.register_alias(name, blk.mod()..":"..name)
+        description = desc,
+        tiles = {
+            "blk_"..name.."_end.png",
+            "blk_"..name.."_end.png",
+            "blk_"..name..".png"
+        },
+        sounds = blk.wood_sounds(),
+        sunlight_propagates = false,
+        stack_max = 256,
+        groups = {wood = 1, log = 1, choppy = 1}
+    }), core.register_alias(name, blk.mod()..":"..name)
 end
 
 function blk.plank(name)
