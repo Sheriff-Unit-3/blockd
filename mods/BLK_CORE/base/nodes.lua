@@ -167,9 +167,9 @@ blk.plank("birch_planks")
 blk.log("jungle_log")
 blk.plank("jungle_planks")
 blk.log("spruce_log")
-blk.planks("spruce_planks")
+blk.plank("spruce_planks")
 blk.log("acacia_log")
-blk.planks("acacia_planks")
+blk.plank("acacia_planks")
 blk.leaves("apple_leaves", {
     max_items = 3,
     items = {
