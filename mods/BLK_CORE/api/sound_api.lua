@@ -1,7 +1,3 @@
-
--- Sound Functions
-
--- Node Sounds
 blk.wood_sounds = function()
     return {
         footstep = {name = "blk_woodwalk"},
@@ -87,6 +83,11 @@ blk.leaves_sounds = function()
     }
 end
 
+blk.wool_sounds = function()
+    return {
+        place_failed = {name = "blk_failed"}
+    }
+end
 
 -- Item Sounds
 blk.drink_sounds = function()

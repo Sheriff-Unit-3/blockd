@@ -30,12 +30,12 @@ function blk.simple_node(name, group, sound)
     desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
     return core.register_node(blk.mod()..":"..name, {
         description = desc,
-        tiles = "blk_"..name..".png"},
-    sounds = sound,
-    sunlight_propagates = false,
-    stack_max = 256,
-    groups = {wood = 1, log = 1, choppy = 1}
-}), core.register_alias(name, blk.mod()..":"..name)
+        tiles = {"blk_"..name..".png"},
+        sounds = sound,
+        sunlight_propagates = false,
+        stack_max = 256,
+        groups = {wood = 1, log = 1, choppy = 1}
+    }), core.register_alias(name, blk.mod()..":"..name)
 end
 
 function blk.ladder(name, group, sound)
