@@ -1,5 +1,7 @@
 # API Documentation
-This is the api that Blockd uses, all api functions are defined in this mod. Hence this is the main and only api docs for Blockd.
+This is the api that Blockd uses, all api functions are defined in  
+this mod. Hence this is the main and only api docs for Blockd.  
+Please see the bottom for notes regarding Blockd behavior.
 
 ## General Functions
 
@@ -163,3 +165,14 @@ blk.drink_sounds()
 --- This function returns a table of sounds for food.
 blk.food_sounds()
 ```
+
+## Notes
+Blockd uses an inventory size of 9 wide by 4 tall.  
+Therefore if your mod displays the players inventory 
+it will need to support the larger size.
+
+Blockd uses a health system of 100, therefore players have 100 hp  
+and most mobs have at least 40 hp with some having over 100 hp.  
+To keep balance you most likely will want to increase your mods mobs  
+hp and damage by 5 times if your mod is currently balanced for MTG.  
+Keep in mind that a Blockd wood sword does 20 hp damage.

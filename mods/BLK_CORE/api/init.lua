@@ -3,9 +3,8 @@ blk = {}
 function blk.info()
     return {
         name = "blk",
-        version = "v0.0.1",
-        stable = false,
-        loads = true
+        version = "v0.0.1-dev",
+        stable = false
     }
 end
 
@@ -17,7 +16,7 @@ function blk.modpath()
 end
 function blk.loaded(mod)
     if mod == nil then
-        return
+        return core.log(error, "Missing parameter in blk.loaded()")
     else
         return core.get_modpath(mod)
     end
