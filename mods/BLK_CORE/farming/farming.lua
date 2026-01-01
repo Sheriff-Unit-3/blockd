@@ -1,111 +1,46 @@
--- cotton
-core.register_node("blk_farming:cotton_1", {
-    description = "Cotton",
-    drawtype = "plantlike",
-    tiles = {"blk_cotton_1.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true,
-    groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
-    drop = ""
-})
-core.register_node("blk_farming:cotton_2", {
-    description = "Cotton",
-    drawtype = "plantlike",
-    tiles = {"blk_cotton_2.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true,
-    groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
-    drop = ""
-})
-core.register_node("blk_farming:cotton_3", {
-    description = "Cotton",
-    drawtype = "plantlike",
-    tiles = {"blk_cotton_3.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true,
-    groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
-    drop = ""
-})
-core.register_node("blk_farming:cotton_4", {
-    description = "Cotton",
-    drawtype = "plantlike",
-    tiles = {"blk_cotton_4.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true,
-    groups = {cotton = 1, hoe = 1, not_in_creative_inventory = 1},
-    drop = {
-        max_items = 4,
-        items = {
-            {
-                tools = {"group:hoe"},
-                rarity = 4,
-                items = {"cotton"}
-            },
-            {
-                tools = {"group:hoe"},
-                rarity = 2,
-                items = {"cotton_seeds", "cotton"}
-            },
-            {
-                tools = {"group:hoe"},
-                rarity = 1,
-                items = {"cotton_seeds", "cotton"}
-            }
-        }
-    }
-})
-core.register_craftitem("blk_farming:cotton_seeds", {
-    description = "Cotton Seeds",
-    drawtype = "raillike",
-    tiles = {"blk_cotton_seeds.png"},
-    stack_max = 256,
-    groups = {seeds = 1, cotton = 1, hand = 1},
-    on_rightclick = function(pos, node)
-        if node.name == "tilled_soil" then
-            local pos = pos.y+1
-            core.place_node(pos, "cotton_1")
-        end
-    end
-})
+local soil = "blk_base:tilled_soil"
+blk.crop("cotton", 0, {cotton = 1, crop = 1})
+blk.crop("cotton", 1, {_nici, snappy = 1}, "")
+blk.crop("cotton", 2, {_nici, snappy = 1}, "")
+blk.crop("cotton", 3, {_nici, snappy = 1}, "")
+blk.crop("cotton", 4, {_nici, snappy = 1}, {max_items = 4,items = {
+  {rarity = 4,items = {"cotton"}},
+  {rarity = 2,items = {"cotton_seeds", "cotton"}},
+  {rarity = 1,items = {"cotton_seeds", "cotton"}}
+}})
+blk.crop("cotton", -1, {cotton = 1, seeds = 1, crop = 1}, "", blk.mod()..":cotton_1")
 core.register_abm({
-    label = "cotton_growing",
-    nodename = {"blk_farming:cotton_1", "blk_farming:cotton_2", "blk_farming:cotton_3"},
-    neighbors = {"tilled_soil"},
-    interval = 15,
-    chance = 25,
-    min_y = -300,
-    max_y = 300,
-    catch_up = true,
-    action = function(pos, node)
-        if node.name == "blk_farming:cotton_1" then
-            core.swap_node(pos, {name = "blk_farming:cotton_2"})
-        end
-        if node.name == "blk_farming:cotton_2" then
-            core.swap_node(pos, {name = "blk_farming:cotton_3"})
-        end
-        if node.name == "blk_farming:cotton_3" then
-            core.swap_node(pos, {name = "blk_farming:cotton_4"})
-        end
+  label = "cotton_growing",
+  nodenames = {blk.mod()..":cotton_1", blk.mod()..":cotton_2", blk.mod()..":cotton_3"},
+  interval = 15,
+  chance = 4,
+  min_y = -300,
+  max_y = 300,
+  catch_up = true,
+  action = function(pos, node)
+    local upos = {pos.x, pos.y-1, pos.z}
+    local unode = core.get_node(upos)
+    if node.name == blk.mod()..":cotton_1" and unode.name == soil then
+      core.set_node(pos, {name = blk.mod()..":cotton_2"})
     end
+    if node.name == blk.mod()..":cotton_2" and unode.name == soil then
+      core.set_node(pos, {name = blk.mod()..":cotton_3"})
+    end
+    if node.name == blk.mod()..":cotton_3" and unode.name == soil then
+      core.set_node(pos, {name = blk.mod()..":cotton_4"})
+    end
+  end
 })
 
 
 -- wheat
 core.register_node("blk_farming:wheat", {
-    description = "Wheat",
-    drawtype = "plantlike",
-    tiles = {"blk_wheat.png"},
-    is_ground_content = true,
-    stack_max = 256,
-    walkable = false,
-    buildable_to = true
+  description = "Wheat",
+  drawtype = "plantlike",
+  tiles = {"blk_wheat.png"},
+  is_ground_content = true,
+  stack_max = 256,
+  walkable = false,
+  buildable_to = true
 })
 core.register_alias("wheat", "blk_farming:wheat")

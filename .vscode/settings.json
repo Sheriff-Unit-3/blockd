@@ -3,5 +3,6 @@
         "core",
         "sounds",
         "blk"
-    ]
+    ],
+    "selene.warnRoblox": false
 }
