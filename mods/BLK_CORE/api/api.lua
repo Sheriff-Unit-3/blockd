@@ -3,7 +3,6 @@ local info = {
   version = "v0.0.1-dev",
   stable = false
 }
-_nici = "not_in_creative_inventory = 1"
 function blk.info(data)
   if data == "v" then
     return info.version
@@ -17,4 +16,14 @@ function blk.loaded(mod)
   else
     return core.get_modpath(mod)
   end
+end
+function blk.protected(pos, player)
+  return core.is_protected(pos, player)
+end
+function blk.node_def(node, def)
+  local nodedef = core.registered_nodes[node]
+  return nodedef[def]
+end
+function blk.group(name, group)
+  return core.get_item_group(name, group)
 end

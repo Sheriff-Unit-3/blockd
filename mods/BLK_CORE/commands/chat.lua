@@ -5,6 +5,12 @@ core.register_chatcommand("v", {
         return true, string
     end
 })
+core.register_chatcommand("exit", {
+    description = "Lets you exit the game with a command.",
+    func = function(name)
+        core.request_shutdown()
+    end
+})
 --[[
 core.register_chatcommand("h", {
     description = "Help message.",
