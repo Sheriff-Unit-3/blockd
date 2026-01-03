@@ -10,7 +10,7 @@ core.register_node("blk_base:grass", {
     groups = {hand = 1, grass = 1}
 })
 blk.alias("grass")
-core.register_node(blk.mod().."apple_sapling", {
+core.register_node(blk.mod()..":apple_sapling", {
     description = "Apple Tree Sapling",
     drawtype = "plantlike",
     stack_max = 256,
@@ -31,7 +31,7 @@ core.register_node(blk.mod()..":rose", {
     groups = {hand = 1, flower = 1, red_flower = 1}
 })
 blk.alias("rose")
-core.register_node(blk.mod().."dandelion", {
+core.register_node(blk.mod()..":dandelion", {
     description = "Dandelion",
     drawtype = "plantlike",
     tiles = {"blk_dandelion.png"},

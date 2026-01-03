@@ -32,11 +32,11 @@ function blk.crop(name, stage, group, drop, stage1_plant)
         local pt = pointed_thing
         local under = pt.under
         local above = pt.above
-        local name = placer:get_player_name()
+        local pname = placer:get_player_name()
         if under.y + 1 == above.y then
           local unode = core.get_node(under)
           local anode = core.get_node(above)
-          if blk.protected(under, name) or blk.protected(under, name) then
+          if blk.protected(under, pname) or blk.protected(under, pname) then
             return itemstack
           elseif blk.node_def(anode.name, "buildable_to") and blk.group(unode.name, "soil") > 0 then
             core.set_node(above, {name = stage1_plant})
@@ -64,7 +64,6 @@ function blk.grow(name, time, chance)
   action = function(pos, node)
     local upos = {x = pos.x, y = pos.y-1, z = pos.z}
     local unode = core.get_node(upos)
-    node = core.get_node(pos)
     if node.name == fname.."_1" and blk.group(unode.name, "soil") > 0 then
       core.set_node(pos, {name = fname.."_2"})
     end
