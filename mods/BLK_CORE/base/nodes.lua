@@ -1,24 +1,24 @@
 blk.node("dirt", true, false, {dirt = 1, crumbly = 1})
-core.register_alias("mapgen_dirt", "blk_base:dirt")
+blk.alias("dirt", "mapgen_dirt")
 blk.node("grass_block", true, false, {grass = 1, crumbly = 1})
-core.register_alias("mapgen_dirt_with_grass", "blk_base:grass_block")
+blk.alias("grass_block", "mapgen_dirt_with_grass")
 blk.node("tilled_soil", true, false, {dirt = 1, soil = 1, crumbly = 1})
 blk.node("clay", true, false, {clay = 1, crumbly = 1})
 blk.node("snow", true, false, {snow = 1, crumbly = 1}, blk.snow_sounds())
-core.register_alias("mapgen_dirt_with_snow", "blk_base:snow")
+blk.alias("snow", "mapgen_dirt_with_snow")
 blk.node("packed_snow", true, false, {snow = 1, crumbly = 1}, blk.snow_sounds())
-core.register_alias("mapgen_snowblock", "blk_base:packed_snow")
+blk.alias("packed_snow", "mapgen_snowblock")
 blk.node("cobble", false, false, {stone=1,cracky=1}, blk.stone_sounds())
-core.register_alias("mapgen_cobble", "blk_base:cobble")
+blk.alias("cobble", "mapgen_cobble")
 blk.node("stone", true, false, {stone=1,cracky=1}, blk.stone_sounds(), "blk_base:cobble")
-core.register_alias("mapgen_stone", "blk_base:stone")
+blk.alias("stone", "mapgen_stone")
 blk.node("compressed_cobble", false, false, {stone=1,cracky=2}, blk.stone_sounds())
 blk.node("mossy_cobble", false, false, {stone = 1, cracky = 1}, blk.stone_sounds("stone"))
-core.register_alias("mapgen_mossy_cobble", "blk_base:mossy_cobble")
+blk.alias("mossy_cobble", "mapgen_mossy_cobble")
 blk.node("snowy_cobble", true, false, {stone=1,snow=1,cracky=1}, blk.stone_sounds("stone"))
 blk.node("gravel", true, false, {crumbly = 1}, blk.stone_sounds("gravel"))
-core.register_alias("mapgen_gravel", "blk_base:gravel")
-core.register_node("blk_base:water",{
+blk.alias("gravel", "mapgen_gravel")
+core.register_node(blk.mod()..":water",{
     description = "Water",
     tiles = {"blk_water.png"},
     drawtype = "liquid",
@@ -38,9 +38,10 @@ core.register_node("blk_base:water",{
     diggable = false,
     groups = {water = 1, liquid = 1, not_in_creative_inventory = 1}
 })
-core.register_alias("water", "blk_base:water")
-core.register_alias("mapgen_water_source", "blk_base:water")
-core.register_node("blk_base:water_flowing",{
+blk.alias("water")
+blk.alias("water", "mapgen_water_source")
+blk.alias("water", "mapgen_river_water_source")
+core.register_node(blk.mod()..":water_flowing",{
     description = "Water",
     tiles = {"blk_water.png"},
     drawtype = "flowingliquid",
@@ -61,8 +62,7 @@ core.register_node("blk_base:water_flowing",{
     diggable = false,
     groups = {water = 1, liquid = 1, not_in_creative_inventory = 1}
 })
-core.register_alias("mapgen_river_water_source", "blk_base:water")
-core.register_node("blk_base:lava", {
+core.register_node(blk.mod()..":lava", {
     description = "Lava",
     tiles = {"blk_lava.png"},
     drawtype = "liquid",
@@ -81,15 +81,15 @@ core.register_node("blk_base:lava", {
     damage_per_second = 20,
     groups = {lava = 1, liquid = 1, not_in_creative_inventory = 1}
 })
-core.register_alias("lava", "blk_base:lava")
-core.register_alias("mapgen_lava_source", "blk_base:lava")
+blk.alias("lava")
+blk.alias("lava", "mapgen_lava_source")
 blk.node("ice", true, true, {ice = 1, cracky = 1})
-core.register_alias("mapgen_ice", "blk_base:ice")
-local ice = "blk_base:ice"
-local snow = "blk_base:snow"
+blk.alias("ice", "mapgen_ice")
+local ice = blk.mod()..":ice"
+local snow = blk.mod()..":snow"
 core.register_abm({
     label = "Water freezing",
-    nodenames = "blk_base:water",
+    nodenames = blk.mod().."water",
     neighbors = {ice, snow},
     interval = 30.0,
     chance = 50,
@@ -106,13 +106,13 @@ core.register_abm({
         local b3 = core.get_node(pos3)
         local b4 = core.get_node(pos4)
         if (b1.name == ice or b1.name == snow or b2.name == ice or b2.name == snow or b3.name == ice or b3.name == snow or b4.name == ice or b4.name == snow) then
-            core.swap_node(pos, {name = "blk_base:ice"})
+            core.swap_node(pos, {name = blk.mod()..":ice"})
         end
     end
 })
 blk.node("ice_bricks", true, true, {ice = 1, cracky = 1})
 blk.node("sand", true, false, {sand = 1, crumbly = 1}, blk.sand_sounds())
-core.register_alias("mapgen_sand", "blk_base:sand")
+blk.alias("sand", "mapgen_sand")
 local sandstone = {sandstone = 1, crumbly = 1, cracky = 1}
 blk.node("sandstone", true, false, sandstone, blk.sand_sounds())
 blk.node("sandstone_bricks", false, false, sandstone, blk.sand_sounds())
@@ -133,7 +133,7 @@ blk.ladder("elm_ladder", {ladder = 1, choppy = 1}, blk.wood_sounds())
 blk.ladder("palm_ladder", {ladder = 1, choppy = 1}, blk.wood_sounds())
 blk.ladder("iron_ladder", {iron_ladder = 1, ladder = 1, cracky = 1}, blk.metal_sounds())
 blk.node("apple_block", false, false, {food = 2, apple = 1, choppy = 1})
-core.register_node("blk_base:cake", {
+core.register_node(blk.mod()..":cake", {
     drawtype = "nodebox",
     description = "Cake",
     tiles = {
@@ -155,11 +155,11 @@ core.register_node("blk_base:cake", {
     groups = {food = 1, dessert = 1, cake = 1, hand = 1},
     on_use = core.item_eat(25)
 })
-core.register_alias("cake", "blk_base:cake")
+blk.alias("cake")
 blk.log("apple_log")
-core.register_alias("mapgen_tree", "blk_base:apple_log")
+blk.alias("apple_log", "mapgen_tree")
 blk.plank("apple_planks")
-core.register_alias("wood_planks", "blk_base:apple_planks")
+blk.alias("apple_planks", "wood_planks")
 blk.log("maple_log")
 blk.plank("maple_planks")
 blk.log("birch_log")
@@ -173,14 +173,14 @@ blk.plank("acacia_planks")
 blk.leaves("apple_leaves", {
     max_items = 3,
     items = {
-        {rarity = 10, items = {"apple"}},
-        {rarity = 6, items = {"apple_sapling"}},
-        {rarity = 3, items = {"stick"}},
-        {rarity = 1, items = {"blk_base:apple_leaves"}}
+        {rarity = 10, items = {blk.mod()..":apple"}},
+        {rarity = 6, items = {blk.mod()..":apple_sapling"}},
+        {rarity = 3, items = {blk.mod()..":stick"}},
+        {rarity = 1, items = {blk.mod()..":apple_leaves"}}
     }
 })
-core.register_alias("mapgen_leaves", "blk_base:apple_leaves")
-core.register_alias("mapgen_apple", "blk_base:apple_leaves")
+blk.alias("apple_leaves", "mapgen_leaves")
+blk.alias("apple_leaves", "mapgen_apple")
 blk.leaves("maple_leaves", {
     max_items = 2,
     items = {
@@ -224,7 +224,7 @@ blk.glass("green_glass")
 blk.glass("lime_glass")
 blk.glass("purple_glass")
 blk.glass("pink_glass")
-core.register_node("blk_base:lantern", {
+core.register_node(blk.mod()..":lantern", {
     description = "Lantern",
     tiles = {"blk_lantern_off.png"},
     walkable = true,
@@ -234,9 +234,9 @@ core.register_node("blk_base:lantern", {
         core.swap_node(pos, {name = "blk_base:lantern_on"})
     end
 })
-core.register_alias("lantern", "blk_base:lantern")
-core.register_alias("lantern_off", "blk_base:lantern")
-core.register_node("blk_base:lantern_on", {
+blk.alias("lantern")
+blk.alias("lantern_off")
+core.register_node(blk.mod()..":lantern_on", {
     description = "Lantern",
     tiles = {"blk_lantern_on.png"},
     walkable = true,
@@ -247,8 +247,8 @@ core.register_node("blk_base:lantern_on", {
         core.swap_node(pos, {name = "blk_base:lantern"})
     end
 })
-core.register_alias("lantern_on", "blk_base:lantern_on")
-core.register_node("blk_base:torch", {
+blk.alias("lantern_on")
+core.register_node(blk.mod()..":torch", {
     drawtype = "torchlike",
     description = "Torch",
     tiles = {"blk_torch.png"},
@@ -258,8 +258,8 @@ core.register_node("blk_base:torch", {
     stack_max = 256,
     groups = {torch = 1, light = 1, on = 1, hand = 1}
 })
-core.register_alias("torch", "blk_base:torch")
-core.register_node("blk_base:haybale", {
+blk.alias("torch")
+core.register_node(blk.mod()..":haybale", {
     description = "Haybale",
     tiles = {
         "blk_haybale_end.png",
@@ -269,7 +269,7 @@ core.register_node("blk_base:haybale", {
     stack_max = 256,
     groups = {hay = 1, bale = 1, hand = 1}
 })
-core.register_alias("haybale", "blk_base:haybale")
+blk.alias("haybale")
 
 --[[ tnt
 core.register_node("blk_base:tnt", {

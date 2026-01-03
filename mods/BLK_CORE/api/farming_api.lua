@@ -9,7 +9,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
       stack_max = 256,
       groups = group
     })
-    core.register_alias(name, mname)
+    blk.alias(name)
   elseif stage > 0 then
     core.register_node(mname.."_"..stage, {
     description = desc,
@@ -48,7 +48,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
         end
       end
     })
-    core.register_alias(name.."_seeds", mname.."_seeds")
+    blk.alias(name.."_seeds")
   end
 end
 function blk.grow(name, time, chance)
