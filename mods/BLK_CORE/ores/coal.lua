@@ -1,31 +1,21 @@
--- coal
-core.register_craftitem("blk_ores:coal", {
-    description = "Coal",
-    stack_max = 256,
-    inventory_image = "blk_coal.png"
-})
-core.register_alias("coal", "blk_ores:coal")
-core.register_alias("default:coal_lump", "blk_ores:coal")
-
--- coal ore
+blk.item("coal", {coal = 1, fuel = 1})
+blk.alias("coal", "default:coal_lump")
 core.register_node("blk_ores:coal_ore", {
-    tiles = {"blk_coal_ore.png"},
-    is_ground_content = true,
-    sunlight_propagates = true,
-    stack_max = 256,
-    groups = {pickaxe = 1, ore = 1, cracky = 1},
-    drop = "blk_ores:coal",
-    sounds = blk.stone_sounds("stone")
+  tiles = {"blk_coal_ore.png"},
+  is_ground_content = true,
+  sunlight_propagates = true,
+  stack_max = 256,
+  groups = {pickaxe = 1, ore = 1, cracky = 1},
+  drop = "blk_ores:coal",
+  sounds = blk.stone_sounds("stone")
 })
-core.register_alias("coal_ore", "blk_ores:coal_ore")
-
--- coal block
+blk.alias("coal_ore")
 core.register_node("blk_ores:coal_block", {
-    tiles = {"blk_coal_block.png"},
-    is_ground_content = false,
-    sunlight_propagates = true,
-    stack_max = 256,
-    groups = {pickaxe = 1, ore = 1, cracky = 1},
-    sounds = blk.stone_sounds("stone")
+  tiles = {"blk_coal_block.png"},
+  is_ground_content = false,
+  sunlight_propagates = true,
+  stack_max = 256,
+  groups = {pickaxe = 1, ore = 1, cracky = 1},
+  sounds = blk.stone_sounds("stone")
 })
-core.register_alias("coal_block", "blk_ores:coal_block")
+blk.alias("coal_block")

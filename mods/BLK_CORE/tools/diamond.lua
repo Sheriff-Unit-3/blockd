@@ -1,24 +1,32 @@
 blk.tool("diamond", "sword", {
-    full_punch_interval = 0.25,
-    damage_groups = {fleshy = 40}
+  full_punch_interval = 0.5,
+  damage_groups = {fleshy = 40}
 })
 blk.tool("diamond", "pickaxe", {
-    groupcaps = {
-        cracky = {maxlevel = 2, times = {[1] = 1.75, [2] = 2.0}}
-    }
+  full_punch_interval = 0.75,
+  damage_groups = {fleshy = 25},
+  groupcaps = {
+    cracky = {maxlevel = 3, times = {[1] = 0.75, [2] = 1, [3] = 1.5}}
+  }
 })
 blk.tool("diamond", "shovel", {
-    groupcaps = {
-        crumbly = {maxlevel = 2, times = {[1] = 2, [2] = 2.5}}
-    }
+  full_punch_interval = 0.75,
+  damage_groups = {fleshy = 25},
+  groupcaps = {
+    crumbly = {maxlevel = 3, times = {[1] = 0.25, [2] = 0.5, [3] = 1}}
+  }
 })
 blk.tool("diamond", "hoe", {
-    groupcaps = {
-        snappy = {maxlevel = 2, times = {[1] = 0.1, [2] = 0.15}}
-    }
+  full_punch_interval = 0.60,
+  damage_groups = {fleshy = 25},
+  groupcaps = {
+    snappy = {maxlevel = 3, times = {[1] = 0.20, [2] = 0.35, [3] = 0.5}}
+  }
 })
 blk.tool("diamond", "axe", {
-    groupcaps = {
-        choppy = {maxlevel = 3, times = {[1] = 0.5, [2] = 1.0, [3] = 1.5}}
-    }
+  full_punch_interval = 0.5,
+  damage_groups = {fleshy = 35},
+  groupcaps = {
+    choppy = {maxlevel = 3, times = {[1] = 0.25, [2] = 0.45, [3] = 0.75}}
+  }
 })
