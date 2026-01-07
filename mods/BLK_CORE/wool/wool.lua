@@ -1,4 +1,4 @@
-local sound = blk.wool_sounds()
+local sound = blk.sounds("wool")
 local group = {wool = 1, snappy = 1}
 blk.simple_node("wool", group, sound)
 blk.simple_node("black_wool", group, sound)

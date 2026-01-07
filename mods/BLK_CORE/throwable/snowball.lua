@@ -1,5 +1,5 @@
-local name = "blk_throwable:snowball"
-local entity = "blk_throwable:snowball_thrown"
+local name = blk.mod()..":snowball"
+local entity = blk.mod()..":snowball_thrown"
 local texture = "blk_snowball.png"
 core.register_craftitem(name, {
 	description = "Snowball",
@@ -34,8 +34,7 @@ core.register_craftitem(name, {
 		return itemstack
 	end,
 })
-core.register_alias("snowball", name)
-
+blk.alias("snowball")
 local _snowball = {
 	physical = false,
 	timer = 0,
@@ -49,7 +48,6 @@ _snowball.on_step = function(self, dtime)
 	self.timer = self.timer + dtime
 	local pos = self.object:getpos()
 	local node = core.get_node(pos)
-
 	if self.timer > 0.07 then
 		local objs = core.get_objects_inside_radius({x = pos.x, y = pos.y, z = pos.z}, 1)
 		for k, obj in pairs(objs) do
@@ -72,7 +70,6 @@ _snowball.on_step = function(self, dtime)
 			end
 		end
 	end
-
 	if self.lastpos.x ~= nil then
 		if core.registered_nodes[node.name].walkable then
 			if not core.setting_getbool("creative_mode") then
@@ -83,7 +80,5 @@ _snowball.on_step = function(self, dtime)
 	end
 	self.lastpos= {x = pos.x, y = pos.y, z = pos.z}
 end
-
 core.register_entity(entity, _snowball)
-
-blk.craft(name..' 9', {{'snow'}})
+blk.craft(name.." 9", {{"snow"}})

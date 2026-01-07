@@ -9,6 +9,7 @@ blk.craft("compressed_cobble", {
     {"cobble", "cobble", "cobble"},
     {"cobble", "cobble", "cobble"}
 })
+blk.craft("stick 16", {{"group:wood_planks"}})
 blk.craft("cobble 9", {{"compressed_cobble"}})
 blk.craft("snowball 9", {{"snow"}})
 blk.craft("apple_planks 4", {{"apple_log"}})

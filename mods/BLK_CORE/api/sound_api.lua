@@ -1,103 +1,87 @@
-blk.wood_sounds = function()
+local failed = {name = "blk_failed"}
+function blk.sounds(type)
+  if type == nil then return
+  elseif type == "dirt" then
     return {
-        footstep = {name = "blk_woodwalk"},
-        dig = {name = "blk_wooddig"},
-        dug = {name = "blk_wooddug"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_dirtwalk"},
+      place_failed = failed
     }
-end
-
-blk.dirt_sounds = function()
+  elseif type == "sand" then
     return {
-        footstep = {name = "blk_dirtwalk"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_sandwalk"},
+      place_failed = failed
     }
-end
-function blk.sand_sounds()
+  elseif type == "wood" then
     return {
-        footstep = {name = "blk_sandwalk"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_woodwalk"},
+      dig = {name = "blk_wooddig"},
+      dug = {name = "blk_wooddug"},
+      place_failed = failed
     }
-end
-
-
-blk.stone_sounds = function(type)
-    if type == nil then
-        return {
-            footstep = {name = "blk_stonewalk"},
-            dig = {name = "blk_stonedig"},
-            place_failed = {name = "blk_failed"}
-        }
-    elseif type == "gravel" then
-        return {
-            footstep = {name = "blk_gravelwalk"},
-            place_failed = {name = "blk_failed"}
-        }
-    elseif type == "metal" then
-        return {
-            footstep = {name = "blk_stonewalk"},
-            dig = {name = "blk_metaldig"},
-            dug = {name = "blk_metaldug"},
-            place_failed = {name = "blk_failed"}
-        }
-    elseif type == "gem" then
-        return {
-            footstep = {name = "blk_stonewalk"},
-            place_failed = {name = "blk_failed"}
-        }
-    end
-end
-
-blk.metal_sounds = function()
+  elseif type == "stone" then
     return {
-        footstep = {name = "blk_metalwalk"},
-        dig = {name = "blk_metaldig"},
-        dug = {name = "blk_metaldug"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_stonewalk"},
+      dig = {name = "blk_stonedig"},
+      place_failed = failed
     }
-end
-
-
-blk.snow_sounds = function()
+  elseif type == "gravel" then
     return {
-        footstep = {name = "blk_snowwalk"},
-        dig = {name = "blk_snowdig"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_gravelwalk"},
+      place_failed = failed
     }
-end
-
-blk.glass_sounds = function()
+  elseif type == "metal_ore" then
     return {
-        dig = {name = "blk_glasshit"},
-        dug = {name = "blk_glassdug"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_stonewalk"},
+      dig = {name = "blk_metaldig"},
+      dug = {name = "blk_metaldug"},
+      place_failed = failed
     }
-end
-
-blk.leaves_sounds = function()
+  elseif type == "gem_ore" then
     return {
-        footstep = {name = "blk_leaveswalk"},
-        dig = {name = "blk_leavesdig"},
-        dug = {name = "blk_leavesdug"},
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_stonewalk"},
+      place_failed = failed
     }
-end
-
-blk.wool_sounds = function()
+  elseif type == "metal" then
     return {
-        place_failed = {name = "blk_failed"}
+      footstep = {name = "blk_metalwalk"},
+      dig = {name = "blk_metaldig"},
+      dug = {name = "blk_metaldug"},
+      place_failed = failed
     }
-end
-
--- Item Sounds
-blk.drink_sounds = function()
+  elseif type == "snow" then
     return {
-        eat = {name = "blk_drinkeat"}
+      footstep = {name = "blk_snowwalk"},
+      dig = {name = "blk_snowdig"},
+      place_failed = failed
     }
-end
-
-blk.food_sounds = function()
+  elseif type == "glass" then
     return {
-        eat = {name = "blk_foodeat"}
+      dig = {name = "blk_glasshit"},
+      dug = {name = "blk_glassdug"},
+      place_failed = failed
     }
+  elseif type == "leaves" then
+    return {
+      footstep = {name = "blk_leaveswalk"},
+      dig = {name = "blk_leavesdig"},
+      dug = {name = "blk_leavesdug"},
+      place_failed = failed
+    }
+  elseif type == "wool" then
+    return {
+      place_failed = failed
+    }
+  elseif type == "plant" then
+    return {
+      place_failed = failed
+    }
+  elseif type == "drink" then
+    return {
+      eat = {name = "blk_drinkeat"}
+    }
+  elseif type == "food" then
+    return {
+      eat = {name = "blk_foodeat"}
+    }
+  end
 end

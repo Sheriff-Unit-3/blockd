@@ -2,7 +2,8 @@
     "Lua.diagnostics.globals": [
         "core",
         "sounds",
-        "blk"
+        "blk",
+        "vector"
     ],
     "selene.warnRoblox": false
 }

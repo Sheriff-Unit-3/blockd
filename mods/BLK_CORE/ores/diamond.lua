@@ -1,6 +1,5 @@
 blk.item("diamond", {diamond = 1, gem = 1})
 blk.alias("diamond", "default:diamond")
-blk.node("diamond_ore", true, false, {ore = 1, cracky = 2}, blk.stone_sounds("gem"),
+blk.node("diamond_ore", true, false, {ore = 1, cracky = 2}, blk.sounds("gem_ore"),
   blk.mod()..":diamond")
-blk.node("diamond_block", false, false, {diamond_block = 1, cracky = 3},
-  blk.stone_sounds("gem"))
+blk.simple_node("diamond_block",{diamond=1,diamond_block=1,cracky=3},blk.sounds("gem_ore"))

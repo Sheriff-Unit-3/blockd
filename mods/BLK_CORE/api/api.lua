@@ -28,7 +28,8 @@ function blk.group(name, group)
   return core.get_item_group(name, group)
 end
 function blk.alias(name, alias)
-  if alias ~= nil then
+  if name == nil then return
+  elseif alias ~= nil then
     core.register_alias(alias, blk.mod()..":"..name)
   else
     core.register_alias(name, blk.mod()..":"..name)

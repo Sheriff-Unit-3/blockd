@@ -11,7 +11,7 @@ core.register_node("blk_storage:chest", {
   },
   stack_max = 256,
   groups = {storage = 1, chest = 1, choppy = 1},
-  sounds = blk.wood_sounds(),
+  sounds = blk.sounds("wood"),
   on_construct = function(pos)
     local meta = core.get_meta(pos)
     local inv = meta:get_inventory()
@@ -26,7 +26,7 @@ core.register_node("blk_storage:chest", {
     )
   end
 })
-core.register_alias("chest", "blk_storage:chest")
+blk.alias("chest")
 -- Night stand
 --[[
 core.register_node("blk_storage:nightstand", {
@@ -43,7 +43,7 @@ core.register_node("blk_storage:nightstand", {
 	    {0.3750, -0.5000, 0.3750, 0.5000, 0.5000, 0.5000}
 	  }
   }
-  sounds = blk.wood_sounds(),
+  sounds = blk.sounds("wood"),
   groups = {choppy = 1, storage = 1}
   on_construct = function(pos)
     local meta = core.get_meta(pos)

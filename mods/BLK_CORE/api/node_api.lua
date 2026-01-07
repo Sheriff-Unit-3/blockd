@@ -26,7 +26,6 @@ function blk.node(name, ground, light, group, sound, drop)
     blk.alias(name)
   end
 end
-
 function blk.simple_node(name, group, sound)
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
@@ -40,7 +39,35 @@ function blk.simple_node(name, group, sound)
   })
   blk.alias(name)
 end
-
+function blk.plant(name, group, drop)
+  local desc = name:gsub("_", " ")
+  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
+  blk.alias(name)
+  if drop ~= nil then
+    core.register_node(blk.mod()..":"..name, {
+      drawtype = "plantlike",
+      description = desc,
+      tiles = {"blk_"..name..".png"},
+      sounds = blk.sounds("plant"),
+      walkable = false,
+      sunlight_propagates = false,
+      stack_max = 256,
+      groups = group,
+      drop = drop
+    })
+  else
+    core.register_node(blk.mod()..":"..name, {
+      drawtype = "plantlike",
+      description = desc,
+      tiles = {"blk_"..name..".png"},
+      sounds = blk.sounds("plant"),
+      walkable = false,
+      sunlight_propagates = false,
+      stack_max = 256,
+      groups = group
+    })
+  end
+end
 function blk.ladder(name, group, sound)
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
@@ -68,7 +95,7 @@ function blk.log(name)
       "blk_"..name.."_end.png",
       "blk_"..name..".png"
     },
-    sounds = blk.wood_sounds(),
+    sounds = blk.sounds("wood"),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, log = 1, choppy = 1}
@@ -82,7 +109,7 @@ function blk.plank(name)
   core.register_node(blk.mod()..":"..name, {
     description = desc,
     tiles = {"blk_"..name..".png"},
-    sounds = blk.wood_sounds(),
+    sounds = blk.sounds("wood"),
     sunlight_propagates = false,
     stack_max = 256,
     groups = {wood = 1, wood_planks = 1, choppy = 1}
@@ -97,7 +124,7 @@ function blk.leaves(name, drop)
     drawtype = "allfaces_optional",
     description = desc,
     tiles = {"blk_"..name..".png"},
-    sounds = blk.leaves_sounds(),
+    sounds = blk.sounds("leaves"),
     sunlight_propagates = true,
     walkable = true,
     stack_max = 256,
@@ -114,7 +141,7 @@ function blk.glass(name)
     drawtype = "glasslike",
     description = desc,
     tiles = {"blk_"..name..".png"},
-    sounds = blk.glass_sounds(),
+    sounds = blk.sounds("glass"),
     sunlight_propagates = true,
     stack_max = 256,
     walkable = true,

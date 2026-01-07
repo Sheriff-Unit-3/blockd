@@ -19,6 +19,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
     sunlight_propagates = true,
     buildable_to = true,
     stack_max = 256,
+    sounds = blk.sounds("plant"),
     groups = group,
     drop = drop
     })
