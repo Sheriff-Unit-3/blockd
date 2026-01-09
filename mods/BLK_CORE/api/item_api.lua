@@ -1,4 +1,5 @@
 function blk.item(name, group)
+  if name == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   blk.alias(name)
@@ -19,6 +20,7 @@ function blk.item(name, group)
   end
 end
 function blk.drink(name, group, hp)
+  if name == nil or group == nil or hp == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_craftitem(blk.mod()..":"..name, {
@@ -32,6 +34,7 @@ function blk.drink(name, group, hp)
   blk.alias(name)
 end
 function blk.food(name, group, hp)
+  if name == nil or group == nil or hp == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_craftitem(blk.mod()..":"..name, {
@@ -45,6 +48,7 @@ function blk.food(name, group, hp)
   blk.alias(name)
 end
 function blk.tool(level, type, capabilities)
+  if level == nil or type == nil or capabilities == nil then return end
   local name = level.."_"..type
   if level == "none" then
     name = type

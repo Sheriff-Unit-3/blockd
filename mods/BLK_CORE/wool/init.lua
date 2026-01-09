@@ -1,2 +1,2 @@
-dofile(blk.modpath().."/wool.lua")
-dofile(blk.modpath().."/crafts.lua")
+blk.modpath("/wool.lua")
+blk.modpath("/crafts.lua")

@@ -1,4 +1,4 @@
-dofile(blk.modpath().."/hand.lua")
-dofile(blk.modpath().."/effects.lua")
-dofile(blk.modpath().."/skins.lua")
-dofile(blk.modpath().."/item_hud.lua")
+blk.modpath("/hand.lua")
+blk.modpath("/effects.lua")
+blk.modpath("/skins.lua")
+blk.modpath("/item_hud.lua")

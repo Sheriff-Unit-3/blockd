@@ -1,1 +1,1 @@
-dofile(blk.modpath().."/snowball.lua")
+blk.modpath("/snowball.lua")

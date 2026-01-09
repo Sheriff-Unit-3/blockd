@@ -1,2 +1,2 @@
-dofile(blk.modpath().."/biomes.lua")
-dofile(blk.modpath().."/decorations.lua")
+blk.modpath("/biomes.lua")
+blk.modpath("/decorations.lua")

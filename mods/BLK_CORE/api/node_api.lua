@@ -1,4 +1,5 @@
 function blk.node(name, ground, light, group, sound, drop)
+  if name==nil or ground==nil or light==nil or group==nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   if drop == nil then
@@ -27,6 +28,7 @@ function blk.node(name, ground, light, group, sound, drop)
   end
 end
 function blk.simple_node(name, group, sound)
+  if name == nil or group == nil or sound == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
@@ -40,6 +42,7 @@ function blk.simple_node(name, group, sound)
   blk.alias(name)
 end
 function blk.plant(name, group, drop)
+  if name == nil or group == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   blk.alias(name)
@@ -52,6 +55,10 @@ function blk.plant(name, group, drop)
       walkable = false,
       sunlight_propagates = false,
       stack_max = 256,
+      selection_box = {
+        type = "fixed",
+	      fixed = {{-0.2500, -0.5000, -0.2500, 0.2500, -0.2500, 0.2500}}
+      },
       groups = group,
       drop = drop
     })
@@ -63,12 +70,17 @@ function blk.plant(name, group, drop)
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,
+      selection_box = {
+        type = "fixed",
+	      fixed = {{-0.2500, -0.5000, -0.2500, 0.2500, -0.2500, 0.2500}}
+      },
       stack_max = 256,
       groups = group
     })
   end
 end
 function blk.ladder(name, group, sound)
+  if name == nil or group == nil or sound == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
@@ -84,8 +96,8 @@ function blk.ladder(name, group, sound)
   })
   blk.alias(name)
 end
-
 function blk.log(name)
+  if name == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
@@ -102,8 +114,8 @@ function blk.log(name)
   })
   blk.alias(name)
 end
-
 function blk.plank(name)
+  if name == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
@@ -116,8 +128,8 @@ function blk.plank(name)
   })
   blk.alias(name)
 end
-
 function blk.leaves(name, drop)
+  if name == nil or drop == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
@@ -133,8 +145,8 @@ function blk.leaves(name, drop)
   })
   blk.alias(name)
 end
-
 function blk.glass(name)
+  if name == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {

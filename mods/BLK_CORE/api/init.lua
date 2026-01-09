@@ -1,13 +1,17 @@
 blk = {}
 function blk.mod()
-    return core.get_current_modname()
+  return core.get_current_modname()
 end
-function blk.modpath()
+function blk.modpath(file)
+  if file == nil then
     return core.get_modpath(blk.mod())
+  else
+    return dofile(core.get_modpath(blk.mod())..file)
+  end
 end
-dofile(blk.modpath().."/api.lua")
-dofile(blk.modpath().."/sound_api.lua")
-dofile(blk.modpath().."/node_api.lua")
-dofile(blk.modpath().."/item_api.lua")
-dofile(blk.modpath().."/craft_api.lua")
-dofile(blk.modpath().."/farming_api.lua")
+blk.modpath("/api.lua")
+blk.modpath("/sound_api.lua")
+blk.modpath("/node_api.lua")
+blk.modpath("/item_api.lua")
+blk.modpath("/craft_api.lua")
+blk.modpath("/farming_api.lua")

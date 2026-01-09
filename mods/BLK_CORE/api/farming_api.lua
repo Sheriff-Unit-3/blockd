@@ -1,4 +1,5 @@
 function blk.crop(name, stage, group, drop, stage1_plant)
+  if name == nil or stage == nil or group == nil then return end
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   local mname = blk.mod()..":"..name
@@ -19,6 +20,10 @@ function blk.crop(name, stage, group, drop, stage1_plant)
     sunlight_propagates = true,
     buildable_to = true,
     stack_max = 256,
+    selection_box = {
+      type = "fixed",
+	    fixed = {{-0.2500, -0.5000, -0.2500, 0.2500, -0.2500, 0.2500}}
+    },
     sounds = blk.sounds("plant"),
     groups = group,
     drop = drop
@@ -37,7 +42,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
         if under.y + 1 == above.y then
           local unode = core.get_node(under)
           local anode = core.get_node(above)
-          if blk.protected(under, pname) or blk.protected(under, pname) then
+          if blk.protected(under, pname) or blk.protected(above, pname) then
             return itemstack
           elseif blk.node_def(anode.name, "buildable_to") and blk.group(unode.name, "soil") > 0 then
             core.set_node(above, {name = stage1_plant})
@@ -53,6 +58,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
   end
 end
 function blk.grow(name, time, chance)
+  if name == nil or time == nil or chance == nil then return end
   local fname = blk.mod()..":"..name
   core.register_abm({
   label = name.."_growing",

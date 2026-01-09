@@ -1,1 +1,1 @@
-dofile(blk.modpath().."/chat.lua")
+blk.modpath("/chat.lua")

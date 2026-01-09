@@ -2,16 +2,58 @@
 This is the api that Blockd uses, all api functions are defined in  
 this mod. Hence this is the main and only api docs for Blockd.  
 Please see the bottom for notes regarding Blockd behavior.
-
 ## General Functions
-
-### Modpath
+### blk.modpath
 ```lua
--- This function returns the mod path of any mod that calls it
--- Used in init.lua to load files
-blk.modpath()
+-- This function returns the mod path of any mod that calls it.
+-- Used in init.lua to load files.
+-- @param file string The location of the file in the mod, is not required.
+-- @return Either the mod file path, or the file path to the file specified.
+blk.modpath([file])
 ```
-
+### blk.mod
+```lua
+--- Used to get the current mod.
+blk.mod()
+```
+### blk.loaded
+```lua
+--- Check to see if a mod is loaded.
+-- @param mod string The name of the mod to check for.
+blk.loaded(mod)
+```
+### blk.protected
+```lua
+--- Check if a pos is protected from a certian player.
+-- @param pos table The pos to check.
+-- @param player string The player name.
+-- @return boolean True means that pos is protected from that player.
+blk.protected(pos, player)
+```
+### blk.node_def
+```lua
+--- Check what values were set in node definition.
+-- @param node string The name of the node to check on.
+-- @param def string The name of definition to check the value on.
+-- @return The value of the definition.
+blk.node_def(node, def)
+```
+### blk.group
+```lua
+--- Get the group rating of a node or item in a particular group.
+-- Also used to find out if a node or item belongs to that group.
+-- @param name string The name of the node.
+-- @param group string the name of group.
+-- @return The rating for that node or item in that group. 0 is the same as nil.
+blk.group(name, group)
+```
+### blk.alias
+```lua
+--- Register an alias.
+-- @param name string The name of the node/item. Don't include the mod name.
+-- @param alias string The alias name, only include if it will be different then 'name'.
+blk.alias(name[, alias])
+```
 ## Node Registeration API Functions
 ### blk.node()
 ```lua
@@ -24,7 +66,6 @@ blk.modpath()
 -- @param drop string or table Same as drop in core.register_node(), not required.
 blk.node(name, ground, light, group, sound, drop)
 ```
-
 ### blk.ladder()
 ```lua
 --- Used to register ladders
@@ -33,21 +74,18 @@ blk.node(name, ground, light, group, sound, drop)
 -- @param sound string or table Same as sounds in core.register_node()
 blk.ladder(name, group, sound)
 ```
-
 ### blk.log()
 ```lua
 --- Used to register logs.
 -- @param name string The name of the log.
 blk.log(name)
 ```
-
 ### blk.plank()
 ```lua
 --- Used to register planks.
 -- @param name string The name of the plank.
 blk.plank(name)
 ```
-
 ### blk.leaves()
 ```lua
 --- Used to register leaves
@@ -55,14 +93,12 @@ blk.plank(name)
 -- @param drop table Same as the drop table in core.register_node()
 blk.leaves(name, drop)
 ```
-
 ### blk.glass()
 ```lua
 --- Used to register glass
 -- @param name string The name of the glass
 blk.glass(name)
 ```
-
 ## Item Registeration API Functions
 ### blk.item()
 ```lua
@@ -71,7 +107,6 @@ blk.glass(name)
 -- @param group table The groups the item belongs to.
 blk.item(name, group)
 ```
-
 ### blk.drink
 ```lua
 --- Used to register drinks
@@ -79,9 +114,7 @@ blk.item(name, group)
 -- @param group table The groups the drink belongs to.
 -- @param hp number The hp the player gains or losses by drinking.
 blk.drink(name, group, hp)
-
 ## Craft API Functions
-
 ### craft
 ```lua
 --- Returns core.register_craft with data entered.
@@ -90,7 +123,6 @@ blk.drink(name, group, hp)
 -- @param replace table not required, same syntax as core.register_craft({replacements = }).
 blk.craft(out, input, replace)
 ```
-
 ### cook
 ```lua
 --- Returns core.register_craft with data entered.
@@ -99,7 +131,6 @@ blk.craft(out, input, replace)
 -- @param time number Amount of time it takes to cook.
 blk.cook(out, input, time)
 ```
-
 ### fuel
 ```lua
 --- Returns core.register_craft with data entered.
@@ -111,59 +142,13 @@ blk.fuel(fuel, time, replace)
 
 
 ## Sound API Functions
-
-### Node Sounds
-
-#### Wood
 ```lua
---- This function returns a table of sounds for wood node definitions.
-blk.wood_sounds()
-```
-
-#### Stone
-```lua
---- This function returns a table of sounds for stone node definitions.
--- @param type string Can be "stone", "gravel", "metal", or "gem".
-blk.stone_sounds(type)
-```
-
-#### Metal
-```lua
---- This function returns a table of sounds for metal node definitions.
-blk.metal_sounds()
-```
-
-#### Snow
-```lua
---- This function returns a table of sounds for snow node definitions.
-blk.snow_sounds()
-```
-
-#### Glass
-```lua
---- This function returns a table of sounds for glass node definitions.
-blk.glass_sounds()
-```
-
-#### Leaves
-```lua
---- This function returns a table of sounds for leaves node definitions.
-blk.leaves_sounds()
-```
-
-
-### Item Sounds
-
-#### Drink
-```lua
---- This function returns a table of sounds for drinks.
-blk.drink_sounds()
-```
-
-#### Food
-```lua
---- This function returns a table of sounds for food.
-blk.food_sounds()
+--- Used for almost all sounds in Blockd
+-- @param type string The type of sound you want.
+-- Valid types are: "dirt", "sand", "wood", "stone", "gravel", "metal_ore","gem_ore",
+-- "metal", "snow", "glass", "leaves", "wool", "plant", "drink", "food".
+-- @return SimpleSoundSpec table With all the sounds and fields pre-filled.
+blk.sounds(type)
 ```
 
 ## Notes
