@@ -4,13 +4,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   local mname = blk.mod()..":"..name
   if stage == 0 then
-    core.register_craftitem(mname, {
-      description = desc,
-      inventory_image = "blk_"..name..".png",
-      stack_max = 256,
-      groups = group
-    })
-    blk.alias(name)
+    blk.item(name, group)
   elseif stage > 0 then
     core.register_node(mname.."_"..stage, {
     description = desc,

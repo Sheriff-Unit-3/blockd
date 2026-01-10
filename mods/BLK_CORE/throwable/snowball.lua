@@ -4,7 +4,7 @@ local texture = "blk_snowball.png"
 core.register_craftitem(name, {
 	description = "Snowball",
 	range = 0,
-	stack_max= 256,
+	stack_max = 256,
 	inventory_image = texture,
 	on_use = function(itemstack, user, pointed_thing)
 			if not core.setting_getbool("creative_mode") then itemstack:take_item()
