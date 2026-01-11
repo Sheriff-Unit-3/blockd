@@ -1,3 +1,4 @@
+local wood_planks = "group:wood_planks"
 blk.craft("blk_base:apple_block", {
   {"blk_base:apple", "blk_base:apple", "blk_base:apple"},
   {"blk_base:apple", "blk_base:apple", "blk_base:apple"},
@@ -9,22 +10,22 @@ blk.craft("compressed_cobble", {
   {"cobble", "cobble", "cobble"},
   {"cobble", "cobble", "cobble"}
 })
-blk.craft("stick 16", {{"group:wood_planks"}})
+blk.craft("stick 16", {{wood_planks}})
 blk.craft("cobble 9", {{"compressed_cobble"}})
 blk.craft("snowball 9", {{"snow"}})
 blk.craft("apple_planks 4", {{"apple_log"}})
 blk.craft("maple_planks 4", {{"maple_log"}})
-blk.cook("charcoal", "group:wood_planks", 7.5)
+blk.cook("charcoal", wood_planks, 7.5)
 blk.fuel("charcoal", 40)
-blk.fuel("group:wood_planks", 10)
+blk.fuel(wood_planks, 10)
 blk.fuel("lava_bucket", 60, {{"lava_bucket", "bucket"}})
 blk.fuel("group:oil", 30, {{"group:oil", "bottle"}})
-blk.craft("torch 16", {{"coal"}, {"group:wood_planks"}})
+blk.craft("torch 16", {{"coal"}, {wood_planks}})
 blk.craft("torch 4", {{"coal"}, {"stick"}})
 blk.craft("lantern", {
-  {"group:wood_planks", "glass", "group:wood_planks"},
+  {wood_planks, "glass", wood_planks},
   {"glass", "torch", "glass"},
-  {"group:wood_planks", "glass", "group:wood_planks"},
+  {wood_planks, "glass", wood_planks},
 })
 blk.cook("glass", "sand 4", "2")
 blk.craft("bottle 8", {{"stick"}, {"glass"}})
@@ -52,3 +53,4 @@ blk.craft("cake", {
   {{"bowl", "bowl"}, {"oil", "bottle"}, {"milk", "bottle"}}
 )
 blk.craft("cookie 8", {{"flour", "sugar"}, {"milk", "coal"}})
+blk.craft("bowl 6", {{wood_planks, "", wood_planks}, {"", wood_planks, ""}})

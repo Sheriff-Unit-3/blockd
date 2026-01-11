@@ -1,6 +1,7 @@
 local sound = blk.sounds("wool")
 local group = {wool = 1, snappy = 1}
-blk.simple_node("wool", group, sound)
+blk.simple_node("white_wool", group, sound)
+blk.alias("white_wool", "wool")
 blk.simple_node("black_wool", group, sound)
 blk.simple_node("blue_wool", group, sound)
 blk.simple_node("light_blue_wool", group, sound)

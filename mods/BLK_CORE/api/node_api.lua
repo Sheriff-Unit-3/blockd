@@ -1,3 +1,9 @@
+function blk.desc(name)
+  if name == nil then return end
+  local desc = name:gsub("_", " ")
+  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
+  return desc
+end
 function blk.node(name, ground, light, group, sound, drop)
   if name==nil or ground==nil or light==nil or group==nil then return end
   local desc = name:gsub("_", " ")

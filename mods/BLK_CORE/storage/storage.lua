@@ -1,5 +1,5 @@
 -- chest
-core.register_node("blk_storage:chest", {
+core.register_node(blk.mod()..":chest", {
   description = "Chest",
   tiles = {
     "blk_chest_top.png",
@@ -27,6 +27,32 @@ core.register_node("blk_storage:chest", {
   end
 })
 blk.alias("chest")
+core.register_node(blk.mod()..":furnace", {
+description = "Furnace",
+  tiles = {
+    "blk_furnace_top.png",
+    "blk_furnace_top.png",
+    "blk_furnace_side.png",
+    "blk_furnace_side.png",
+    "blk_furnace_side.png",
+    "blk_furnace_front.png"
+  },
+  stack_max = 256,
+  groups = {crafting = 1, furnace = 1, cracky = 1},
+  sounds = blk.sounds("stone"),
+  on_construct = function(pos)
+    local meta = core.get_meta(pos)
+    meta:set_string("formspec",
+      "formspec_version[6]"..
+      "size[8,9]"..
+      "list[context;fuel;2,3;1,1;]"..
+      "list[context;src;2,1;1,1;]"..
+      "list[context;dst;5,1;2,2;]"..
+      "list[current_player;main;0,5;9,4;]"
+    )
+  end
+})
+blk.alias("furnace")
 -- Night stand
 --[[
 core.register_node("blk_storage:nightstand", {

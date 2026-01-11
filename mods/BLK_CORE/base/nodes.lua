@@ -253,9 +253,13 @@ core.register_node(blk.mod()..":torch", {
   description = "Torch",
   tiles = {"blk_torch.png"},
   walkable = false,
-  light_source = 13,
+  light_source = 10,
   sunlight_propagates = true,
   stack_max = 256,
+  selection_box = {
+      type = "fixed",
+	    fixed = {{-0.1875, -0.5000, -0.1875, 0.1875, 0.1875, 0.1875}}
+    },
   groups = {torch = 1, light = 1, on = 1, hand = 1}
 })
 blk.alias("torch")
@@ -270,7 +274,6 @@ core.register_node(blk.mod()..":haybale", {
   groups = {hay = 1, bale = 1, hand = 1}
 })
 blk.alias("haybale")
-
 --[[ tnt
 core.register_node("blk_base:tnt", {
   description = "TNT",
