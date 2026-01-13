@@ -156,13 +156,12 @@ function blk.glass(name)
   local desc = name:gsub("_", " ")
   desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
-    drawtype = "glasslike",
+    drawtype = "glasslike_framed_optional",
     description = desc,
     tiles = {"blk_"..name..".png"},
     sounds = blk.sounds("glass"),
     sunlight_propagates = true,
     stack_max = 256,
-    walkable = true,
     groups = {choppy = 1, glass = 1}
   })
   blk.alias(name)

@@ -1,5 +1,2 @@
-blk.craft("chest", {
-  {"group:wood_planks", "group:wood_planks", "group:wood_planks"},
-  {"group:wood_planks", "", "group:wood_planks"},
-  {"group:wood_planks", "group:wood_planks", "group:wood_planks"}
-})
+local wp = "group:wood_planks"
+blk.craft("chest", {{wp, wp, wp}, {wp, "", wp}, {wp, wp, wp}})

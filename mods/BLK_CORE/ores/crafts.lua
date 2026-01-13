@@ -1,35 +1,19 @@
--- coal
+local function block(t, b)
+  if t == nil then return end
+  if b == nil then
+    blk.craft(t.."_block", {{t, t, t}, {t, t, t}, {t, t, t}})
+    blk.craft(t.." 9", {{t.."_block"}})
+  else
+    local mt = t.."_bar"
+    blk.craft(t.."_block", {{mt, mt, mt}, {mt, mt, mt}, {mt, mt, mt}})
+    blk.craft(mt.." 9", {{t.."_block"}})
+  end
+end
 blk.fuel("coal", 20)
 blk.fuel("coal_block", 180)
-blk.craft("coal_block", {
-  {"coal", "coal", "coal"},
-  {"coal", "coal", "coal"},
-  {"coal", "coal", "coal"}
-})
-blk.craft("coal 9", {{"coal_block"}})
-
--- iron
+block("coal")
 blk.cook("iron_bar", "raw_iron", 3)
-blk.craft("iron_block", {
-  {"iron_bar", "iron_bar", "iron_bar"},
-  {"iron_bar", "iron_bar", "iron_bar"},
-  {"iron_bar", "iron_bar", "iron_bar"}
-})
-blk.craft("iron_bar 9", {{"iron_block"}})
-
--- gold
+block("iron", true)
 blk.cook("gold_bar", "raw_gold", 3)
-blk.craft("gold_block", {
-  {"gold_bar", "gold_bar", "gold_bar"},
-  {"gold_bar", "gold_bar", "gold_bar"},
-  {"gold_bar", "gold_bar", "gold_bar"}
-})
-blk.craft("gold_bar", {{"gold_block"}})
-
--- diamond
-blk.craft("diamond_block", {
-  {"diamond", "diamond", "diamond"},
-  {"diamond", "diamond", "diamond"},
-  {"diamond", "diamond", "diamond"}
-})
-blk.craft("diamond", {{"diamond_block"}})
+block("gold", true)
+block("diamond")

@@ -1,0 +1,1 @@
+blk.craft(blk.mod()..":snowball 9", {{"blk_base:snow"}})
