@@ -57,7 +57,7 @@ blk.alias(name[, alias])
 ## Node Registeration API Functions
 ### blk.node()
 ```lua
---- Used to register simple nodes.
+--- Used to register most nodes.
 -- @param name string The name of the node to be registered.
 -- @param ground boolean Is ground content.
 -- @param light boolean Light passes through.
@@ -65,39 +65,6 @@ blk.alias(name[, alias])
 -- @param sound string or table Same as sounds in core.register_node().
 -- @param drop string or table Same as drop in core.register_node(), not required.
 blk.node(name, ground, light, group, sound, drop)
-```
-### blk.ladder()
-```lua
---- Used to register ladders
--- @param name string The name of the ladder.
--- @param group table The table of groups for this ladder.
--- @param sound string or table Same as sounds in core.register_node()
-blk.ladder(name, group, sound)
-```
-### blk.log()
-```lua
---- Used to register logs.
--- @param name string The name of the log.
-blk.log(name)
-```
-### blk.plank()
-```lua
---- Used to register planks.
--- @param name string The name of the plank.
-blk.plank(name)
-```
-### blk.leaves()
-```lua
---- Used to register leaves
--- @param name string The name of the leaves.
--- @param drop table Same as the drop table in core.register_node()
-blk.leaves(name, drop)
-```
-### blk.glass()
-```lua
---- Used to register glass
--- @param name string The name of the glass
-blk.glass(name)
 ```
 ## Item Registeration API Functions
 ### blk.item()

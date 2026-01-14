@@ -3,8 +3,8 @@ local function _wool(color)
   if color == nil then return end
   blk.craft(blk.mod()..":"..color.."_wool", {{wool, color.."_dye"}})
 end
-local s = "blk_base:string"
-local c = "blk_farming:cotton"
+local s = "string"
+local c = "cotton"
 blk.craft(wool, {{c, c, c},{c, c, c},{c, c, c}})
 blk.craft(wool, {{s, s, s},{s, s, s},{s, s, s}})
 _wool("black")
