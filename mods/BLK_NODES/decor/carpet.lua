@@ -34,6 +34,8 @@ local function carpet(color)
   })
   blk.alias(name)
   blk.alias(sname)
+  blk.add_node(name)
+  blk.add_node(sname)
   blk.craft(mname.." 16", {{"blk_wool:"..color.."_wool"}})
   blk.craft(smname.." 16", {{"blk_wool:"..color.."_wool"}})
 end

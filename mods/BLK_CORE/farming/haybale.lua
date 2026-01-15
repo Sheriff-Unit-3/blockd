@@ -9,6 +9,7 @@ core.register_node(blk.mod()..":haybale", {
   groups = {hay = 1, bale = 1, hand = 1}
 })
 blk.alias("haybale")
+blk.add_node("haybale")
 blk.craft("haybale", {
   {"wheat", "wheat", "wheat"},
   {"wheat", "wheat", "wheat"},

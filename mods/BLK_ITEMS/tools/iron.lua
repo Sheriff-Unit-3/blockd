@@ -37,4 +37,5 @@ core.register_craftitem(blk.mod()..":shears", {
   node_placement_prediction = nil,
   groups = {shears = 1}
 })
+blk.add_tool("shears")
 blk.alias("shears")

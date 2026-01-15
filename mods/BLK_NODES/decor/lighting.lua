@@ -9,6 +9,7 @@ core.register_node(blk.mod()..":lantern", {
   end
 })
 blk.alias("lantern")
+blk.add_node("lantern_off")
 blk.alias("lantern_off")
 core.register_node(blk.mod()..":lantern_on", {
   description = "Lantern",
@@ -16,11 +17,13 @@ core.register_node(blk.mod()..":lantern_on", {
   walkable = true,
   stack_max = 256,
   light_source = core.LIGHT_MAX,
+  drop = blk.get_node("lantern_off", "name"),
   groups = {lantern = 1, light = 1, on = 1, choppy = 1},
   on_rightclick = function(pos)
     core.swap_node(pos, {name = "blk_base:lantern"})
   end
 })
+blk.add_node("lantern_on")
 blk.alias("lantern_on")
 core.register_node(blk.mod()..":torch", {
   drawtype = "torchlike",
@@ -37,6 +40,7 @@ core.register_node(blk.mod()..":torch", {
   groups = {torch = 1, light = 1, on = 1, hand = 1}
 })
 blk.alias("torch")
+blk.add_node("torch")
 blk.craft("torch 16", {{"coal"}, {"group:wood_planks"}})
 blk.craft("torch 4", {{"coal"}, {"stick"}})
 blk.craft("lantern", {

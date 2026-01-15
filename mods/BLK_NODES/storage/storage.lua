@@ -26,6 +26,7 @@ core.register_node(blk.mod()..":chest", {
     )
   end
 })
+blk.add_node("chest")
 blk.alias("chest")
 core.register_node(blk.mod()..":furnace", {
 description = "Furnace",
@@ -52,6 +53,7 @@ description = "Furnace",
     )
   end
 })
+blk.add_node("furnace")
 blk.alias("furnace")
 -- Night stand
 --[[

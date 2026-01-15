@@ -21,6 +21,7 @@ core.register_node(blk.mod()..":cake", {
   on_use = core.item_eat(25)
 })
 blk.alias("cake")
+blk.add_node("cake")
 blk.craft("cake", {
   {"sugar", "currents", "egg"},
   {"flour", "oil", "flour"},

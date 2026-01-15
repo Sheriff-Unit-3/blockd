@@ -1,7 +1,0 @@
-blk.item("stick", {stick = 1})
-blk.item("charcoal", {charcoal = 1, fuel = 1})
-blk.item("bottle", {bottle = 1, glass = 1})
-blk.item("oil_bottle", {bottle = 1, glass = 1, oil = 1})
-blk.item("string", {string = 1, hand = 1})
-blk.alias("string", "farming:string")
-blk.item("bowl", {bowl = 1})

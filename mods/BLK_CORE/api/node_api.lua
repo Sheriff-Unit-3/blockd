@@ -1,3 +1,12 @@
+blk.nodes = {}
+function blk.add_node(name)
+  if name then blk.nodes[name] = {name = blk.mod()..":"..name, mod = blk.mod()} end
+end
+function blk.get_node(name, field)
+  if name and not field then return blk.nodes[name]
+  elseif name and field then return blk.nodes[name][field]
+  end
+end
 function blk.desc(name)
   if name == nil then return end
   local desc = name:gsub("_", " ")
@@ -6,11 +15,11 @@ function blk.desc(name)
 end
 function blk.node(name, ground, light, group, sound, drop)
   if name==nil or ground==nil or light==nil or group==nil then return end
-  local desc = name:gsub("_", " ")
-  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
+  blk.alias(name)
+  blk.add_node(name)
   if drop == nil then
     core.register_node(blk.mod()..":"..name, {
-      description = desc,
+      description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       is_ground_content = ground,
       sunlight_propagates = light,
@@ -18,10 +27,9 @@ function blk.node(name, ground, light, group, sound, drop)
       stack_max = 256,
       sounds = sound
     })
-    blk.alias(name)
   else
     core.register_node(blk.mod()..":"..name, {
-      description = desc,
+      description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       is_ground_content = ground,
       sunlight_propagates = light,
@@ -30,15 +38,12 @@ function blk.node(name, ground, light, group, sound, drop)
       sounds = sound,
       drop = drop
     })
-    blk.alias(name)
   end
 end
 function blk.simple_node(name, group, sound)
   if name == nil or group == nil or sound == nil then return end
-  local desc = name:gsub("_", " ")
-  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   core.register_node(blk.mod()..":"..name, {
-    description = desc,
+    description = blk.desc(name),
     tiles = {"blk_"..name..".png"},
     sounds = sound,
     sunlight_propagates = false,
@@ -46,16 +51,16 @@ function blk.simple_node(name, group, sound)
     groups = group
   })
   blk.alias(name)
+  blk.add_node(name)
 end
 function blk.plant(name, group, drop)
   if name == nil or group == nil then return end
-  local desc = name:gsub("_", " ")
-  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
   blk.alias(name)
+  blk.add_node(name)
   if drop ~= nil then
     core.register_node(blk.mod()..":"..name, {
       drawtype = "plantlike",
-      description = desc,
+      description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       sounds = blk.sounds("plant"),
       walkable = false,
@@ -71,7 +76,7 @@ function blk.plant(name, group, drop)
   else
     core.register_node(blk.mod()..":"..name, {
       drawtype = "plantlike",
-      description = desc,
+      description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       sounds = blk.sounds("plant"),
       walkable = false,

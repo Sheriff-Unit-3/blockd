@@ -11,6 +11,7 @@ local function glass(name)
     stack_max = 256,
     groups = {choppy = 1, glass = 1}
   })
+  blk.add_node(name)
   blk.alias(name)
 end
 glass("glass")

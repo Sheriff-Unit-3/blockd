@@ -35,6 +35,7 @@ core.register_craftitem(name, {
 	end,
 })
 blk.alias("snowball")
+blk.add_item("snowball")
 local _snowball = {
 	physical = false,
 	timer = 0,

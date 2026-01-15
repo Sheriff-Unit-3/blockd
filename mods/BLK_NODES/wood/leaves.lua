@@ -13,14 +13,15 @@ local function leaves(name, drop)
     groups = {hand = 2, leaves = 1, snappy = 1},
     drop = drop
   })
+  blk.add_node(name)
   blk.alias(name)
 end
 leaves("apple_leaves", {
   max_items = 3,
   items = {
-    {rarity = 10, items = {blk.mod()..":apple"}},
-    {rarity = 6, items = {blk.mod()..":apple_sapling"}},
-    {rarity = 3, items = {blk.mod()..":stick"}},
+    {rarity = 10, items = {blk.get_item("apple", "name")}},
+    -- {rarity = 6, items = {blk.get_node("apple_sapling", "name")}},
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
     {rarity = 1, items = {blk.mod()..":apple_leaves"}}
   }
 })
@@ -29,35 +30,35 @@ blk.alias("apple_leaves", "mapgen_apple")
 leaves("maple_leaves", {
   max_items = 2,
   items = {
-    {rarity = 3, items = {"stick"}},
-    {rarity = 1, items = {"blk_base:maple_leaves"}}
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
+    {rarity = 1, items = {blk.mod()..":maple_leaves"}}
   }
 })
 leaves("birch_leaves", {
   max_items = 2,
   items = {
-    {rarity = 3, items = {"stick"}},
-    {rarity = 1, items = {"blk_base:birch_leaves"}}
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
+    {rarity = 1, items = {blk.mod()..":birch_leaves"}}
   }
 })
 leaves("jungle_leaves", {
   max_items = 2,
   items = {
-    {rarity = 3, items = {"stick"}},
-    {rarity = 1, items = {"blk_base:jungle_leaves"}}
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
+    {rarity = 1, items = {blk.mod()..":jungle_leaves"}}
   }
 })
 leaves("spruce_leaves", {
   max_items = 2,
   items = {
-    {rarity = 3, items = {"stick"}},
-    {rarity = 1, items = {"blk_base:spruce_leaves"}}
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
+    {rarity = 1, items = {blk.mod()..":spruce_leaves"}}
   }
 })
 leaves("acacia_leaves", {
   max_items = 2,
   items = {
-    {rarity = 3, items = {"stick"}},
-    {rarity = 1, items = {"blk_base:acacia_leaves"}}
+    {rarity = 3, items = {blk.get_item("stick", "name")}},
+    {rarity = 1, items = {blk.mod()..":acacia_leaves"}}
   }
 })

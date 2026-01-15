@@ -1,3 +1,4 @@
+blk.item("stick", {stick = 1})
 blk.tool("wood", "sword", {
     full_punch_interval = 0.5,
     damage_groups = {fleshy = 20}

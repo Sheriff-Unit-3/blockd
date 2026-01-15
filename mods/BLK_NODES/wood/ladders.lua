@@ -21,6 +21,7 @@ local function ladder(name, group, sound)
     sounds = sound,
     groups = group
   })
+  blk.add_node(name)
   blk.alias(name)
 end
 ladder("maple", {ladder = 1, choppy = 1}, blk.sounds("wood"))

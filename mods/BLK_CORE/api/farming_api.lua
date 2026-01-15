@@ -1,10 +1,10 @@
 function blk.crop(name, stage, group, drop, stage1_plant)
   if name == nil or stage == nil or group == nil then return end
-  local desc = name:gsub("_", " ")
-  desc = desc:gsub("(%l)(%w*)", function(a,b)return string.upper(a)..b end)
+  local desc = blk.desc(name)
   local mname = blk.mod()..":"..name
   if stage == 0 then
     blk.item(name, group)
+    blk.add_item(name)
   elseif stage > 0 then
     core.register_node(mname.."_"..stage, {
     description = desc,
@@ -22,6 +22,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
     groups = group,
     drop = drop
     })
+    blk.add_item(name.."_"..stage)
   elseif stage == -1 then
     core.register_craftitem(mname.."_seeds", {
       description = desc.." Seeds",
@@ -38,7 +39,8 @@ function blk.crop(name, stage, group, drop, stage1_plant)
           local anode = core.get_node(above)
           if blk.protected(under, pname) or blk.protected(above, pname) then
             return itemstack
-          elseif blk.node_def(anode.name, "buildable_to") and blk.group(unode.name, "soil") > 0 then
+          elseif blk.node_def(anode.name, "buildable_to")
+              and blk.group(unode.name, "soil") > 0 then
             core.set_node(above, {name = stage1_plant})
             if not core.is_creative_enabled(placer) then
               itemstack:take_item()
@@ -49,6 +51,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
       end
     })
     blk.alias(name.."_seeds")
+    blk.add_item(name.."_seeds")
   end
 end
 function blk.grow(name, time, chance)
