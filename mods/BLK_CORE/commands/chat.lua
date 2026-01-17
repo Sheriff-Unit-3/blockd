@@ -1,4 +1,5 @@
 core.register_chatcommand("v", {
+  params = "",
   privs = {server = true},
   description = "Provides running Blockd version number.",
   func = function()
@@ -7,15 +8,21 @@ core.register_chatcommand("v", {
   end
 })
 core.register_chatcommand("debug", {
+  params = "[mods]",
   privs = {debug = true},
   description = "Displays debug info.",
-  func = function(name)
-    core.chat_send_player(
-    name,
-    "Game: Blockd, version: "..blk.info.version..", nodes: "..blk.registered.nodes..
-    ", items: "..blk.registered.items..", mobs: "..blk.registered.mobs.."."
-    )
-    return true
+  func = function(name, param)
+    local mods = core.get_modnames()
+    if param == "" or not param then
+      core.chat_send_player(
+        name,
+        "Game: Blockd, version: "..blk.info.version..", mods: "..#mods..", nodes: "..blk.registered.nodes..
+        ", items: "..blk.registered.items..", mobs: "..blk.registered.mobs.."."
+      )
+      return true
+    elseif param == "mods" then
+      core.chat_send_player(name, table.concat(mods, ", "))
+    end
   end
 })
 --[[
