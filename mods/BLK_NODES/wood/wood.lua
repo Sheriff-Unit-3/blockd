@@ -48,7 +48,6 @@ log("acacia_log")
 plank("acacia_planks")
 blk.item("charcoal", {charcoal = 1, fuel = 1})
 blk.add_item("charcoal")
-blk.alias("charcoal")
 -- crafts
 blk.craft("apple_planks 4", {{"apple_log"}})
 blk.craft("maple_planks 4", {{"maple_log"}})

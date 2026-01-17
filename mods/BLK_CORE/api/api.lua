@@ -1,13 +1,13 @@
-local info = {
+blk.info = {
   name = "blk",
   version = "v0.0.1-dev",
   stable = false
 }
-function blk.info(data)
+function blk.game(data)
   if data == "v" then
-    return info.version
+    return blk.info.version
   else
-    return info
+    return blk.info
   end
 end
 function blk.loaded(mod)

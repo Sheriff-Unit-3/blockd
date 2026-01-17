@@ -10,6 +10,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
     description = desc,
     drawtype = "plantlike",
     tiles = {"blk_"..name.."_"..stage..".png"},
+    inventory_image = "blk_"..name.."_"..stage..".png",
     walkable = false,
     sunlight_propagates = true,
     buildable_to = true,

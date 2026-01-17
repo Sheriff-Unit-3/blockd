@@ -3,7 +3,8 @@
         "core",
         "sounds",
         "blk",
-        "vector"
+        "vector",
+        "skins"
     ],
     "selene.warnRoblox": false
 }

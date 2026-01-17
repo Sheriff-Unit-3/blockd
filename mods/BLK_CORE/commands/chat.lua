@@ -1,24 +1,31 @@
 core.register_chatcommand("v", {
-    description = "Provides running Blockd version number.",
-    func = function()
-        local string = "Blockd version: "..blk.info("v")
-        return true, string
-    end
+  privs = {server = true},
+  description = "Provides running Blockd version number.",
+  func = function()
+    local string = "Blockd version: "..blk.game("v")
+    return true, string
+  end
 })
-core.register_chatcommand("exit", {
-    description = "Lets you exit the game with a command.",
-    func = function()
-        core.request_shutdown()
-    end
+core.register_chatcommand("debug", {
+  privs = {debug = true},
+  description = "Displays debug info.",
+  func = function(name)
+    core.chat_send_player(
+    name,
+    "Game: Blockd, version: "..blk.info.version..", nodes: "..blk.registered.nodes..
+    ", items: "..blk.registered.items..", mobs: "..blk.registered.mobs.."."
+    )
+    return true
+  end
 })
 --[[
 core.register_chatcommand("h", {
-    description = "Help message.",
-    func = function(name)
-        return true, core.show_formspec(name, blk.mod()..":help", "formspec_version[6]"..
-            "size[11,11]".."label[4.25,0.3;Blockd Help Menu]"..
-            "textlist[0.5,1;10,9.5;Commands;/v - Running Blockd version.,/h - Shows you this menu.;1;false]"..
-            "label[0.5,0.7;Commands]")
-    end
+  description = "Help message.",
+  func = function(name)
+    return true, core.show_formspec(name, blk.mod()..":help", "formspec_version[6]"..
+      "size[11,11]".."label[4.25,0.3;Blockd Help Menu]"..
+      "textlist[0.5,1;10,9.5;Commands;/v - Running Blockd version.,/h - Shows you this menu.;1;false]"..
+      "label[0.5,0.7;Commands]")
+  end
 })
 ]]--

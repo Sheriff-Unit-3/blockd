@@ -2,7 +2,10 @@ blk.items = {}
 blk.tools = {}
 function blk.add_item(name)
   blk.tools[name] = {}
-  if name then blk.items[name] = {name = blk.mod()..":"..name, mod = blk.mod()} end
+  if name then
+    blk.items[name] = {name = blk.mod()..":"..name, mod = blk.mod()}
+    blk.registered.items = blk.registered.items + 1
+  end
 end
 function blk.get_item(name, field)
   if name and not field then return blk.items[name]

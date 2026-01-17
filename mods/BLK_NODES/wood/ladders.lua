@@ -7,7 +7,7 @@ local function ladder(name, group, sound)
     drawtype = "nodebox",
     tiles = {"blk_"..name.."_planks.png"},
     sunlight_propagates = true,
-    paramtype = "wallmounted",
+    paramtype = "light",
     node_box = {type = "fixed", fixed = {
       {-0.5000, -0.5000, -0.5000, -0.3750, 0.5000, -0.3750},
 	  	{-0.5000, -0.5000, 0.3750, -0.3750, 0.5000, 0.5000},

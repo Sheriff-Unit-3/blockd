@@ -5,17 +5,5 @@ blk.plant("grass", {hand = 1, grass = 1}, {
     {rarity = 1, items = {blk.mod()..":grass"}}
   }
 })
---[[core.register_node("blk_base:grass", {
-  description = "Grass",
-  drawtype = "plantlike",
-  tiles = {"blk_grass.png"},
-  is_ground_content = true,
-  stack_max = 256,
-  sunlight_propagates = true,
-  walkable = false,
-  buildable_to = true,
-  groups = {hand = 1, grass = 1}
-})
-blk.alias("grass")]]
 blk.plant("rose", {hand = 1, flower = 1, red_flower = 1})
 blk.plant("dandelion", {hand = 1, flower = 1, yellow_flower = 1})

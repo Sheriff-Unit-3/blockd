@@ -1,6 +1,9 @@
 blk.nodes = {}
 function blk.add_node(name)
-  if name then blk.nodes[name] = {name = blk.mod()..":"..name, mod = blk.mod()} end
+  if name then
+    blk.nodes[name] = {name = blk.mod()..":"..name, mod = blk.mod()}
+    blk.registered.nodes = blk.registered.nodes + 1
+  end
 end
 function blk.get_node(name, field)
   if name and not field then return blk.nodes[name]
@@ -62,6 +65,7 @@ function blk.plant(name, group, drop)
       drawtype = "plantlike",
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
+      inventory_image = "blk_"..name..".png",
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,
@@ -78,6 +82,7 @@ function blk.plant(name, group, drop)
       drawtype = "plantlike",
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
+      inventory_image = "blk_"..name.."png",
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,

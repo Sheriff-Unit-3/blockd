@@ -1,4 +1,5 @@
 blk = {}
+blk.registered = {nodes = 0, items = 0, mobs = 0}
 function blk.mod()
   return core.get_current_modname()
 end
