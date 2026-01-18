@@ -29,7 +29,7 @@ core.register_decoration({
     blk.get_node("tulip_pink", "name"),
     blk.get_node("tulip_white", "name"),
     blk.get_node("dandelion", "name"),
-    blk.get_node("alluim", "name"),
+    blk.get_node("allium", "name"),
     blk.get_node("azure_bluet", "name"),
     blk.get_node("blue_orchid", "name"),
     blk.get_node("daisy", "name"),
