@@ -4,7 +4,7 @@ core.register_decoration({
   sidelen = 16,
   fill_ratio = .2,
   biomes = {"plains", "hilly_plains"},
-  decoration = {"blk_base:grass"}
+  decoration = {blk.get_node("grass", "name")}
 })
 core.register_decoration({
   deco_type = "simple",
@@ -12,7 +12,7 @@ core.register_decoration({
   sidelen = 16,
   fill_ratio = .05,
   biomes = {"forrest", "hilly_forrest"},
-  decoration = {"blk_base:grass"}
+  decoration = {blk.get_node("grass", "name")}
 })
 core.register_decoration({
   deco_type = "simple",
@@ -21,11 +21,11 @@ core.register_decoration({
   fill_ratio = .009,
   biomes = {"plains", "hilly_plains"},
   decoration = {
-    "blk_farming:wheat_4",
-    "blk_farming:cotton_4",
-    "blk_farming:carrot_4",
-    "blk_farming:beet_4",
-    "blk_farming:rice_4"
+    blk.get_node("wheat_4", "name"),
+    blk.get_node("cotton_4", "name"),
+    blk.get_node("carrot_4", "name"),
+    blk.get_node("beet_4", "name"),
+    blk.get_node("rice_4", "name")
   }
 })
 -- trees

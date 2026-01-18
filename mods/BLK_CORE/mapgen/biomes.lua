@@ -1,16 +1,16 @@
-local dirt = "blk_base:dirt"
-local stone = "blk_base:stone"
-local snow = "blk_base:snow"
-local ice = "blk_base:ice"
-local clay = "blk_base:clay"
-local sand = "blk_base:sand"
-local red_sand = "blk_base:red_sand"
-local water = "blk_base:water"
-local lava = "blk_base:lava"
-local messy_stone = "blk_base:messy_stone"
-local mossy_messy_stone = "blk_base:mossy_messy_stone"
-local grass = "blk_base:grass_block"
-local gravel = "blk_base:gravel"
+local dirt = blk.get_node("dirt", "name")
+local stone = blk.get_node("stone", "name")
+local snow = blk.get_node("snow", "name")
+local ice = blk.get_node("ice", "name")
+local clay = blk.get_node("clay", "name")
+local sand = blk.get_node("sand", "name")
+local red_sand = blk.get_node("red_sand", "name")
+local water = blk.get_node("water", "name")
+local lava = blk.get_node("lava", "name")
+local messy_stone = blk.get_node("messy_stone", "name")
+local mossy_messy_stone = blk.get_node("mossy_messy_stone", "name")
+local grass = blk.get_node("grass_block", "name")
+local gravel = blk.get_node("gravel", "name")
 -- tundra
 core.register_biome({
   name = "tundra",

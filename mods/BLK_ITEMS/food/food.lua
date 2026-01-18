@@ -17,9 +17,9 @@ blk.food("currents", {food = 1, currents = 1, fruit = 1}, 5)
 blk.food("mushroom_stew", {food = 1, cooked = 1, stew = 1}, 15)
 -- Crafts
 blk.craft("cookie 8", {{"flour", "sugar"}, {"milk_bottle", "coal"}})
-blk.craft(blk.mod().."apple_block", {
+blk.craft(blk.get_node("apple_block", "name"), {
   {"apple", "apple", "apple"},
   {"apple", "apple", "apple"},
   {"apple", "apple", "apple"}
 })
-blk.craft("apple 9", {{blk.mod()..":apple_block"}})
+blk.craft("apple 9", {{blk.get_node("apple_block", "name")}})

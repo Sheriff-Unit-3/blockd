@@ -38,6 +38,7 @@ core.register_node(blk.mod()..":water",{
   diggable = false,
   groups = {water = 1, liquid = 1, not_in_creative_inventory = 1}
 })
+blk.add_node("water")
 blk.alias("water")
 blk.alias("water", "mapgen_water_source")
 blk.alias("water", "mapgen_river_water_source")
@@ -62,6 +63,7 @@ core.register_node(blk.mod()..":water_flowing",{
   diggable = false,
   groups = {water = 1, liquid = 1, not_in_creative_inventory = 1}
 })
+blk.add_node("water_flowing")
 core.register_node(blk.mod()..":lava", {
   description = "Lava",
   tiles = {"blk_lava.png"},
@@ -81,6 +83,7 @@ core.register_node(blk.mod()..":lava", {
   damage_per_second = 20,
   groups = {lava = 1, liquid = 1, not_in_creative_inventory = 1}
 })
+blk.add_node("lava")
 blk.alias("lava")
 blk.alias("lava", "mapgen_lava_source")
 blk.node("ice", true, true, {ice = 1, cracky = 1})
@@ -126,18 +129,3 @@ blk.node("red_marked_sandstone", false, false, sandstone, blk.sounds("sand"))
 blk.node("red_smooth_sandstone", false, false, sandstone, blk.sounds("sand"))
 blk.node("red_engraved_sandstone", false, false, sandstone, blk.sounds("sand"))
 blk.node("apple_block", false, false, {food = 2, apple = 1, choppy = 1})
---[[ tnt
-core.register_node("blk_base:tnt", {
-  description = "TNT",
-  tiles = {
-    "blk_tnt_top.png",
-    "blk_tnt_bottom.png",
-    "blk_tnt_side.png"
-  },
-  stack_max = 256,
-  groups = {bomb = 1, explody = 1},
-  on_blast = function(pos, intensity)
-
-  end
-})
-]]

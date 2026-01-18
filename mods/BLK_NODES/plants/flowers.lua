@@ -1,0 +1,5 @@
+blk.plant("tulip_red", {hand = 1, flower = 1, red_flower = 1})
+blk.plant("tulip_orange", {hand = 1, flower = 1, orange_flower = 1})
+blk.plant("tulip_pink", {hand = 1, flower = 1, pink_flower = 1})
+blk.plant("tulip_white", {hand = 1, flower = 1, white_flower = 1})
+blk.plant("dandelion", {hand = 1, flower = 1, yellow_flower = 1})

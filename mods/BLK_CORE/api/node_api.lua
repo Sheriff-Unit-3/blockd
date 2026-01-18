@@ -60,7 +60,7 @@ function blk.plant(name, group, drop)
   if name == nil or group == nil then return end
   blk.alias(name)
   blk.add_node(name)
-  if drop ~= nil then
+  if drop then
     core.register_node(blk.mod()..":"..name, {
       drawtype = "plantlike",
       description = blk.desc(name),
@@ -82,7 +82,7 @@ function blk.plant(name, group, drop)
       drawtype = "plantlike",
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
-      inventory_image = "blk_"..name.."png",
+      inventory_image = "blk_"..name..".png",
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,

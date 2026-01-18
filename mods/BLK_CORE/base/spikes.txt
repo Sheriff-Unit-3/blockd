@@ -1,3 +1,18 @@
+--[[ tnt
+core.register_node("blk_base:tnt", {
+  description = "TNT",
+  tiles = {
+    "blk_tnt_top.png",
+    "blk_tnt_bottom.png",
+    "blk_tnt_side.png"
+  },
+  stack_max = 256,
+  groups = {bomb = 1, explody = 1},
+  on_blast = function(pos, intensity)
+
+  end
+})
+]]
 -- spikes
 -- wood
 core.register_node("blk_base:wood_spikes", {
