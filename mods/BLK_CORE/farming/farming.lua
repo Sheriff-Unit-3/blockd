@@ -34,7 +34,6 @@ blk.crop("carrot", 4, {[nici] = 1, carrot_plant = 1, snappy = 1},
   {rarity = 2,items = {carrot.."_seeds", carrot}},
   {rarity = 1,items = {carrot.."_seeds", carrot}}
 }})
-
 blk.grow("carrot", 30, 5)
 blk.food("beet", {beet = 1, crop = 1}, 5)
 local beet = blk.get_item("beet", "name")
@@ -47,10 +46,9 @@ blk.crop("beet", 4, {[nici] = 1, beet_plant = 1, snappy = 1},
   {rarity = 2,items = {beet.."_seeds", beet}},
   {rarity = 1,items = {beet.."_seeds", beet}}
 }})
-
 blk.grow("beet", 30, 5)
 blk.crop("rice", 1, {[nici] = 1, rice_plant = 1, snappy = 1}, "")
-blk.crop("rice", -1, {rice = 1, seeds = 1, crop = 1}, "", blk.get_item("rice_1", "name"))
+blk.crop("rice", -1, {rice = 1, seeds = 1, crop = 1}, "", blk.get_node("rice_1", "name"))
 local rice = blk.get_item("rice_seeds", "name")
 blk.crop("rice", 2, {[nici] = 1, rice_plant = 1, snappy = 1}, "")
 blk.crop("rice", 3, {[nici] = 1, rice_plant = 1, snappy = 1}, "")

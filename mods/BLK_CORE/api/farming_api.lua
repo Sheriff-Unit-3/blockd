@@ -23,7 +23,7 @@ function blk.crop(name, stage, group, drop, stage1_plant)
     groups = group,
     drop = drop
     })
-    blk.add_item(name.."_"..stage)
+    blk.add_node(name.."_"..stage)
   elseif stage == -1 then
     core.register_craftitem(mname.."_seeds", {
       description = desc.." Seeds",
