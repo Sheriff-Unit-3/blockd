@@ -24,6 +24,7 @@ function blk.node(name, ground, light, group, sound, drop)
     core.register_node(blk.mod()..":"..name, {
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
+      paramtype = "light",
       is_ground_content = ground,
       sunlight_propagates = light,
       groups = group,
@@ -34,6 +35,7 @@ function blk.node(name, ground, light, group, sound, drop)
     core.register_node(blk.mod()..":"..name, {
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
+      paramtype = "light",
       is_ground_content = ground,
       sunlight_propagates = light,
       groups = group,
@@ -48,6 +50,7 @@ function blk.simple_node(name, group, sound)
   core.register_node(blk.mod()..":"..name, {
     description = blk.desc(name),
     tiles = {"blk_"..name..".png"},
+    paramtype = "light",
     sounds = sound,
     sunlight_propagates = false,
     stack_max = 256,
@@ -66,6 +69,7 @@ function blk.plant(name, group, drop)
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       inventory_image = "blk_"..name..".png",
+      paramtype = "light",
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,
@@ -83,6 +87,7 @@ function blk.plant(name, group, drop)
       description = blk.desc(name),
       tiles = {"blk_"..name..".png"},
       inventory_image = "blk_"..name..".png",
+      paramtype = "light",
       sounds = blk.sounds("plant"),
       walkable = false,
       sunlight_propagates = false,
