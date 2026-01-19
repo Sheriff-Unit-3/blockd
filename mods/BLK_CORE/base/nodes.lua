@@ -20,8 +20,8 @@ blk.node("gravel", true, false, {crumbly = 1}, blk.sounds("gravel"))
 blk.alias("gravel", "mapgen_gravel")
 core.register_node(blk.mod()..":water",{
   description = "Water",
-  tiles = {"blk_water_alt.png"},
-  special_tiles = {"blk_water_alt.png", "blk_water_alt.png"},
+  tiles = {"blk_water.png"},
+  special_tiles = {"blk_water.png", "blk_water.png"},
   drawtype = "liquid",
   use_texture_alpha = "blend",
   paramtype = "light",
@@ -48,7 +48,7 @@ blk.alias("water", "mapgen_river_water_source")
 core.register_node(blk.mod()..":water_flowing",{
   description = "Water",
   tiles = {"blk_water.png"},
-  special_tiles = {"blk_water_alt.png", "blk_water_alt.png"},
+  special_tiles = {"blk_water.png", "blk_water.png"},
   drawtype = "flowingliquid",
   use_texture_alpha = "blend",
   paramtype = "light",
