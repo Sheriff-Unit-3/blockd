@@ -1,11 +1,10 @@
 local name = blk.mod()..":snowball"
 local entity = blk.mod()..":snowball_thrown"
-local texture = "blk_snowball.png"
 core.register_craftitem(name, {
 	description = "Snowball",
 	range = 0,
 	stack_max = 256,
-	inventory_image = texture,
+	inventory_image = "blk_snowball.png",
 	on_use = function(itemstack, user, pointed_thing)
 			if not core.setting_getbool("creative_mode") then itemstack:take_item()
 		end
@@ -39,9 +38,9 @@ blk.add_item("snowball")
 local _snowball = {
 	physical = false,
 	timer = 0,
-	visual = "cube",
-	visual_size = {x=0.0, y=0.5,},
-	textures = {texture,texture,texture,texture,texture,texture},
+	visual = "mesh",
+	mesh = "blk_ball.gltf",
+	textures = {"blk_snowball_mesh.png"},
 	lastpos= {},
 	collisionbox = {0, 0, 0, 0, 0, 0},
 }
