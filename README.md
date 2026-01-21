@@ -12,7 +12,7 @@ These are some features that are planned to be released in the future.
 [ ] Furniture
 [ ] Improved farming mechanics  
 [ ] Uses for Emeralds and Lapis  
-[ ] More ores (silver, copper, tin, etc..)  
+[ ] More ores (silver, tin, etc..)  
 [ ] Hunger  
 [ ] Mobs  
 [ ] More biomes  
@@ -25,6 +25,6 @@ There is a complete table of authors and links in Credits.md included in the mai
 
 Most textures came from [NS-Texture](https://github.com/newtoallofthis123/NS-Texture) by [Noob Science](https://github.com/newtoallofthis123), which is licensed under [MIT](https://opensource.org/license/mit).
 (The original license file may be found under `Noob Science License.txt` in the main directory of this game)
-Any textures that were not from him were created by [Sheriff_U3](https://content.luanti.org/users/Sheriff-Unit-3/) using [Gimp](https://www.gimp.org/) and are licensed under CC0. They are listed in a table in Credits.md.
+Any textures that were not from him were created by [Sheriff_U3](https://content.luanti.org/users/Sheriff-Unit-3/) using [Gimp](https://www.gimp.org/) and are licensed under [MIT](https://opensource.org/license/mit). They are listed in a table in Credits.md.
 
 Models were made by [Sheriff_U3](https://content.luanti.org/users/Sheriff-Unit-3/) using [BlockBench](https://www.blockbench.net/), they are also licensed under CC0.
