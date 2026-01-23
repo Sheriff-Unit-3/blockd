@@ -12,6 +12,7 @@ core.register_node(blk.mod()..":chest", {
   stack_max = 256,
   groups = {storage = 1, chest = 1, choppy = 1},
   sounds = blk.sounds("wood"),
+  paramtype2 = "facedir",
   on_construct = function(pos)
     local meta = core.get_meta(pos)
     local inv = meta:get_inventory()
@@ -41,6 +42,7 @@ description = "Furnace",
   stack_max = 256,
   groups = {crafting = 1, furnace = 1, cracky = 1},
   sounds = blk.sounds("stone"),
+  paramtype2 = "facedir",
   on_construct = function(pos)
     local meta = core.get_meta(pos)
     meta:set_string("formspec",

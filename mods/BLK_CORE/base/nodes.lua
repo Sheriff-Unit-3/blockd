@@ -2,6 +2,21 @@ blk.node("dirt", true, false, {dirt = 1, crumbly = 1})
 blk.alias("dirt", "mapgen_dirt")
 blk.node("grass_block", true, false, {grass = 1, crumbly = 1})
 blk.alias("grass_block", "mapgen_dirt_with_grass")
+core.register_abm({
+  label = "grass_growing",
+  nodenames = {blk.get_node("dirt", "name")},
+  neighbors = {blk.get_node("grass_block", "name")},
+  interval = 30,
+  chance = 100,
+  min_y = -10,
+  max_y = 100,
+  catch_up = true,
+  action = function(pos, node)
+    if node.name == blk.get_node("dirt") then
+      core.swap_node(pos, {name = blk.get_node("grass_block", "name")})
+    end
+  end
+})
 blk.node("tilled_soil", true, false, {dirt = 1, soil = 1, crumbly = 1})
 blk.node("clay", true, false, {clay = 1, crumbly = 1})
 blk.node("snow", true, false, {snow = 1, crumbly = 1}, blk.sounds("snow"))
@@ -72,6 +87,8 @@ core.register_node(blk.mod()..":lava", {
   description = "Lava",
   tiles = {"blk_lava.png"},
   drawtype = "liquid",
+  paramtype = "light",
+  light_source = 14,
   use_texture_alpha = "blend",
   is_ground_content = false,
   walkable = false,
@@ -92,11 +109,11 @@ blk.alias("lava")
 blk.alias("lava", "mapgen_lava_source")
 blk.node("ice", true, true, {ice = 1, cracky = 1})
 blk.alias("ice", "mapgen_ice")
-local i = blk.mod()..":ice"
-local s = blk.mod()..":snow"
+local i = blk.get_node("ice", "name")
+local s = blk.get_node("snow", "name")
 core.register_abm({
-  label = "Water freezing",
-  nodenames = blk.mod().."water",
+  label = "water_freezing",
+  nodenames = blk.get_node("water", "name"),
   neighbors = {i, s},
   interval = 30.0,
   chance = 50,
@@ -113,7 +130,7 @@ core.register_abm({
     local c = core.get_node(pos3)
     local d = core.get_node(pos4)
     if(a.name==i or a.name==s or b.name==i or b.name==s or c.name==i or c.name==s or d.name==i or d.name==s)then
-      core.swap_node(pos, {name = blk.mod()..":ice"})
+      core.swap_node(pos, {name = blk.get_node("ice", "name")})
     end
   end
 })
