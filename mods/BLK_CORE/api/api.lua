@@ -1,6 +1,6 @@
 blk.info = {
   name = "blk",
-  version = "v0.0.1-dev",
+  version = "v1.0.0-dev",
   stable = false
 }
 function blk.game(data)
@@ -12,7 +12,7 @@ function blk.game(data)
 end
 function blk.loaded(mod)
   if mod == nil then
-    return core.log(error, "Missing parameter in blk.loaded()")
+    return core.log("error", "Missing parameter in blk.loaded()")
   else
     return core.get_modpath(mod)
   end
